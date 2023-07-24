@@ -6,7 +6,7 @@
 
 基于vue2.0 axios element_ui
 
-
+**7月24日commit已更新 详见homepage分支**
 
 ## Project setup
 ```
