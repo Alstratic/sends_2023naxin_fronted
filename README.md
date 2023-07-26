@@ -48,5 +48,11 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 - homepage页面开了个头，把navigator写好了，（但是登录之后按钮消失切换成用户头像的逻辑还没好）
 - 开工第一天 规范了下文档 部分内容开了个小头
-- 现已push至homepage branch 提交时也请提交至相同分支
+- **现已push至homepage branch 提交时也请提交至相同分支**
 
+## 	7.26 commit
+
+- 完善了homepage的相关开发
+- 包括轮播图的雏形以及热门职位的组件 但暂时还没有封装完毕
+- 目前还没有拿到数据测试 所以数据是写死了的
+- **现已push至homepage branch 提交时也请提交至相同分支**
