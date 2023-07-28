@@ -42,49 +42,14 @@
         <span>热门职位</span>
       </div>
       <div class="hot-position-cards">
-        <el-card class="box-card">
-          <div class="hot-position-details">
-            <span class="hot-position-name">英语播音员</span>
-            <span class="hot-position-num">2人</span>
-          </div>
-          <div class="hot-position-tags">
-            <el-tag type="info">大一</el-tag>
-            <el-tag type="info">播音</el-tag>
-            <el-tag type="info">口才</el-tag>
-          </div>
-          <div class="organization-details">
-            <div class="organization-details-name">
-              <img src="../assets/logo.png" alt="" style="width:23px;height: 23px;border-radius: 50%;">
-              <span class="organization-name">华侨大学广播台</span>
-              <div class="null"></div>
-              <span class="organization-type">校级组织|广播电台</span>
-            </div>
-          </div>
-        </el-card>
-
-        <el-card class="box-card">
-          <div class="hot-position-details">
-            <span class="hot-position-name">英语播音员</span>
-            <span class="hot-position-num">2人</span>
-          </div>
-          <div class="hot-position-tags">
-            <el-tag type="info">大一</el-tag>
-            <el-tag type="info">播音</el-tag>
-            <el-tag type="info">口才</el-tag>
-          </div>
-        </el-card>
-
-        <el-card class="box-card">
-          <div class="hot-position-details">
-            <span class="hot-position-name">英语播音员</span>
-            <span class="hot-position-num">2人</span>
-          </div>
-          <div class="hot-position-tags">
-            <el-tag type="info">大一</el-tag>
-            <el-tag type="info">播音</el-tag>
-            <el-tag type="info">口才</el-tag>
-          </div>
-        </el-card>
+        <hot-position-card
+        :position-name="cardData.positionName"
+        :position-num="cardData.positionNum"
+        :tags="cardData.tags"
+        :logo="cardData.logo"
+        :organization-name="cardData.organizationName"
+        :organization-type="cardData.organizationType"
+        />
       </div>
     </div>
     <!-- 热门组织 -->
@@ -97,18 +62,34 @@
 
 <script>
 import VueSlickCarousel from 'vue-slick-carousel'
-
+import HotPositionCard from '@/components/HotPositionCard.vue';
+import axios from 'axios';
 
 export default {
   components:{
     VueSlickCarousel,
+    HotPositionCard,
   },
   data() {
     return {
       input: '',
-
+      cardData:{},
     }
-  }
+  },
+
+  mounted(){
+    let that=this;
+    axios.get('/api/cardData')
+      .then(response => {
+        // 将从后端获取的数据填充到 cardData 对象中
+        console.log(response.data);
+        that.cardData = response.data;
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.error('Failed to fetch card data:', error);
+      });
+}
 }
 </script>
 
@@ -264,45 +245,7 @@ background-color: #373d41;
   .item {
     padding: 18px 0;
   }
-  .box-card {
-    width: 16rem;
-    height: 10rem;
-    border: #ffd74d 1.5px solid;
-    border-radius: 15px;
-    margin-left: 1.5vw;
-    margin-right: 1.5vw;
-    @media (max-width: 769px) {
-      margin-right: 0;
-    }
-    .organization-details{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top:5vh;
-      .organization-details-name{
-        font-size: 6px;
-        font-weight: 600;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      .null{
-        padding: 0 4px;
-      }
-      .organization-name{
-        text-align: left;
-      }
-      .organization-type{
-        font-size: 6px;
-        text-align: right;
-      }
-    }
-  }
-  .hot-position-details {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px; /* 添加一些间距，根据需求调整 */
-  }
+
   .hot-position-cards {
   display: flex; /* 使用Flex布局，使el-card在同一行内显示 */
   justify-content: space-between;
@@ -318,7 +261,6 @@ background-color: #373d41;
       height: 2rem;
       width: 2rem;
       font-weight: 600;
-
     }
 }
 </style>
