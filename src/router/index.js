@@ -1,14 +1,14 @@
 /* eslint-disable camelcase */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '../components/Login.vue'
-import Homepage from '../components/Homepage.vue'
-import Interview from '../components/Interview.vue'
-import Applications_details from '../components/Applications_details.vue'
-import Applications from '../components/Applications.vue'
-import Orgnization_details from '../components/Orgnization_details.vue'
-import Position_detailes from '../components/Position_detailes.vue'
-import Examine_page from '../components/Examine_page.vue'
+import Login from '../view/userview/Login.vue'
+import Homepage from '../view/userview/Homepage.vue'
+import Interview from '../view/userview/Interview.vue'
+import Applications_details from '../view/userview/Applications_details.vue'
+import Applications from '../view/userview/Applications.vue'
+import Orgnization_details from '../view/userview/Orgnization_details.vue'
+import Position_detailes from '../view/userview/Position_detailes.vue'
+import Examine_page from '../view/userview/Examine_page.vue'
 Vue.use(VueRouter)
 
 const routes = [

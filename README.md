@@ -63,3 +63,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - 重构了下前面写的，调用然后重新封装了卡片的组件
 - 之后打算把单个组件写好 然后就只是布局就好了 这样可能会更快些
 - **现已push至homepage branch 提交时也请提交至相同分支（如果是做的其它页面，就提交到新的分支）**
+
+## 	7.29 commit
+
+- homepage页面基本结束啦 （其实是热门组织先暂时不用做）
+- 重构了一下卡片 现在移动端最多同时展示3个 PC端与策划界面一致
+- 都是用的mockdata数据
+- **现已push至homepage branch 提交时也请提交至相同分支（如果是做的其它页面，就提交到新的分支）**

@@ -3,7 +3,7 @@
   <!-- Headers区域 -->
   <el-header class="header-container">
     <div class="header-navigator">
-      <img src="../assets/sends_logo.png" alt="">
+      <img src="../../assets/sends_logo.png" alt="">
       <span>华侨大学网络创新实验室</span>
     </div>
     <el-button type="warning" class="un-login">登录</el-button>
@@ -42,20 +42,27 @@
         <span>热门职位</span>
       </div>
       <div class="hot-position-cards">
-        <hot-position-card
-        :position-name="cardData.positionName"
-        :position-num="cardData.positionNum"
-        :tags="cardData.tags"
-        :logo="cardData.logo"
-        :organization-name="cardData.organizationName"
-        :organization-type="cardData.organizationType"
-        />
+        <div v-for="(row, rowIndex) in groupedCards" :key="rowIndex" class="card-row" style="">
+          <hot-position-card
+          v-for="(data,index) in row"
+          :key="index"
+          :position-name="data.positionName"
+          :position-num="data.positionNum"
+          :tags="data.tags"
+          :logo="data.logo"
+          :organization-name="data.organizationName"
+          :organization-type="data.organizationType"
+          />
+        </div>
       </div>
+      <el-button type="warning" class="un-login" @click="goToPositionDetailsPage">更多</el-button>
     </div>
     <!-- 热门组织 -->
-    <div class="hot-orgnazations">
-
-    </div>
+    <!-- <div class="hot-orgnazations">
+      <div class="hot-position-font">
+        <span>热门组织</span>
+      </div>
+    </div> -->
   </el-main>
 </el-container>
 </template>
@@ -74,21 +81,62 @@ export default {
     return {
       input: '',
       cardData:{},
+      cardDataList:[],
+      windowWidth: window.innerWidth
     }
   },
+  computed:{
+    isMobile(){
+      return this.windowWidth<=768
+    },
+    groupedCards(){
+      const isMobile = this.isMobile; // 使用组件内部的 isMobile 属性
+      const rowsToShow = 3; // 最多显示的行数
+      const totalCards = this.cardDataList.length;
+      const cardsPerRow = isMobile ? 1 : 3; // 根据设备决定每行显示的卡片数 PC端最多同时展示9个卡片 移动端最多同时展示3个卡片 因此每行展示的不一样
+
+      const grouped = [];
+      for (let i = 0; i < totalCards; i += cardsPerRow) {
+        grouped.push(this.cardDataList.slice(i, i + cardsPerRow));
+      }
+      return grouped.slice(0, rowsToShow);
+    }
+  },
+  methods:{
+    goToPositionDetailsPage(){
+      this.$router.push('/Position_detailes');
+    },
+  },
+
 
   mounted(){
     let that=this;
-    axios.get('/api/cardData')
-      .then(response => {
-        // 将从后端获取的数据填充到 cardData 对象中
-        console.log(response.data);
-        that.cardData = response.data;
-        console.log(response.data);
+    const urls = [
+      '/api/cardData/1', 
+      '/api/cardData/2', 
+      '/api/cardData/3', 
+      '/api/cardData/5',
+      '/api/cardData/6',
+      '/api/cardData/7',
+      '/api/cardData/8',
+      '/api/cardData/9',
+      '/api/cardData/10'
+    ];
+    for(let i =0;i<urls.length;i++)
+    {
+      axios.get(urls[i])
+        .then(response => {
+        // 将从后端获取的数据填充到 cardDataList 中
+        that.cardDataList.push(response.data);
       })
-      .catch(error => {
+        .catch(error => {
         console.error('Failed to fetch card data:', error);
       });
+    }
+
+    window.addEventListener('resize',()=>{
+      this.windowWidth=window.innerWidth
+    })
 }
 }
 </script>
@@ -97,7 +145,7 @@ export default {
 
 .all-container{
 height: 100%;
-background-color: #373d41;
+background-color: #fff;
 }
 .header-container{
   height: 5%;
@@ -225,20 +273,25 @@ background-color: #373d41;
   }
 }
 
+.hot-position-font{
+  font-size: 48px;
+  font-weight: 600;
+  font-family: 'Source Han Serif CN VF';
+  margin-bottom: 1rem;
+}
 .hot-positions{
   width: 100%;
-  height: 60%;
+  height: 110%;
   background-color: #fff;
   justify-content: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  .hot-position-font{
-    font-size: 48px;
-    font-weight: 600;
-    font-family: 'Source Han Serif CN VF';
-    margin-bottom: 1rem;
+  @media (max-width: 769px) {
+    padding-top: 5vh;
+    height: 120%;
   }
+
   .text {
     font-size: 14px;
   }
@@ -249,18 +302,41 @@ background-color: #373d41;
   .hot-position-cards {
   display: flex; /* 使用Flex布局，使el-card在同一行内显示 */
   justify-content: space-between;
+  flex-wrap: wrap;
+  padding-bottom: 2vh;
   @media (max-width: 769px) {
     flex-direction: column;
+    padding-bottom: 5vh;
   }
 }
-  .el-tag{
-      margin-right: 1vw;
-      padding: 0 1%;
-      color:#6e6e6e;
-      background-color: #e7e7e7;
-      height: 2rem;
-      width: 2rem;
-      font-weight: 600;
-    }
+
+.card-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin:0 2vw;
+}
+.el-tag{
+    margin-right: 1vw;
+    padding: 0 1%;
+    color:#6e6e6e;
+    background-color: #e7e7e7;
+    height: 2rem;
+    width: 2rem;
+    font-weight: 600;
+  }
+}
+.hot-orgnazations{
+  width: 100%;
+  height: 110%;
+  background-color: #fff;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media (max-width: 769px) {
+    padding-top: 5vh;
+    height: 120%;
+  }
 }
 </style>

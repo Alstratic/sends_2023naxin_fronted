@@ -5,7 +5,8 @@
         <span class="hot-position-num">{{positionNum}}人</span>
         </div>
         <div class="hot-position-tags">
-        <el-tag type="info" v-for="tag in tags" :key="tag">{{tag}}</el-tag>
+        <!-- <el-tag type="info" v-for="tag in tags" :key="tag">{{tag}}</el-tag> -->
+        <span class="hot-position-tag" v-for="tag in tags" :key="tag">{{tag}}</span>
         </div>
         <div class="organization-details">
         <div class="organization-details-name">
@@ -33,22 +34,24 @@ export default{
 
 <style>
   .hot-position-cards {
-  display: flex; /* 使用Flex布局，使el-card在同一行内显示 */
-  justify-content: space-between;
+  display: flex !important; /* 使用Flex布局，使el-card在同一行内显示 */
+  justify-content: space-between !important;
   @media (max-width: 769px) {
     flex-direction: column;
   }
 }
 
 .box-card {
-    width: 16rem;
-    height: 10rem;
-    border: #ffd74d 1.5px solid;
-    border-radius: 15px;
+    width: 26vw;
+    height: 22vh;
+    border: #ffd74d 1.5px solid !important;
+    border-radius: 15px !important;
     margin-left: 1.5vw;
     margin-right: 1.5vw;
+    margin-top:3vh ;
     @media (max-width: 769px) {
       margin-right: 0;
+      width: 65vw;
     } 
   }
   
@@ -85,13 +88,29 @@ export default{
   justify-content: space-between;
   margin-bottom: 10px; /* 添加一些间距，根据需求调整 */
 }
-.el-tag{
-    margin-right: 1vw;
-    color:#6e6e6e;
-    background-color: #e7e7e7;
-    height: 2rem;
-    width: 4vw;
-    font-weight: 600;
-    font-size: 6px;
+.hot-position-name{
+  font-weight: 600;
 }
+
+.hot-position-tag{
+  margin-right: 1vw;
+  color:#6e6e6e;
+  background-color: #e7e7e7;
+  height: 2rem;
+  width: 4vw;
+  font-weight: 400;
+  font-size: 6px;
+  border-color: #d9ecff;
+  height: 32px;
+  padding: 0 3px;
+  line-height: 30px;
+  font-size: 12px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+  box-sizing: border-box;
+  white-space: nowrap;
+
+}
+
 </style>
