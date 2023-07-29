@@ -57,7 +57,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - 开工第一天 规范了下文档 部分内容开了个小头
 - **现已push至homepage branch 提交时也请提交至相同分支**
 
-## 7.26 commit
+## 	7.26 commit
 
 - 完善了homepage的相关开发
 - 包括轮播图的雏形以及热门职位的组件 但暂时还没有封装完毕
@@ -71,8 +71,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - 之后打算把单个组件写好 然后就只是布局就好了 这样可能会更快些
 - **现已push至homepage branch 提交时也请提交至相同分支（如果是做的其它页面，就提交到新的分支）**
 
-## 7.29 commit
-
+## 	7.29 commit
 - homepage页面基本结束啦 （其实是热门组织先暂时不用做）
 - 重构了一下卡片 现在移动端最多同时展示3个 PC端与策划界面一致
 - 都是用的mockdata数据
