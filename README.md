@@ -8,30 +8,37 @@
 
 **注意：提交时不要提交到master分支，提交到什么分支详见当天的commit日志，见下**
 
+**7月29日已提交**
+
 ## Project setup
+
 ```
 pnpm install
 ```
 
 ### Compiles and hot-reloads for development
+
 ```
 pnpm run serve
 ```
 
 ### Compiles and minifies for production
+
 ```
 pnpm run build
 ```
 
 ### Lints and fixes files
+
 ```
 pnpm run lint
 ```
 
 ### Customize configuration
+
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-## 	7.24 commit
+## 7.24 commit
 
 - 完善了相关路由跳转：
 
@@ -65,7 +72,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - **现已push至homepage branch 提交时也请提交至相同分支（如果是做的其它页面，就提交到新的分支）**
 ----
 ## 	7.29 commit
-
 - homepage页面基本结束啦 （其实是热门组织先暂时不用做）
 - 重构了一下卡片 现在移动端最多同时展示3个 PC端与策划界面一致
 - 都是用的mockdata数据
