@@ -116,6 +116,7 @@ Mock.mock('/api/cardData/9', {
   organizationName: '@ctitle(5, 10)',
   organizationType: '@cword(3, 5) | @cword(3, 5)'
 })
+
 Mock.mock('/api/cardData/10', {
   positionName: '@cname',
   positionNum: '@natural(1, 10)',
