@@ -42,6 +42,7 @@ Mock.mock('/api/cardData/3', {
 })
 
 Mock.mock('/api/cardData/4', {
+
   positionName: '@cname',
   positionNum: '@natural(1, 10)',
   tags: function () {
@@ -129,4 +130,5 @@ Mock.mock('/api/cardData/10', {
   organizationName: '@ctitle(5, 10)',
   organizationType: '@cword(3, 5) | @cword(3, 5)'
 })
+
 export default Mock
