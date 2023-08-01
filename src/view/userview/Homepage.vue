@@ -281,14 +281,14 @@ background-color: #fff;
 }
 .hot-positions{
   width: 100%;
-  height: 110%;
+  height: 120%;
   background-color: #fff;
-  justify-content: center;
+  justify-content: space-around;
   display: flex;
   flex-direction: column;
   align-items: center;
   @media (max-width: 769px) {
-    padding-top: 5vh;
+    padding-top: 8vh;
     height: 120%;
   }
 
@@ -301,7 +301,7 @@ background-color: #fff;
 
   .hot-position-cards {
   display: flex; /* 使用Flex布局，使el-card在同一行内显示 */
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
   padding-bottom: 2vh;
   @media (max-width: 769px) {
@@ -314,7 +314,7 @@ background-color: #fff;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin:0 2vw;
+    margin:2vh 2vw;
 }
 .el-tag{
     margin-right: 1vw;

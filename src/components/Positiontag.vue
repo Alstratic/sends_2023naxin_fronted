@@ -15,28 +15,26 @@ export default{
         }
     },
     methods:{
-        toggleSelected() {
-      // 如果点击的是“全部”标签，则将其余标签的选中状态设为false
-        if (this.tags[0] === '全部') {
-            this.selected = true;
-            for (let i = 1; i < this.tags.length; i++) {
-                this.$parent.$children[i - 1].selected = false;
-            }
-        } 
-        else {
-            this.selected = !this.selected;
-            // 如果有其他标签被选中，则将“全部”标签的选中状态设为false
-            if (this.selected) {
-                this.$parent.$children[0].selected = false;
-            }
-        }
+    //     toggleSelected() {
+    //   // 如果点击的是“全部”标签，则将其余标签的选中状态设为false
+    //     if (this.tags[0] === '全部') {
+    //         this.selected = true;
+    //         for (let i = 1; i < this.tags.length; i++) {
+    //             this.$parent.$children[i - 1].selected = false;
+    //         }
+    //     } 
+    //     else {
+    //         this.selected = !this.selected;
+    //         // 如果有其他标签被选中，则将“全部”标签的选中状态设为false
+    //         if (this.selected) {
+    //             this.$parent.$children[0].selected = false;
+    //         }
+    //     }
     }
-}
-
 }
 </script>
 
-<style>
+<style scoped lang="less">
 .Position-tag{
     margin-left: 2vw;
     color:#909090;

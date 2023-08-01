@@ -73,7 +73,6 @@ export default{
       .then(response => {
         // 将从后端获取的数据填充到 cardData 对象中
         that.cardData = response.data;
-        console.log(response.data)
       })
       .catch(error => {
         console.error('Failed to fetch card data:', error);
@@ -82,7 +81,7 @@ export default{
 }
 </script>
 
-<style>
+<style scoped lang="less">
 /* navigator的样式 line 22-67*/
 .all-container{
 height: 100%;

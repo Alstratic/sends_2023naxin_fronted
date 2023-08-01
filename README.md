@@ -17,19 +17,16 @@ pnpm install
 ```
 
 ### Compiles and hot-reloads for development
-
 ```
 pnpm run serve
 ```
 
 ### Compiles and minifies for production
-
 ```
 pnpm run build
 ```
 
 ### Lints and fixes files
-
 ```
 pnpm run lint
 ```
@@ -85,3 +82,54 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - 由于文件夹改动，路由也变动了一些，我都帮你改了一下，现在应该没问题了
 - 现在`view/userview`中的`homepage`和`Position_detail`都展示的没问题（在我这里），我统一合并到master分支上了。我接下来去做全部职位那个页面了。
 - **master branch 提交时也请提交至相同分支（如果是做的其它页面，就提交到新的分支）**
+
+## 	7.30 commit
+
+- 职位详情页面和组织详情页面完成。
+- 将导航头部放置组件CHeader.但是导航的选项的路由跳转后回退有点问题
+## 	7.31 commit
+
+- 申请表正在做ing,做完更新该分支。
+
+- 记录相关进度如下：
+
+  ```
+  用户端
+  '/homepage'  主页面 √
+  
+  '/interview' 面试报名-面试报名上传-面试报名提交  开发中ing？
+  '/interview_lists' 面试列表 ×
+  '/interview_details' 面试详情 ×
+  
+  '/Applications' 申请列表页面 ×
+  '/Applications_details' 申请详情页面 ×
+  
+  '/Examine_page'	考核页面 ×
+  '/Examinepage_details' 考核详情页面 ×
+  
+  '/All_Positions' 全部职位页面 开发中ing
+  '/Position_detailes' 职位详情页面 √
+  '/Position_collection' 职位收藏 ×
+  
+  'All_Oragnizations' 全部组织页面 ×
+  '/Orgnization_details' 组织详情页面 √
+  
+  '/login' 登录页面 （不用额外做页面，直接微信统一认证）×
+  
+  管理端（还没开始）
+  '/homepage' 首页仪表盘
+  
+  '/Position_list' 职位列表
+  '/Position_information' 职位信息
+  '/Position_post' 职位发布
+  
+  '/Application_approval' 申请审批
+  
+  '/Interview_list' 面试列表
+  '/Interview_assignment' 面试安排
+  
+  '/Examine_check' 考核批阅
+  '/Examine_post' 考核发布
+  ```
+
+  
