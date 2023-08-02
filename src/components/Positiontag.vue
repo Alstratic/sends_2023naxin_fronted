@@ -1,6 +1,8 @@
 <template>
-    <div>
-        <span :class="['Position-tag',{'selected':selected}]" @click="toggleSelected" v-for="tag in tags" :key="tag">{{tag}}</span>
+    <div class="Position-tag-list">
+        <label v-for="(tag,index) in tags" :key="tag" :class="{'active':selectedTags[index]}" @click="toggleTag(index)">
+            <input type="checkbox" v-model="selectedTags[index]" @change="check" style="display: none">{{tag}}
+        </label>
     </div>
 </template>
 
@@ -11,37 +13,33 @@ export default{
     },
     data(){
         return{
-            selected:false
+            selectedTags: []
         }
     },
     methods:{
-    //     toggleSelected() {
-    //   // 如果点击的是“全部”标签，则将其余标签的选中状态设为false
-    //     if (this.tags[0] === '全部') {
-    //         this.selected = true;
-    //         for (let i = 1; i < this.tags.length; i++) {
-    //             this.$parent.$children[i - 1].selected = false;
-    //         }
-    //     } 
-    //     else {
-    //         this.selected = !this.selected;
-    //         // 如果有其他标签被选中，则将“全部”标签的选中状态设为false
-    //         if (this.selected) {
-    //             this.$parent.$children[0].selected = false;
-    //         }
-    //     }
+        check(){
+            console.log(this.selectedTags)
+        },
+        toggleTag(index) {
+            this.selectedTags[index] = !this.selectedTags[index];
+        }
+    },
+    watch:{
+        tags(newTag){
+            this.selectedTags = new Array(newTag.length).fill(false);
+        }
     }
 }
 </script>
 
 <style scoped lang="less">
-.Position-tag{
+.Position-tag-list label{
     margin-left: 2vw;
-    color:#909090;
+    color:#3E3E3E;
     background-color: #fff;
     height: 2rem;
     width: 4vw;
-    font-weight: 400;
+    font-weight: 600;
     border-color: #fff;
     height: 32px;
     padding: 0 3px;
@@ -53,14 +51,15 @@ export default{
     box-sizing: border-box;
     white-space: nowrap;
     @media (max-width: 769px) {
-        margin-left: 2vw;
+        margin-left: 3vw;
         font-size: 14px;
         line-height: 32px;
     } 
 }
-
-.selected {
-    background-color: #FFD74D;
-    border-radius: 15%;
+.Position-tag-list label.active {
+  background-color: #FFD74D;
+  transition: background-color 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
+
+
 </style>

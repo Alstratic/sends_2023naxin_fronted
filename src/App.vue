@@ -12,5 +12,9 @@ export default {
 </script>
 
 <style>
+.el-input__inner{
+    border-color: red;
+}
+
 
 </style>
