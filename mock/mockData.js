@@ -12,6 +12,9 @@ Mock.mock('/api/cardData/1', {
     tags.unshift('全部')
     return tags
   },
+  isSelected: function () {
+    return Array(this.tags.length).fill(false)
+  },
   logo: '@image(100x100)',
   organizationName: '@ctitle(3, 7)',
   organizationType: '@cword(3, 4) | @cword(3, 4)'

@@ -59,15 +59,21 @@ justify-content: space-between !important;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top:3vh;
+  margin-top:6vh;
+  @media (max-width: 769px) {
+    margin-top:3vh;
+  } 
 }
 
 .organization-details-name{
-  font-size: 6px;
+  font-size: 16px;
   font-weight: 600;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: 769px) {
+    font-size: 6px;
+  } 
 }
 
 .null{
@@ -79,9 +85,12 @@ justify-content: space-between !important;
 }
 
 .organization-type{
-  font-size: 6px;
+  font-size: 16px;
   text-align: right;
   font-weight: 400;
+  @media (max-width: 769px) {
+    font-size: 6px;
+  } 
 }
 .hot-position-details {
 display: flex;
@@ -90,8 +99,17 @@ margin-bottom: 10px; /* 添加一些间距，根据需求调整 */
 }
 .hot-position-name{
 font-weight: 600;
+font-size: 24px;
+@media (max-width: 769px) {
+    font-size: 18px;
+  } 
 }
-
+.hot-position-num{
+  font-size: 24px;
+  @media (max-width: 769px) {
+    font-size: 18px;
+  } 
+}
 .hot-position-tag{
 margin-right: 1vw;
 color:#6e6e6e;
@@ -99,7 +117,6 @@ background-color: #e7e7e7;
 height: 2rem;
 width: 4vw;
 font-weight: 400;
-font-size: 6px;
 border-color: #d9ecff;
 height: 32px;
 padding: 0 3px;
@@ -110,5 +127,9 @@ border-style: solid;
 border-radius: 4px;
 box-sizing: border-box;
 white-space: nowrap;
+font-size: 10px;
+@media (max-width: 769px) {
+  font-size: 6px;
+  } 
 }
 </style>

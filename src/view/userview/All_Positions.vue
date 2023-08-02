@@ -33,24 +33,81 @@
                     </div>
                 </div>
                 <div class="position-detail-tags">
-                    <Positiontag
-                    :tags="cardData.tags">
-                    </Positiontag>
-                    <Positiontag
-                    :tags="cardData.tags">
-                    </Positiontag>
-                    <Positiontag
-                    :tags="cardData.tags">
-                    </Positiontag>
-                    <Positiontag
-                    :tags="cardData.tags">
-                    </Positiontag>
-                    <Positiontag
-                    :tags="cardData.tags">
-                    </Positiontag>
+                    <div>
+                        <Positiontag
+                        :tags="cardData.tags">
+                        </Positiontag>
+                    </div>
+                    <div>
+                        <Positiontag
+                        :tags="cardData.tags">
+                        </Positiontag>
+                    </div>
+                    <div>
+                        <Positiontag
+                        :tags="cardData.tags">
+                        </Positiontag>
+                    </div>
+                    <div>
+                        <Positiontag
+                        :tags="cardData.tags">
+                        </Positiontag>
+                    </div>
+                    <div>
+                        <Positiontag
+                        :tags="cardData.tags">
+                        </Positiontag>
+                    </div>
+                    <div>
+
+                    </div>
                 </div>
             </div>
+            <div class="position-cards">
+                <div class="row-card">
+                    <HotPositionCard
+                    :key="cardData.index"
+                    :position-name="cardData.positionName"
+                    :position-num="cardData.positionNum"
+                    :tags="cardData.tags"
+                    :logo="cardData.logo"
+                    :organization-name="cardData.organizationName"
+                    :organization-type="cardData.organizationType"
+                    />
 
+                    <HotPositionCard
+                    :key="cardData.index"
+                    :position-name="cardData.positionName"
+                    :position-num="cardData.positionNum"
+                    :tags="cardData.tags"
+                    :logo="cardData.logo"
+                    :organization-name="cardData.organizationName"
+                    :organization-type="cardData.organizationType"
+                    />
+                </div>
+                <div class="row-card">
+                    <HotPositionCard
+                    :key="cardData.index"
+                    :position-name="cardData.positionName"
+                    :position-num="cardData.positionNum"
+                    :tags="cardData.tags"
+                    :logo="cardData.logo"
+                    :organization-name="cardData.organizationName"
+                    :organization-type="cardData.organizationType"
+                    />
+
+                    <HotPositionCard
+                    :key="cardData.index"
+                    :position-name="cardData.positionName"
+                    :position-num="cardData.positionNum"
+                    :tags="cardData.tags"
+                    :logo="cardData.logo"
+                    :organization-name="cardData.organizationName"
+                    :organization-type="cardData.organizationType"
+                    />
+                </div>
+
+            </div>
 
         </el-main>
     </el-container>
@@ -59,24 +116,24 @@
 <script>
 import Positiontag from '@/components/Positiontag.vue'
 import axios from 'axios';
+import HotPositionCard from '@/components/HotPositionCard.vue';
 
 export default{
-    components:{Positiontag},
+    components:{Positiontag,HotPositionCard},
     data(){
         return{
-            cardData:{}
+            cardData:{},
+            tagsData:{},
         }
     },
     mounted(){
-    let that=this;
-    axios.get('/api/cardData/1')
-      .then(response => {
-        // 将从后端获取的数据填充到 cardData 对象中
-        that.cardData = response.data;
-      })
-      .catch(error => {
-        console.error('Failed to fetch card data:', error);
-      })
+        let that=this;
+        axios.get('/api/cardData/1').then(response => {
+            // 将从后端获取的数据填充到 cardData 对象中
+            that.cardData = response.data;
+        }).catch(error => {
+            console.error('Failed to fetch card data:', error);
+        })
     }
 }
 </script>
@@ -85,7 +142,7 @@ export default{
 /* navigator的样式 line 22-67*/
 .all-container{
 height: 100%;
-background-color: #909090;
+background-color: #fff;
 }
 
 .header-container{
@@ -163,12 +220,34 @@ font-size: 1.3rem;
 
 .position-tags-types-detail span{
     color: #929292;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 400;
     @media (max-width: 769px) {
         font-size: 16px;
     } 
 }
 
+.position-cards{
+    display: flex;
+    justify-content: center;
+    height: 80%;
+    background-color: #fff;
+    flex-wrap: wrap;
+    @media (max-width:769px) {
+        display: block;
+    }
+}
+
+.row-card{
+    display: flex;
+}
+
+.el-card.box-card.is-always-shadow {
+    
+    @media (max-width:769px) {
+        width: 50%;
+        height: 32%;
+    }
+}
 
 </style>
