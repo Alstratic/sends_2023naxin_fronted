@@ -178,3 +178,92 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 '/Examine_check' 考核批阅
 '/Examine_post' 考核发布
 ```
+
+## 	8.2 commit
+
+- `All_Positions`全部职位筛选器应该没什么问题了，这个页面接近尾声了，不过临时传来需求要把多选改成单选，明天再看着改改
+
+- 全部组织页面暂时不用做
+
+- 做完全部职位之后明天我可能会开始做申请列表那部分
+
+  ```
+  用户端
+  '/homepage'  主页面 √
+  
+  '/interview' 面试报名-面试报名上传-面试报名提交  √
+  '/interview_lists' 面试列表 ×
+  '/interview_details' 面试详情 ×
+  
+  '/Applications' 申请列表页面 ×
+  '/Applications_details' 申请详情页面 ×
+  
+  '/Examine_page'	考核页面 ×
+  '/Examinepage_details' 考核详情页面 ×
+  
+  '/All_Positions' 全部职位页面 开发中ing
+  '/Position_detailes' 职位详情页面 √
+  '/Position_collection' 职位收藏 ×
+  
+  'All_Oragnizations' 全部组织页面 ×
+  '/Orgnization_details' 组织详情页面 √
+  
+  '/login' 登录页面 （不用额外做页面，直接微信统一认证）×
+  
+  管理端（还没开始）
+  '/homepage' 首页仪表盘
+  
+  '/Position_list' 职位列表
+  '/Position_information' 职位信息
+  '/Position_post' 职位发布
+  
+  '/Application_approval' 申请审批
+  
+  '/Interview_list' 面试列表
+  '/Interview_assignment' 面试安排
+  
+  '/Examine_check' 考核批阅
+  '/Examine_post' 考核发布
+  ```
+
+  
+
+- 提交后合并了相关冲突，同时添加了合并冲突说明，见下
+
+## 合并冲突说明
+
+​	我一般先用`checkout -b`在本地建一个与远程分支同名的分支，然后执行`pull`命令
+
+![image-20230802201117688](C:\Users\沙洲泠\AppData\Roaming\Typora\typora-user-images\image-20230802201117688.png)
+
+这里报错 后面加上后缀如下即可解决
+
+<img src="C:\Users\沙洲泠\AppData\Roaming\Typora\typora-user-images\image-20230802201317952.png" alt="image-20230802201317952" style="zoom: 80%;" />
+
+这个时候已经pull下来了，这里CONFLICT说明拉下来的文件与本地文件有冲突，这个时候就要去合并冲突去了，比如随便点开一个有冲突的文件，就会是如下的形式：
+
+通常以<<<<HEAD为开头
+
+这里的内容通常是自己写的
+
+用========分隔开二者的冲突
+
+这里的内容通常是对方写的
+
+<img src="C:\Users\沙洲泠\AppData\Roaming\Typora\typora-user-images\image-20230802201444750.png" alt="image-20230802201444750" style="zoom:80%;" />
+
+这里====下面对方没有写东西，因为这部分是我自己加上的，对方文件中并没有，所以要保留，可以直接在文中把<<<< ====之类的符号删掉，保留需要保留的部分，或者点击”采用当前更改“
+
+要是保留对方的，就”采用传入的更改“
+
+特别说明一下这个文件 `pnpm-lock.yaml`
+
+<img src="C:\Users\沙洲泠\AppData\Roaming\Typora\typora-user-images\image-20230802201918995.png" alt="image-20230802201918995" style="zoom:80%;" />
+
+这个文件应该是双方`npm`配置有关，这里的冲突是全部都不一样，修改方法是直接找到之前自己的版本，或对方的版本全选粘贴即可。
+
+都改完了之后运行如下`git`命令即可
+
+<img src="C:\Users\沙洲泠\AppData\Roaming\Typora\typora-user-images\image-20230802202001896.png" alt="image-20230802202001896" style="zoom:80%;" />
+
+<img src="C:\Users\沙洲泠\AppData\Roaming\Typora\typora-user-images\image-20230802202015379.png" alt="image-20230802202015379" style="zoom:80%;" />
