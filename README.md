@@ -133,3 +133,48 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
   ```
 
   
+
+## 8.1commit
+
+- 申请表已经做完，由于后端接口还没有，axios请求先注释起来，有个问题一直没解决就是提示框的宽度有点大，还改不了，但是能实现自适应。其他地方没什么问题了。
+
+- 记录相关进度如下：
+
+```
+用户端
+'/homepage'  主页面 √
+
+'/interview' 面试报名-面试报名上传-面试报名提交  √
+'/interview_lists' 面试列表 ×
+'/interview_details' 面试详情 ×
+
+'/Applications' 申请列表页面 ×
+'/Applications_details' 申请详情页面 ×
+
+'/Examine_page'	考核页面 ×
+'/Examinepage_details' 考核详情页面 ×
+
+'/All_Positions' 全部职位页面 开发中ing
+'/Position_detailes' 职位详情页面 √
+'/Position_collection' 职位收藏 ×
+
+'All_Oragnizations' 全部组织页面 ×
+'/Orgnization_details' 组织详情页面 √
+
+'/login' 登录页面 （不用额外做页面，直接微信统一认证）×
+
+管理端（还没开始）
+'/homepage' 首页仪表盘
+
+'/Position_list' 职位列表
+'/Position_information' 职位信息
+'/Position_post' 职位发布
+
+'/Application_approval' 申请审批
+
+'/Interview_list' 面试列表
+'/Interview_assignment' 面试安排
+
+'/Examine_check' 考核批阅
+'/Examine_post' 考核发布
+```

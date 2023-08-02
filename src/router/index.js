@@ -10,7 +10,6 @@ import Orgnization_details from '../view/userview/Orgnization_details.vue'
 import Position_detailes from '../view/userview/Position_detailes.vue'
 import Examine_page from '../view/userview/Examine_page.vue'
 import All_positions from '../view/userview/All_Positions.vue'
-
 Vue.use(VueRouter)
 
 const routes = [
