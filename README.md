@@ -312,3 +312,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 <img src="C:\Users\沙洲泠\AppData\Roaming\Typora\typora-user-images\image-20230802202001896.png" alt="image-20230802202001896" style="zoom:80%;" />
 
 <img src="C:\Users\沙洲泠\AppData\Roaming\Typora\typora-user-images\image-20230802202015379.png" alt="image-20230802202015379" style="zoom:80%;" />
+
+## 8-4
+
+- 用file-saver库先写好文件下载功能。
+- 修改了文档修改的部分

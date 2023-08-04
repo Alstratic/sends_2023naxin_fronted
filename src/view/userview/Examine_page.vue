@@ -52,9 +52,12 @@
           <br/>
           <span style="margin-left: 1vw;">相关文件</span>
           <!-- 先写死 -->
-          <el-card class="message">
-            <!-- 这里应该是一个下载链接 -->
+          <el-card class="message" style="font-size: 15px;font-weight: 500; font-family: Source Han Sans SC VF;">
+            <i class="zip"></i>
+            <!-- 这里应该是一个下载链接 之后具体看后端咋传，目前先写好下载方式-->
+
               个人作品集.zip  
+              <i class="download" @click="loadFile"></i>
           </el-card>
           <br/>
           <!-- action中的string之后改成上传的地址 -->
@@ -99,6 +102,7 @@
 </template>
   
 <script>
+import {saveAs} from "file-saver"
 import VueSlickCarousel from 'vue-slick-carousel'
 import positionCard from '../../components/positionCard.vue';
 import CHeader from '../../components/CHeader.vue';
@@ -296,6 +300,11 @@ export default {
     
     Collect(){
         // 跳收藏界面
+    },
+    loadFile(){
+      axios.get("地址",{responseType:"blob"}).then((res)=>{
+        saveAs(res.data,"下载的文件名")
+      })
     }
   }
 }
@@ -491,6 +500,15 @@ export default {
       margin-right: 10px;
       background-image: url("../../assets/word.png") !important;
       }
+.zip{
+  display: inline-block;
+      width: 20px;
+      margin-bottom: -5px;
+      height: 20px;
+      background-size: 100% 100%;
+      margin-right: 3px;
+      background-image: url("../../assets/zip.png") !important;
+}
     .upload-demo /deep/.imgicon-zip{
         display: inline-block;
       width: 20px;
@@ -550,6 +568,20 @@ export default {
   }
   a:hover{
     cursor: pointer;
+  }
+  .download{
+    display: inline-block;
+      width: 20px;
+      margin-bottom: -5px;
+      height: 20px;
+      background-size: 100% 100%;
+      margin-right: 10px;
+      background-image: url("../../assets/load.png") !important;
+    margin-left: 10px;
+    font-size:18px;
+  }
+  .download:hover{
+    background-image: url("../../assets/loadhover.png") !important;
   }
 </style>
   
