@@ -1,5 +1,4 @@
 <template>
-  
         <el-card class="box-card">
           <div class="hot-position-details">
             <span class="hot-position-name">{{positionName}}</span>

@@ -1,7 +1,7 @@
 <template>
     <div class="Position-tag-list">
-        <label v-for="(tag,index) in tags" :key="tag" :class="{'active':selectedTags[index]}" @click="toggleTag(index)">
-            <input type="checkbox" v-model="selectedTags[index]" @change="check" style="display: none">{{tag}}
+        <label v-for="(tag,index) in tags" :key="tag" :class="{'active':selectedTags[index]}">
+            <input type="checkbox" v-model="selectedTags[index]" @change="check" style="display: none" @click="toggleTag(index)">{{tag}}
         </label>
     </div>
 </template>
@@ -18,10 +18,17 @@ export default{
     },
     methods:{
         check(){
-            console.log(this.selectedTags)
+            // console.log(this.selectedTags)
         },
         toggleTag(index) {
-            this.selectedTags[index] = !this.selectedTags[index];
+            // 先判断是否有标签被选中
+            if (this.selectedTags.includes(true)) {
+                // 如果有标签被选中，则执行选中操作
+                this.selectedTags = this.selectedTags.map((tag, idx) => (idx === index ? !tag : false));
+            } else {
+                // 如果没有标签被选中，则直接将点击的标签设置为选中状态（true）。
+                this.selectedTags[index] = true;
+            }
         }
     },
     watch:{

@@ -1,13 +1,15 @@
 <template>
 <el-container class="all-container">
   <!-- Headers区域 -->
+
+
   <el-header class="header-container">
-    <div class="header-navigator">
+    <!-- <div class="header-navigator">
       <img src="../../assets/sends_logo.png" alt="">
       <span>华侨大学网络创新实验室</span>
     </div>
-    <el-button type="warning" class="un-login">登录</el-button>
-
+    <el-button type="warning" class="un-login">登录</el-button> -->
+    <Login_nav></Login_nav>
   </el-header>
   <!-- Main区域 -->
 
@@ -71,11 +73,13 @@
 import VueSlickCarousel from 'vue-slick-carousel'
 import HotPositionCard from '@/components/HotPositionCard.vue';
 import axios from 'axios';
+import Login_nav from '@/components/Login_nav.vue';
 
 export default {
   components:{
     VueSlickCarousel,
     HotPositionCard,
+    Login_nav
   },
   data() {
     return {
