@@ -2,11 +2,7 @@
     <el-container class="all-container">
         <!-- navigator的布局 -->
         <el-header class="header-container">
-            <div class="header-navigator">
-            <img src="../../assets/sends_logo.png" alt="">
-            <span>华侨大学网络创新实验室</span>
-            </div>
-            <el-button type="warning" id="un-login">登录</el-button>
+            <Login_nav></Login_nav>
         </el-header>
         <!-- main区域 -->
         <el-main>
@@ -18,7 +14,6 @@
                     <div class="position-tags-types-detail">
                         <span>组织分类</span>
                     </div>
-
                     <div class="position-tags-types-detail">
                         <span>组织类别</span>
                     </div>
@@ -117,9 +112,10 @@
 import Positiontag from '@/components/Positiontag.vue'
 import axios from 'axios';
 import HotPositionCard from '@/components/HotPositionCard.vue';
+import Login_nav from '@/components/Login_nav.vue';
 
 export default{
-    components:{Positiontag,HotPositionCard},
+    components:{Positiontag,HotPositionCard,Login_nav},
     data(){
         return{
             cardData:{},
@@ -139,42 +135,9 @@ export default{
 </script>
 
 <style scoped lang="less">
-/* navigator的样式 line 22-67*/
 .all-container{
 height: 100%;
 background-color: #fff;
-}
-
-.header-container{
-  height: 5%;
-  background-color: #fff;
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  
-}
-
-.header-navigator{
-  display: flex;
-  align-items: center;
-  padding: 5px;
-
-
-}
-
-.header-navigator   img{
-    height: 5%;
-    width: 5%;
-    border-radius: 50%;
-}
-
-.header-navigator   span{
-font-family: 'Source Han Sans SC VF', sans-serif;
-padding-left:8px;
-display: inline-block;
-line-height: 100%;
-font-size: 1.3rem;
 }
 
 #un-login{

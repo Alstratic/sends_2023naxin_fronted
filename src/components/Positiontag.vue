@@ -1,7 +1,7 @@
 <template>
     <div class="Position-tag-list">
         <label v-for="(tag,index) in tags" :key="tag" :class="{'active':selectedTags[index]}">
-            <input type="checkbox" v-model="selectedTags[index]" @change="check" style="display: none" @click="toggleTag(index)">{{tag}}
+            <input type="checkbox" v-model="selectedTags[index]" style="display: none" @click="toggleTag(index)">{{tag}}
         </label>
     </div>
 </template>
@@ -17,9 +17,6 @@ export default{
         }
     },
     methods:{
-        check(){
-            // console.log(this.selectedTags)
-        },
         toggleTag(index) {
             // 先判断是否有标签被选中
             if (this.selectedTags.includes(true)) {
@@ -67,6 +64,5 @@ export default{
   background-color: #FFD74D;
   transition: background-color 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-
 
 </style>

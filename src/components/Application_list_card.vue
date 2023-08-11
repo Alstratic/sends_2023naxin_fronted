@@ -1,19 +1,18 @@
 <template>
-  <el-card class="box-card">
+  <el-card class="list-card">
       <div class="hot-position-details">
       <span class="hot-position-name">{{positionName}}</span>
-      <span class="hot-position-num">{{positionNum}}人</span>
+      <span class="check-status">{{status}}</span>
       </div>
       <div class="hot-position-tags">
-      <!-- <el-tag type="info" v-for="tag in tags" :key="tag">{{tag}}</el-tag> -->
       <span class="hot-position-tag" v-for="tag in tags" :key="tag">{{tag}}</span>
       </div>
       <div class="organization-details">
       <div class="organization-details-name">
-          <img :src="logo" alt="" style="width:23px;height: 23px;border-radius: 50%;">
-          <span class="organization-name">{{organizationName}}</span>
+          <img src="../assets/logo.png" alt="" style="width:23px;height: 23px;border-radius: 50%;">
+          <span class="organization-name">桑梓实验室</span>
           <div class="null"></div>
-          <span class="organization-type">{{organizationType}}</span>
+          <span class="organization-type">校级组织|互联网</span>
       </div>
       </div>
   </el-card>
@@ -23,18 +22,16 @@
 export default{
   props: {
       positionName: String,
-      positionNum: Number,
+      status: String,
       tags: Array,
-      logo: String,
-      organizationName: String,
-      organizationType: String,
-},
+    },
 }
 </script>
 
 <style scoped lang="less">
-.box-card {
-  width: 26vw;
+
+.list-card {
+  width: 70vw;
   height: 22vh;
   border: #ffd74d 1.5px solid !important;
   border-radius: 15px !important;
@@ -43,7 +40,8 @@ export default{
   margin-top:3vh ;
   @media (max-width: 769px) {
     margin-right: 0;
-    width: 65vw;
+    width: 75vw;
+    height: 18vh;
   } 
 }
 
@@ -96,7 +94,7 @@ font-size: 24px;
     font-size: 18px;
   } 
 }
-.hot-position-num{
+.check-status{
   font-size: 24px;
   @media (max-width: 769px) {
     font-size: 18px;
@@ -123,5 +121,12 @@ font-size: 10px;
 @media (max-width: 769px) {
   font-size: 6px;
   } 
+}
+
+.application-card-list{
+    margin-top: 10vh;
+    @media (max-width: 769px) {
+        margin-top: 5vh;
+    } 
 }
 </style>

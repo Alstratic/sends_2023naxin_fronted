@@ -195,7 +195,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
   '/interview_lists' 面试列表 ×
   '/interview_details' 面试详情 ×
   
-  '/Applications' 申请列表页面 ×
+  '/Application' 申请列表页面 ×
+  '/Application-list' 申请列表页面 ×
   '/Applications_details' 申请详情页面 ×
   
   '/Examine_page'	考核页面 ×
