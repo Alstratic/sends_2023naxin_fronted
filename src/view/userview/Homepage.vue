@@ -2,15 +2,9 @@
 <el-container class="all-container">
   <!-- Headers区域 -->
   <el-header class="header-container">
-    <div class="header-navigator">
-      <img src="../../assets/sends_logo.png" alt="">
-      <span>华侨大学网络创新实验室</span>
-    </div>
-    <el-button type="warning" class="un-login">登录</el-button>
-
+    <Login_nav></Login_nav>
   </el-header>
   <!-- Main区域 -->
-
   <el-main>
     <!-- 搜索框 -->
     <div class="search-box">
@@ -71,11 +65,13 @@
 import VueSlickCarousel from 'vue-slick-carousel'
 import HotPositionCard from '@/components/HotPositionCard.vue';
 import axios from 'axios';
+import Login_nav from '@/components/Login_nav.vue';
 
 export default {
   components:{
     VueSlickCarousel,
     HotPositionCard,
+    Login_nav
   },
   data() {
     return {
@@ -146,33 +142,6 @@ export default {
 .all-container{
 height: 100%;
 background-color: #fff;
-}
-.header-container{
-  height: 5%;
-  background-color: #fff;
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  
-}
-
-.header-navigator{
-  display: flex;
-  align-items: center;
-  padding: 5px;
-  img{
-    height: 5%;
-    width: 5%;
-    border-radius: 50%;
-  }
-  span{
-    font-family: 'Source Han Sans SC VF', sans-serif;
-    padding-left:8px;
-    display: inline-block;
-    line-height: 100%;
-    font-size: 1.3rem;
-  }
 }
 
 .un-login{
@@ -281,14 +250,14 @@ background-color: #fff;
 }
 .hot-positions{
   width: 100%;
-  height: 110%;
+  height: 120%;
   background-color: #fff;
-  justify-content: center;
+  justify-content: space-around;
   display: flex;
   flex-direction: column;
   align-items: center;
   @media (max-width: 769px) {
-    padding-top: 5vh;
+    padding-top: 8vh;
     height: 120%;
   }
 
@@ -301,7 +270,7 @@ background-color: #fff;
 
   .hot-position-cards {
   display: flex; /* 使用Flex布局，使el-card在同一行内显示 */
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
   padding-bottom: 2vh;
   @media (max-width: 769px) {
@@ -314,7 +283,7 @@ background-color: #fff;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin:0 2vw;
+    margin:2vh 2vw;
 }
 .el-tag{
     margin-right: 1vw;
