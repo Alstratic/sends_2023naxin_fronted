@@ -71,7 +71,9 @@
                    :on-change="handleChange"	
                    :on-preview="handlePreview"	
                    :on-remove="handleRemove"
-                   multiple="multiple">	
+                   :multiple="multiple"
+                   style="height: 10vh;"
+                   >	
           <el-button slot="trigger"
                      size="small"
                      type="warning"
@@ -80,7 +82,7 @@
           <span style="font-size:2px;margin-left: 13px;color:#7E7E7E; font-family: Source Han Sans SC VF">上传个人简历，作品等</span>
         </el-upload>
         <div class="butn">
-          <el-button type="warning" :disabled="disabled" @click="submitForm('ruleForm')" style="padding-left: 38px;padding-right: 38px; background-color: #FFD74D;opacity: 0.8;color: black;line-height:50% ;">提交申请</el-button>
+          <el-button type="warning"  @click="submitForm('ruleForm')" style="padding-left: 38px;padding-right: 38px; background-color: #FFD74D;opacity: 0.8;color: black;line-height:50% ;">提交申请</el-button>
         </div>
         <el-dialog class="dialog"
           :visible.sync="dialogVisible"
@@ -113,7 +115,7 @@
     components: { VueSlickCarousel,CHeader },
     data() {
       return {
-        disabled:false,
+       
         fileList: [],
         // 不支持多选
         multiple: false,
@@ -186,23 +188,34 @@
             //获取文件名后缀
             let fileType = fileName.substring(fileName.lastIndexOf(".") + 1);
             let iconElement = ele.getElementsByTagName('i')[0];
-            if (['png','jpg','jpeg',".gif",'PNG','JPG','JPEG',"GIF"].indexOf(fileType) != -1) {
-                iconElement.className = "imgicon-img" // 图⽚，动图
-              } else if (['mp4','3gp','avi',"flv",'MP4','3GP','AVI',"FLV"].indexOf(fileType) != -1) {
-                iconElement.className = 'imgicon-video' // 视频
-              } else if (['doc','docx','DOC','DOCX'].indexOf(fileType) != -1) {
-                iconElement.className = 'imgicon-docx' // 文档
-              } else if (['xls','xlsx','XLS','XLSX'].indexOf(fileType) != -1) {
-                iconElement.className = 'imgicon-xlsx' // 表格
-              } else if (['ppt','pptx','PPT','PPTX'].indexOf(fileType) != -1) {
-                iconElement.className = 'imgicon-pptx' // PPT
-              } else if (['zip','ZIP'].indexOf(fileType) != -1) {
-                iconElement.className = 'imgicon-zip' // 压缩包
-              } else if (['pdf','PDF'].indexOf(fileType) != -1) {
-                iconElement.className = 'imgicon-pdf' // PDF
-              } else {
-                iconElement.className = 'imgicon-default' //默认图标
-              }
+            // if (['png','jpg','jpeg',".gif",'PNG','JPG','JPEG',"GIF"].indexOf(fileType) != -1) {
+            //     iconElement.className = "imgicon-img" // 图⽚，动图
+            //   } else if (['mp4','3gp','avi',"flv",'MP4','3GP','AVI',"FLV"].indexOf(fileType) != -1) {
+            //     iconElement.className = 'imgicon-video' // 视频
+            //   } else if (['doc','docx','DOC','DOCX'].indexOf(fileType) != -1) {
+            //     iconElement.className = 'imgicon-docx' // 文档
+            //   } else if (['xls','xlsx','XLS','XLSX'].indexOf(fileType) != -1) {
+            //     iconElement.className = 'imgicon-xlsx' // 表格
+            //   } else if (['ppt','pptx','PPT','PPTX'].indexOf(fileType) != -1) {
+            //     iconElement.className = 'imgicon-pptx' // PPT
+            //   } else if (['zip','ZIP'].indexOf(fileType) != -1) {
+            //     iconElement.className = 'imgicon-zip' // 压缩包
+            //   } else if (['pdf','PDF'].indexOf(fileType) != -1) {
+            //     iconElement.className = 'imgicon-pdf' // PDF
+            //   } else {
+            //     iconElement.className = 'imgicon-default' //默认图标
+            //   }
+
+            if (['zip','ZIP'].indexOf(fileType) != -1) {
+              iconElement.className = 'imgicon-zip' // 压缩包
+            }
+            else{
+              this.delFile()
+              this.$message({
+              message: '文件类型只能是zip格式!',
+              type: 'warning'
+            });
+            }
           }
         }
       })  
@@ -233,7 +246,7 @@
           formData.append("QQNumber", this.ruleForm.QQNumber);
           formData.append("Email", this.ruleForm.Email);
           formData.append("desc", this.ruleForm.desc);
-          formData.append("file", this.fileList!=[]? '':this.fileList[0].raw);//拿到存在fileList的文件存放到formData中
+          formData.append("file", this.fileList.length===0? '':this.fileList[0].raw);//拿到存在fileList的文件存放到formData中
           console.log(formData.get("file"));
           
           this.dialogVisible=true;
@@ -451,6 +464,5 @@
   a:hover{
     cursor: pointer;
   }
+
   </style>
-      
->>>>>>> ea0e7715d2044f9a903f4fe7c5f9b9890b1b4792

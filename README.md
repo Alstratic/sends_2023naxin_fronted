@@ -178,7 +178,52 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 '/Examine_check' 考核批阅
 '/Examine_post' 考核发布
 ```
+## 8-2commit(sh)
 
+- 申请详情和、面试详情和考核详情写好了。有些地方还是先写死
+- 修改了上传文件的格式限制（zip）,以formDate传
+- 代码有很多冗余，内容卡片的组件还没有封装。
+
+记录相关进度如下：
+
+```
+用户端
+'/homepage'  主页面 √
+
+'/interview' 面试报名-面试报名上传-面试报名提交  √
+'/interview_lists' 面试列表 ×
+'/interview_details' 面试详情 √
+
+'/Applications' 申请列表页面 ×
+'/Applications_details' 申请详情页面 √
+
+'/Examine_page'	考核页面 ×
+'/Examinepage_details' 考核详情页面 √
+
+'/All_Positions' 全部职位页面 开发中ing
+'/Position_detailes' 职位详情页面 √
+'/Position_collection' 职位收藏 ×
+
+'All_Oragnizations' 全部组织页面 ×
+'/Orgnization_details' 组织详情页面 √
+
+'/login' 登录页面 （不用额外做页面，直接微信统一认证）×
+
+管理端（还没开始）
+'/homepage' 首页仪表盘
+
+'/Position_list' 职位列表
+'/Position_information' 职位信息
+'/Position_post' 职位发布
+
+'/Application_approval' 申请审批
+
+'/Interview_list' 面试列表
+'/Interview_assignment' 面试安排
+
+'/Examine_check' 考核批阅
+'/Examine_post' 考核发布
+```
 ## 	8.2 commit
 
 - `All_Positions`全部职位筛选器应该没什么问题了，这个页面接近尾声了，不过临时传来需求要把多选改成单选，明天再看着改改
@@ -227,7 +272,14 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
   '/Examine_post' 考核发布
   ```
 
+## 8-4
 
+- 用file-saver库先写好文件下载功能。
+- 修改了文档修改的部分
+
+## 8-5
+
+搭好了组织端框架
 
 
 ## 8.7 commit
@@ -282,4 +334,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 '/Examine_check' 考核批阅
 '/Examine_post' 考核发布
 ```
+
+<img src="C:\Users\沙洲泠\AppData\Roaming\Typora\typora-user-images\image-20230802202015379.png" alt="image-20230802202015379" style="zoom:80%;" />
+
 

@@ -14,6 +14,17 @@ import Application_list from '../view/userview/Application_list.vue'
 import Interview_list from '@/view/userview/Interview_list.vue'
 import Exam_list from '@/view/userview/Exam_list.vue'
 import Collection_list from '@/view/userview/Collection_list.vue'
+import TabView from '../view/AdminSys/TabView.vue'
+import jobList from '../view/AdminSys/jobList.vue'
+import jobDetails from '../view/AdminSys/jobDetails.vue'
+import ailApproval from '../view/AdminSys/ailApproval.vue'
+import jobpost from '../view/AdminSys/jobpost.vue'
+import FirstPage from '../view/AdminSys/FirstPage.vue'
+import viewArra from '../view/AdminSys/viewArra.vue'
+import viewList from '../view/AdminSys/viewList.vue'
+import AssessView from '../view/AdminSys/AssessView.vue'
+import AssessRela from '../view/AdminSys/AssessRela.vue'
+import AssessDetail from '../view/AdminSys/AssessDetail.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -29,7 +40,65 @@ const routes = [
   { path: '/Application_list', component: Application_list },
   { path: '/Interview_list', component: Interview_list },
   { path: '/Exam_list', component: Exam_list },
-  { path: '/Collection_list', component: Collection_list }
+  { path: '/Collection_list', component: Collection_list },
+  {
+    path: '/TabView',
+    name: 'TabView',
+    component: TabView, // 这里是核心： center作为容器组件，包含左右菜单和右侧的router-view，所以下面的子组件实际是显示在router-view
+    redirect: { name: 'FirstPage' }, // 输入路由center会重定向到a页面
+    children: [
+      {
+        path: '/FirstPage',
+        name: 'FirstPage',
+        component: FirstPage
+      },
+      {
+        path: '/jobList',
+        name: 'jobList',
+        component: jobList
+      },
+      {
+        path: '/jobDetails',
+        name: 'jobDetails',
+        component: jobDetails
+      },
+      {
+        path: '/jobpost',
+        name: 'jobpost',
+        component: jobpost
+      },
+      {
+        path: '/ailApproval',
+        name: 'ailApproval',
+        component: ailApproval
+      },
+      {
+        path: '/viewList',
+        name: 'viewList',
+        component: viewList
+      },
+      {
+        path: '/viewArra',
+        name: 'viewArra',
+        component: viewArra
+      },
+      {
+        path: '/AssessView',
+        name: 'AssessView',
+        component: AssessView
+      },
+      {
+        path: '/AssessRela',
+        name: 'AssessRela',
+        component: AssessRela
+      },
+      {
+        path: '/AssessDetail',
+        name: 'AssessDetail',
+        component: AssessDetail
+      }
+    ]
+  }
 ]
 
 const router = new VueRouter({
