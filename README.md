@@ -335,5 +335,50 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 '/Examine_post' 考核发布
 ```
 
-<img src="C:\Users\沙洲泠\AppData\Roaming\Typora\typora-user-images\image-20230802202015379.png" alt="image-20230802202015379" style="zoom:80%;" />
+## 	8.14commit
 
+- 登录在做，遇到了点问题，查了查好像要进行网页授权，个人的公众号权限不够，明天试试桑梓的公众号能不能授权成功
+
+- ```
+  用户端
+  '/homepage'  主页面 √
+  
+  '/interview' 面试报名-面试报名上传-面试报名提交  √
+  '/interview_lists' 搭框架ing
+  '/interview_details' 面试详情 ×
+  面试报名提交？
+  
+  '/Application_list' 申请列表页面 80%
+  
+  '/Collection_list'	收藏列表页面 搭框架ing
+  
+  '/Examine_list'	搭框架ing
+  '/Examinepage_details' 考核详情页面 ×
+  考核提交页面？
+  
+  '/All_Positions' 全部职位页面 80%
+  '/Position_detailes' 职位详情页面 √
+  '/Position_collection' 职位收藏 搭框架ing
+  
+  '/All_Oragnizations' 全部组织页面 暂时不用
+  '/Orgnization_details' 组织详情页面 √
+  
+  '/login' 登录页面 （微信统一认证）ing
+  
+  管理端（框架搭好了？）
+  '/homepage' 首页仪表盘
+  
+  '/Position_list' 职位列表
+  '/Position_information' 职位信息
+  '/Position_post' 职位发布
+  
+  '/Application_approval' 申请审批
+  
+  '/Interview_list' 面试列表
+  '/Interview_assignment' 面试安排
+  
+  '/Examine_check' 考核批阅
+  '/Examine_post' 考核发布
+  ```
+
+  
