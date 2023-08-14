@@ -302,7 +302,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 '/interview_details' 面试详情 ×
 面试报名提交？
 
-'/Application-list' 申请列表页面 80%
+'/Application_list' 申请列表页面 80%
 
 '/Collection_list'	收藏列表页面 搭框架ing
 
@@ -314,7 +314,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 '/Position_detailes' 职位详情页面 √
 '/Position_collection' 职位收藏 搭框架ing
 
-'All_Oragnizations' 全部组织页面 暂时不用
+'/All_Oragnizations' 全部组织页面 暂时不用
 '/Orgnization_details' 组织详情页面 √
 
 '/login' 登录页面 （微信统一认证）×
@@ -336,5 +336,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ```
 
 <img src="C:\Users\沙洲泠\AppData\Roaming\Typora\typora-user-images\image-20230802202015379.png" alt="image-20230802202015379" style="zoom:80%;" />
-
 

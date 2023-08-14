@@ -4,8 +4,8 @@
             <img src="../assets/sends_logo.png" alt="">
             <span>华侨大学网络创新实验室</span>
         </div>
-        <div class="login-container">
-            <el-button type="warning" class="un-login">登录</el-button>
+        <div class="login-container2">
+            <el-button type="warning" class="un-login" @click="login">登录</el-button>
         </div>
     </div>
     <div class="header-container" v-else>
@@ -35,8 +35,50 @@
 export default{
     data(){
         return{
-            isLoggedIn:false
+            isLoggedIn:true
         }
+    },
+    methods:{
+        async login() {
+            try {
+                    const redirectUri = encodeURIComponent("http://localhost:8080/#/homepage");
+                    const appId = 'wx8dc215513b43bcee';
+                    const scope = 'snsapi_userinfo';
+                    const authUrl = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}&state=STATE#wechat_redirect`;
+
+                    // 跳转到微信授权页面
+                    window.location.href = authUrl;
+                }
+            catch (error) {
+                console.error('登录失败', error);
+            }
+        },
+        async checkToken() {
+            try {
+                const urlParams = new URLSearchParams(window.location.search);
+                const code = urlParams.get('code');
+
+                if (!code) {
+                    this.isLoggedIn = true; // 没有授权码，保持已登录状态
+                    return;
+                }
+
+                const response = await axios.post('http://124.221.99.127:10810/user/check-token', { code });
+                console.log(response)
+                if (response.data.code === 1000) {
+                    this.isLoggedIn = false; // 有效 token，将登录状态设置为 false
+                } else {
+                    this.isLoggedIn = true; // 无效 token，将登录状态设置为 true
+                }
+            }
+            catch (error) {
+                console.error('检查 token 失败', error);
+            }
+
+  },
+    },
+    mounted(){
+        this.checkToken();
     }
 }
 </script>
@@ -89,6 +131,18 @@ export default{
     align-items: center;
     margin-right: 10px; /* 可以调整右侧距离 */
     width: 40%;
+    justify-content: space-between;
+}
+
+.login-container2{
+    @media (max-width: 769px) {
+        margin-right: 0;
+    }
+    display: flex;
+    height: 100%;
+    align-items: center;
+    margin-right: 10px; /* 可以调整右侧距离 */
+    width: 15%;
     justify-content: space-between;
 }
 
