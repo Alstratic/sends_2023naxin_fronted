@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <!-- <template>
+=======
+<template>
+>>>>>>> 19d891f5d3ea05ab13f64210dfb95e451745861f
   <el-card class="list-card">
       <div class="hot-position-details">
       <span class="hot-position-name">{{positionName}}</span>
@@ -129,6 +133,7 @@ font-size: 10px;
         margin-top: 5vh;
     } 
 }
+<<<<<<< HEAD
 </style> -->
 
 <template>
@@ -236,4 +241,6 @@ padding-right:2vw;
 display: flex;
 flex-wrap: wrap;
 }
+=======
+>>>>>>> 19d891f5d3ea05ab13f64210dfb95e451745861f
 </style>

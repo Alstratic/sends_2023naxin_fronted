@@ -382,6 +382,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
   ```
 
   
+<<<<<<< HEAD
 
 ## 8-15 commit
 
@@ -432,3 +433,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
   ```
 
   
+=======
+>>>>>>> 19d891f5d3ea05ab13f64210dfb95e451745861f
