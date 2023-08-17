@@ -381,4 +381,69 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
   '/Examine_post' 考核发布
   ```
 
+
+## 8-15 commit
+
+- 改好了申请列表Application_list和面试列表Interview_list布局。全部组织和首页还没改。
+
+- 申请列表和面试列有个bug是点击两次tag，就不选中了。
+
+  ```
+  用户端
+  '/homepage'  主页面 √
   
+  '/interview' 面试报名-面试报名上传-面试报名提交  √
+  '/interview_lists' 搭框架ing
+  '/interview_details' 面试详情 √
+  面试报名提交？√
+  
+  '/Application_list' 申请列表页面 80%
+  
+  '/Collection_list'	收藏列表页面 搭框架ing
+  
+  '/Examine_list'	搭框架ing
+  '/Examinepage_details' 考核详情页面   √
+  考核提交页面？  √
+  
+  '/All_Positions' 全部职位页面 80%
+  '/Position_detailes' 职位详情页面 √
+  '/Position_collection' 职位收藏 搭框架ing
+  
+  '/All_Oragnizations' 全部组织页面 暂时不用
+  '/Orgnization_details' 组织详情页面 √
+  
+  '/login' 登录页面 （微信统一认证）ing
+  
+  管理端（框架搭好了？）
+  '/homepage' 首页仪表盘 80% 动态部分还没做。不过我这部分代码还没push上
+  
+  '/Position_list' 职位列表
+  '/Position_information' 职位信息
+  '/Position_post' 职位发布
+  
+  '/Application_approval' 申请审批
+  
+  '/Interview_list' 面试列表
+  '/Interview_assignment' 面试安排
+  
+  '/Examine_check' 考核批阅
+  '/Examine_post' 考核发布
+  ```
+
+
+## 8-16 commit
+
+- （忽略布局）微信登录功能实现了。之后这里的url记得改：
+
+- ```
+  location.href = `https://apps.hqu.edu.cn/wechat-hqu/wechatauth.html?proxyTo=authoauth&sendUrl=/connect/oauth2/authorize?appid=wxfe035b066fb1158b&redirect_uri=${encodeURIComponent(
+        'http://localhost:8080/LoginSucess'
+      )}&encode_flag=Y&response_type=code&scope=snsapi_userinfo#wechat_redirect`
+  ```
+
+- 但是目前有个bug（应该算bug）就是回退后，就变空白页了。 
+
+- 另外封装了axios。
+
+- 加了导航守卫，没有登录拿到token的话，就不能访问其他页面，只能跳到login页面
+

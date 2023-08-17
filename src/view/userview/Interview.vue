@@ -1,4 +1,5 @@
 <template>
+  <!-- 面试详情 -->
   <div class="Position_det">
     <CHeader :Examine="Examine" :Inter="Inter" :Apply="Apply" :Collect="Collect"></CHeader>
   <div class="Position_Introduce">

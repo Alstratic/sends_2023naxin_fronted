@@ -32,6 +32,8 @@
 </template>
 
 <script>
+import {setToken, getToken, isLogin, wxRedirect, isInWechat, getWechatCode} from '@/request/wx_auth'
+
 export default{
     data(){
         return{
@@ -41,44 +43,16 @@ export default{
     methods:{
         async login() {
             try {
-                    const redirectUri = encodeURIComponent("http://localhost:8080/#/homepage");
-                    const appId = 'wx8dc215513b43bcee';
-                    const scope = 'snsapi_userinfo';
-                    const authUrl = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}&state=STATE#wechat_redirect`;
+                    if (!isInWechat()) {
+                        wxRedirect();
+                        return;
+                    }
 
-                    // 跳转到微信授权页面
-                    window.location.href = authUrl;
-                }
+            }
             catch (error) {
                 console.error('登录失败', error);
             }
         },
-        async checkToken() {
-            try {
-                const urlParams = new URLSearchParams(window.location.search);
-                const code = urlParams.get('code');
-
-                if (!code) {
-                    this.isLoggedIn = true; // 没有授权码，保持已登录状态
-                    return;
-                }
-
-                const response = await axios.post('http://124.221.99.127:10810/user/check-token', { code });
-                console.log(response)
-                if (response.data.code === 1000) {
-                    this.isLoggedIn = false; // 有效 token，将登录状态设置为 false
-                } else {
-                    this.isLoggedIn = true; // 无效 token，将登录状态设置为 true
-                }
-            }
-            catch (error) {
-                console.error('检查 token 失败', error);
-            }
-
-  },
-    },
-    mounted(){
-        this.checkToken();
     }
 }
 </script>

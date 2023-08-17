@@ -25,11 +25,22 @@ import viewList from '../view/AdminSys/viewList.vue'
 import AssessView from '../view/AdminSys/AssessView.vue'
 import AssessRela from '../view/AdminSys/AssessRela.vue'
 import AssessDetail from '../view/AdminSys/AssessDetail.vue'
+import wxLogin from '../view/AdminSys/wxLogin.vue'
+import LoginSucess from '../view/userview/LoginSucess.vue'
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/login', component: Login },
-  { path: '/homepage', component: Homepage },
+  { path: '/', component: Login },
+  {
+    path: '*',
+    redirect: Login
+  },
+  {
+    path: '/homepage',
+    component: Homepage
+    // 需要登录后才能访问的页面
+    //  meta: { requiresAuth: true }
+  },
   { path: '/interview', component: Interview },
   { path: '/Applications_details', component: Applications_details },
   { path: '/Examine_page', component: Examine_page },
@@ -41,6 +52,8 @@ const routes = [
   { path: '/Interview_list', component: Interview_list },
   { path: '/Exam_list', component: Exam_list },
   { path: '/Collection_list', component: Collection_list },
+  { path: '/wxLogin', component: wxLogin },
+  { path: '/LoginSucess', component: LoginSucess },
   {
     path: '/TabView',
     name: 'TabView',
@@ -102,7 +115,24 @@ const routes = [
 ]
 
 const router = new VueRouter({
+  mode: 'history',
   routes
 })
-
+// 导航守卫 如果没登录就访问不了其他页面
+// 使用 router.beforeEach 注册一个全局前置守卫，判断用户是否登陆
+router.beforeEach((to, from, next) => {
+  // 如果去往登录页则放行
+  if (to.path === '/') {
+    next()
+  } else {
+    // 从本地存储里获取token
+    const token = localStorage.getItem('token')
+    // 判断token是否为空如果为空则跳转到登录页 如果有则放行
+    if (token === null || token === '') {
+      next({ path: '/' })
+    } else {
+      next()
+    }
+  }
+})
 export default router
