@@ -72,7 +72,6 @@ export default {
   }
 },
 methods:{
-
 },
 mounted(){
   let that=this;

@@ -72,7 +72,7 @@ import CHeader from '@/components/CHeader.vue';
     components:{
       VueSlickCarousel,
       HotPositionCard,
-      Login_nav,
+
         CHeader
     },
     data() {
@@ -102,7 +102,6 @@ import CHeader from '@/components/CHeader.vue';
     },
     methods:{
       goToPositionDetailsPage(){
-
         this.$router.push('/Position_detailes');
       },
     },

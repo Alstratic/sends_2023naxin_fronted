@@ -383,6 +383,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
   
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> f388a8f638fce61905a8d9568fe3e0a1cb0591ca
 
 ## 8-15 commit
 
@@ -434,6 +438,11 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
   
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 19d891f5d3ea05ab13f64210dfb95e451745861f
+>>>>>>> f388a8f638fce61905a8d9568fe3e0a1cb0591ca
 
 ## 8-16 commit
 
@@ -450,8 +459,11 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - 另外封装了axios。
 
 - 加了导航守卫，没有登录拿到token的话，就不能访问其他页面，只能跳到login页面
+<<<<<<< HEAD
 
 ## 8-18commit
 
 - 修改了登录方式
 - 改了考核列表，面试列表和申请列表布局，卡片等。
+=======
+>>>>>>> f388a8f638fce61905a8d9568fe3e0a1cb0591ca
