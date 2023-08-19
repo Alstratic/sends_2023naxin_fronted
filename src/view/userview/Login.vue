@@ -21,7 +21,6 @@ export default{
           console.error('请在微信中打开页面以使用微信登录');
           return;
         }
-        
         wxRedirect(); // 跳转到微信授权页面
        
       } catch (error) {

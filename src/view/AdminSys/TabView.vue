@@ -27,7 +27,7 @@
                   <span>职位</span>
                 </template>
                 <el-menu-item index="jobList">职位列表</el-menu-item>
-                <el-menu-item  index="jobDetails">职位详情</el-menu-item>
+                <!-- <el-menu-item  index="jobDetails">职位详情</el-menu-item> -->
                 <el-menu-item   index="jobpost">职位发布</el-menu-item>
                 <el-menu-item index="ailApproval">申请审批</el-menu-item>
               </el-submenu>

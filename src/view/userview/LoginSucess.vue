@@ -1,6 +1,5 @@
 <template>
     <div>
-        
     </div>
 </template>
 <script>
@@ -95,7 +94,8 @@ export default {
                 this.isLoggedIn = false;
                 this.$router.replace('/Homepage');
             } else {
-            this.isLoggedIn = true;
+                
+            // this.isLoggedIn = true;
             }
       })
     }catch (error) {

@@ -7,6 +7,7 @@
     <!-- Main区域 -->
     <el-main>
       <!-- 搜索框 -->
+      <div></div>
       <div class="search-box">
         <!-- <el-input v-model="input" placeholder="请输入内容" class="search-input">
         </el-input> -->
