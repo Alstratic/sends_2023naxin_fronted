@@ -1,8 +1,9 @@
 <template>
-    <div class="header-container" v-if="isLoggedIn">
+    <div class="header-container" v-if="!isLoggedIn">
         <div class="header-navigator">
             <img src="../assets/sends_logo.png" alt="">
-            <span>华侨大学网络创新实验室</span>
+            <!-- <span>华侨大学网络创新实验室</span> -->
+            <span>{{ data1 }}</span>
         </div>
         <div class="login-container2">
             <el-button type="warning" class="un-login" @click="login">登录</el-button>
@@ -11,7 +12,8 @@
     <div class="header-container" v-else>
         <div class="header-navigator">
             <img src="../assets/sends_logo.png" alt="">
-            <span>华侨大学网络创新实验室</span>
+            <!-- <span>华侨大学网络创新实验室</span> -->
+            <span>{{ data1 }}</span>
         </div>
         <div class="login-container">
             <div class="login-options">
@@ -32,27 +34,60 @@
 </template>
 
 <script>
-import {setToken, getToken, isLogin, wxRedirect, isInWechat, getWechatCode} from '@/request/wx_auth'
-
+import {setUserToken, getUserToken, isUserLogin, wxRedirect, isInWechat, getWechatCode} from '@/request/wx_auth'
+import axios from 'axios';
 export default{
     data(){
         return{
-            isLoggedIn:true
+            data1:String,
+            isLoggedIn:false
+        }
+    },
+    mounted(){
+        // localStorage.removeItem('HQU_naxin'); // token名称为HQU_naxin
+        if(isUserLogin()){
+            // alert(getUserToken());
+            this.data1=getUserToken();
+            this.isLoggedIn=true;
         }
     },
     methods:{
         async login() {
             try {
-                    if (!isInWechat()) {
-                        wxRedirect();
-                        return;
-                    }
+                if (!isInWechat()) { // 如果不是在微信页面中，执行微信授权重定向
+                    wxRedirect(); 
+                    return;
+                }
 
+                const code=getWechatCode();
+                if (!code) { // 如果在url中没有code
+                    wxRedirect();
+                    alert(code);
+                    return;
+                }
+                this.checkCode(code);
             }
             catch (error) {
                 console.error('登录失败', error);
             }
         },
+        async checkCode(code) {
+            try {
+                const response = await axios.post('http://124.221.99.127:10810/user/login', { code });
+                // alert(response.data.code,response.data.data,response.data.msg);
+                const token = response.data.data;
+                // 保存 'token' 到本地存储
+                setUserToken(token);
+                alert(getUserToken());
+                // 更新登录状态
+                this.isLoggedIn = true;
+                // 跳转到指定页面，例如 '/Homepage'
+                this.$router.replace('/user/homepage');
+            }
+            catch (error) {
+                alert(error);
+            }
+        }
     }
 }
 </script>

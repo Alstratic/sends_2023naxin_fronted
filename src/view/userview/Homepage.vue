@@ -100,7 +100,7 @@
     },
     methods:{
       goToPositionDetailsPage(){
-        this.$router.push('/Position_detailes');
+        this.$router.push('/user/Position_detailes');
       },
     },
   
@@ -108,22 +108,16 @@
     mounted(){
       let that=this;
       const urls = [
-        '/api/cardData/1', 
-        '/api/cardData/2', 
-        '/api/cardData/3', 
-        '/api/cardData/5',
-        '/api/cardData/6',
-        '/api/cardData/7',
-        '/api/cardData/8',
-        '/api/cardData/9',
-        '/api/cardData/10'
+        'http://124.221.99.127:10810/square/posts/host?number=2'
       ];
       for(let i =0;i<urls.length;i++)
       {
         axios.get(urls[i])
           .then(response => {
           // 将从后端获取的数据填充到 cardDataList 中
-          that.cardDataList.push(response.data);
+          that.cardDataList.push(response.data.data);
+          console.log(response.data.code);
+          console.log(response.data.msg);
         })
           .catch(error => {
           console.error('Failed to fetch card data:', error);

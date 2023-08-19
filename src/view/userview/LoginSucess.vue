@@ -1,6 +1,5 @@
 <template>
     <div>
-        
     </div>
 </template>
 <script>
@@ -13,7 +12,7 @@ export default {
         return{
             userToken:'',
             dataParms:{
-                code:''
+                code:'',
             },
         }
     },
@@ -31,53 +30,20 @@ export default {
         this.checkToken();
     },
     methods: {
-        // //  公共方法
-        // getUrlKey (name) {
-        //     return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [",",""])[1].replace(/\+/g, '%20')) || null;
-        // },
-        // // 通过code获取微信信息
-        // getWeixin(){
-        // 	//调用接口，将code传给后端
-        //     pcLoginByWeiXin(this.dataParms).then((res) => {
-        //         console.log('+++++++',res)
-        //         if (res.data.code == 0) {
-        //             localStorage.setItem('openId', res.data.data.openId); // openId存入缓存
-        //             localStorage.setItem('token', res.data.data.token); // userToken存入缓存
-        //             window.location.href = "/"
-        //         }else if(res.data.code == 30){
-        //             localStorage.setItem('openId', res.data.message);
-        //             this.open();
-        //         }else {
-        //             this.$message.error(res.data.message);
-        //             window.location.href = "/login"
-        //         }
-        //     });
-        // },
-        // open() {
-        //     this.$confirm('暂无用户，请选择注册或绑定手机号', '提示', {
-        //         confirmButtonText: '注册',
-        //         cancelButtonText: '绑定',
-        //         type: 'warning'
-        //     }).then(() => {
-        //         this.$router.push({path:'/registered'})
-        //     }).catch(() => {
-        //         this.$router.push({path:'/wxBind'})
-        //     });
-        // }
-     login() {
-      try {
-        if (!isInWechat()) {
-          console.error('请在微信中打开页面以使用微信登录');
-          return;
+      login() {
+        try {
+          if (!isInWechat()) {
+            console.error('请在微信中打开页面以使用微信登录');
+            return;
+          }
+          
+          wxRedirect(); // 跳转到微信授权页面
+          console.log("hello")
+          checkToken();
+        } catch (error) {
+          console.error('登录失败', error);
         }
-        
-        wxRedirect(); // 跳转到微信授权页面
-        console.log("hello")
-       checkToken();
-      } catch (error) {
-        console.error('登录失败', error);
-      }
-    },
+      },
     checkToken() {
       try {
         const code = getWechatCode();
@@ -94,10 +60,11 @@ export default {
                 localStorage.setItem('token', this.userToken);
                 this.isLoggedIn = false;
                 this.$router.replace('/Homepage');
-            } else {
-            this.isLoggedIn = true;
+            } 
+            else {
+              this.isLoggedIn = true;
             }
-      })
+        })
     }catch (error) {
         console.error('检查 token 失败', error);
       }

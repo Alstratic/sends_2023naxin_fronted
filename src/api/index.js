@@ -22,53 +22,53 @@ export function LoginPostData (code) {
 // // 当后端是query的时候前端就要使用params进行传参
 // export function GetLine(department) {
 // return instance({
-// 		url:`/admin/line/${department}`,
-// 		method: 'get',
-// 	})
+//   url:`/admin/line/${department}`,
+//   method: 'get',
+// })
 // }
 // export function GetNext(department) {
-// 	return instance({
-// 		url:`/admin/next/${department}`,
-// 		method: 'get',
-// 	})
+// return instance({
+// url:`/admin/next/${department}`,
+// method: 'get',
+// })
 // }
 // export function AdvMessage(department,stuNum) {
-// 	return instance({
-// 		url:`/admin/advance/${department}`,
-// 		method: 'post',
-// 		data:{
-// 			department,
-// 			stuNum
-// 		}
-// 	})
+// return instance({
+// url:`/admin/advance/${department}`,
+// method: 'post',
+// data:{
+// department,
+// stuNum
+// }
+// })
 // }
 // export function DelayMessage(department,stuNum) {
-// 	return instance({
-// 		url:`/admin/delay/${department}`,
-// 		method: 'post',
-// 		data:{
-// 			department,
-// 			stuNum
-// 		}
-// 	})
+// return instance({
+// url:`/admin/delay/${department}`,
+// method: 'post',
+// data:{
+// department,
+// stuNum
+// }
+// })
 // }
 // export function DelMessage(department,stuNum) {
-// 	return instance({
-// 		url:`/admin/delete/${department}`,
-// 		method: 'post',
-// 		data:{
-// 			department,
-// 			stuNum
-// 		}
-// 	})
+// return instance({
+// url:`/admin/delete/${department}`,
+// method: 'post',
+// data:{
+// department,
+// stuNum
+// }
+// })
 // }
 // export function RetMessage(department,stuNum) {
-// 	return instance({
-// 		url:'/admin/reset',
-// 		method: 'post',
-// 		data:{
-// 			department,
-// 			stuNum
-// 		}
-// 	})
+// return instance({
+// url:'/admin/reset',
+// method: 'post',
+// data:{
+// department,
+// stuNum
+// }
+// })
 // }

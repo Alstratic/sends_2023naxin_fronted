@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '../view/userview/Login.vue'
 import Homepage from '../view/userview/Homepage.vue'
 import Interview from '../view/userview/Interview.vue'
 import Applications_details from '../view/userview/Applications_details.vue'
@@ -14,6 +13,7 @@ import Application_list from '../view/userview/Application_list.vue'
 import Interview_list from '@/view/userview/Interview_list.vue'
 import Exam_list from '@/view/userview/Exam_list.vue'
 import Collection_list from '@/view/userview/Collection_list.vue'
+
 import TabView from '../view/AdminSys/TabView.vue'
 import jobList from '../view/AdminSys/jobList.vue'
 import jobDetails from '../view/AdminSys/jobDetails.vue'
@@ -25,88 +25,80 @@ import viewList from '../view/AdminSys/viewList.vue'
 import AssessView from '../view/AdminSys/AssessView.vue'
 import AssessRela from '../view/AdminSys/AssessRela.vue'
 import AssessDetail from '../view/AdminSys/AssessDetail.vue'
-import wxLogin from '../view/AdminSys/wxLogin.vue'
-import LoginSucess from '../view/userview/LoginSucess.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/', component: Login },
+  { path: '/', component: Homepage },
   {
-    path: '*',
-    redirect: Login
-  },
-  {
-    path: '/homepage',
-    component: Homepage
+    path: '/user/homepage', component: Homepage
     // 需要登录后才能访问的页面
     //  meta: { requiresAuth: true }
   },
-  { path: '/interview', component: Interview },
-  { path: '/Applications_details', component: Applications_details },
-  { path: '/Examine_page', component: Examine_page },
-  { path: '/Orgnization_details', component: Orgnization_details },
-  { path: '/Position_detailes', component: Position_detailes },
-  { path: '/Applications', component: Applications },
-  { path: '/All_positions', component: All_positions },
-  { path: '/Application_list', component: Application_list },
-  { path: '/Interview_list', component: Interview_list },
-  { path: '/Exam_list', component: Exam_list },
-  { path: '/Collection_list', component: Collection_list },
-  { path: '/wxLogin', component: wxLogin },
-  { path: '/LoginSucess', component: LoginSucess },
+  { path: '/user/interview', component: Interview },
+  { path: '/user/Applications_details', component: Applications_details },
+  { path: '/user/Examine_page', component: Examine_page },
+  { path: '/user/Orgnization_details', component: Orgnization_details },
+  { path: '/user/Position_detailes', component: Position_detailes },
+  { path: '/user/Applications', component: Applications },
+  { path: '/user/All_positions', component: All_positions },
+  { path: '/user/Application_list', component: Application_list },
+  { path: '/user/Interview_list', component: Interview_list },
+  { path: '/user/Exam_list', component: Exam_list },
+  { path: '/user/Collection_list', component: Collection_list },
   {
-    path: '/TabView',
+    path: '/admin/TabView',
     name: 'TabView',
     component: TabView, // 这里是核心： center作为容器组件，包含左右菜单和右侧的router-view，所以下面的子组件实际是显示在router-view
     redirect: { name: 'FirstPage' }, // 输入路由center会重定向到a页面
     children: [
       {
-        path: '/FirstPage',
+        path: '/admin/FirstPage',
         name: 'FirstPage',
         component: FirstPage
       },
       {
-        path: '/jobList',
+        path: '/admin/jobList',
         name: 'jobList',
         component: jobList
       },
       {
-        path: '/jobDetails',
+        path: '/admin/jobDetails',
         name: 'jobDetails',
         component: jobDetails
       },
       {
-        path: '/jobpost',
+        path: '/admin/jobpost',
         name: 'jobpost',
         component: jobpost
       },
       {
-        path: '/ailApproval',
+        path: '/admin/ailApproval',
         name: 'ailApproval',
         component: ailApproval
       },
       {
-        path: '/viewList',
+        path: '/admin/viewList',
         name: 'viewList',
         component: viewList
       },
       {
-        path: '/viewArra',
+        path: '/admin/viewArra',
         name: 'viewArra',
         component: viewArra
       },
       {
-        path: '/AssessView',
+        path: '/admin/AssessView',
         name: 'AssessView',
         component: AssessView
       },
       {
-        path: '/AssessRela',
+        path: '/admin/AssessRela',
         name: 'AssessRela',
         component: AssessRela
       },
       {
-        path: '/AssessDetail',
+        path: '/admin/AssessDetail',
         name: 'AssessDetail',
         component: AssessDetail
       }
@@ -126,7 +118,7 @@ router.beforeEach((to, from, next) => {
     next()
   } else {
     // 从本地存储里获取token
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('HQU_naxin')
     // 判断token是否为空如果为空则跳转到登录页 如果有则放行
     if (token === null || token === '') {
       next({ path: '/' })
