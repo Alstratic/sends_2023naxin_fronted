@@ -1,6 +1,6 @@
 <template>
   <div class="Position_det">
-    <CHeader :Examine="Examine" :Inter="Inter" :Apply="Apply" :Collect="Collect"></CHeader>
+    <CHeader></CHeader>
   <div class="Position_Introduce">
     <div class="Intro">
             <div class="position-name">
@@ -32,7 +32,7 @@
         </div>
        <div class="position-operation">
            <el-button type="warning" style="background-color: #FFD74D;">联系一下</el-button>
-           <el-button type="warning" plain>申请面试</el-button>
+           <el-button type="warning" plain @click="GoApplications">申请面试</el-button>
        </div>
     </div>
     <div class="position-message">
@@ -93,24 +93,13 @@ export default {
     }
   },
   methods:{
+    GoApplications(){
+      this.$router.push('/Applications')
+    },
     ChooseCollect(){
         //补充：给后端发
         this.isCollect=!this.isCollect
     },
-    Examine(){  
-      //这个路由回退会有点问题
-        this.$router.push('/Examine_page')
-    },
-    Inter(){
-        this.$router.push('/interview')
-    },
-    Apply(){
-        this.$router.push('/Applications')
-    },
-    
-    Collect(){
-        // 跳收藏界面
-    }
 
   },
   created:{

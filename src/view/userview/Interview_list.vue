@@ -1,7 +1,7 @@
 <template>
     <!-- Header区域 -->
     <div class="all-container">
-           <CHeader :Examine="Examine" :Inter="Inter" :Apply="Apply" :Collect="Collect"></CHeader>
+           <CHeader></CHeader>
            <div class="application-list-top">
                <div class="application-list-font">
                    <span class="application-list-font-detail">
@@ -15,71 +15,20 @@
                </div>
            </div>
            <div class="application-card-list">
-                   <Application_list_card
+                     <Interview_list_card
                    :position-name="cardData.positionName"
-                   :status="cardData.Status"
-                   :tags="cardData.tags">
-                   </Application_list_card>
-                   <Application_list_card
+                   :status="cardData.Status">
+                   </Interview_list_card>
+                   <Interview_list_card
                    :position-name="cardData.positionName"
-                   :status="cardData.Status"
-                   :tags="cardData.tags">
-                   </Application_list_card>
-                   <Application_list_card
+                   :status="cardData.Status">
+                   </Interview_list_card>
+                   <Interview_list_card
                    :position-name="cardData.positionName"
-                   :status="cardData.Status"
-                   :tags="cardData.tags">
-                   </Application_list_card>
+                   :status="cardData.Status">
+                   </Interview_list_card>
            </div>
        </div>
-   
-   <!-- 
-       <el-container class="all-container">
-           <el-header class="header-container">
-               <Login_nav></Login_nav>
-           </el-header>
-           <el-main>
-               <div class="interview-list-top">
-                   <div class="interview-list-font">
-                       <span class="interview-list-font-detail">
-                           面试列表
-                       </span>
-                   </div>
-                   <div class="interview-list-tags">
-                       <label v-for="(tag,index) in tags" :key="tag" :class="{'active':selectedTags[index]}" class="interview-list-tag">
-                           <input type="checkbox" v-model="selectedTags[index]" style="display: none" @click="toggleTag(index)">{{ tag }}
-                       </label>
-                   </div>
-               </div>
-               <div class="interview-card-list">
-                   <div>
-                       <Interview_list_card
-                       :position-name="cardData.positionName"
-                       :status="cardData.Status"
-                       :tags="cardData.tags">
-                       </Interview_list_card>
-                   </div>
-                   <div>
-                       <Interview_list_card
-                       :position-name="cardData.positionName"
-                       :status="cardData.Status"
-                       :tags="cardData.tags">
-                       </Interview_list_card>
-                   </div>
-                   <div>
-                       <Interview_list_card
-                       :position-name="cardData.positionName"
-                       :status="cardData.Status"
-                       :tags="cardData.tags">
-                       </Interview_list_card>
-                   </div>
-           </div>
-   
-           </el-main>
-   
-   
-   
-       </el-container> -->
    </template>
    
    <script>
@@ -90,7 +39,6 @@
      import CHeader from '@/components/CHeader.vue';
    export default{
        components:{Login_nav,axios,Interview_list_card, 
-       Application_list_card,
        CHeader},
        data(){
            return{
@@ -100,23 +48,8 @@
            }
        },
        methods:{
-           Examine(){  
-         //这个路由回退会有点问题
-           this.$router.push('/Examine_page')
-           },
-           Inter(){
-               this.$router.push('/interview')
-           },
-           Apply(){
-               this.$router.push('/Applications')
-           },
-           
-           Collect(){
-               // 跳收藏界面
-           },
            toggleTag(index) {
                // 先判断是否有标签被选中
-   
                if (this.selectedTags.includes(true)) {
                    // 如果有标签被选中，则执行选中操作
                    this.selectedTags = this.selectedTags.map((tag, idx) => (idx === index ? !tag : false));
@@ -151,7 +84,7 @@
        display: flex;
        width: 100%;
        background-color: #fff;
-       margin-left: 20vw;
+       margin-left: 25vw;
        height: 10%;
        flex-wrap:wrap;
        flex-direction: row;

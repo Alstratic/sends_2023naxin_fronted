@@ -381,7 +381,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
   '/Examine_post' 考核发布
   ```
 
-
 ## 8-15 commit
 
 - 改好了申请列表Application_list和面试列表Interview_list布局。全部组织和首页还没改。
@@ -430,7 +429,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
   '/Examine_post' 考核发布
   ```
 
-
 ## 8-16 commit
 
 - （忽略布局）微信登录功能实现了。之后这里的url记得改：
@@ -447,3 +445,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 - 加了导航守卫，没有登录拿到token的话，就不能访问其他页面，只能跳到login页面
 
+## 8-18commit
+
+- 修改了登录方式
+- 改了考核列表，面试列表和申请列表布局，卡片等。

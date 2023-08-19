@@ -1,6 +1,6 @@
 <template>
   <div class="Examine_det">
-    <CHeader :Examine="Examine" :Inter="Inter" :Apply="Apply" :Collect="Collect"></CHeader>
+    <CHeader></CHeader>
   <div class="Examine_Introduce">
     <div class="Intro">
             <div class="position-name">
@@ -286,20 +286,6 @@ export default {
     ChooseCollect(){
         //补充：给后端发
         this.isCollect=!this.isCollect
-    },
-    Examine(){  
-      //这个路由回退会有点问题
-        this.$router.push('/Examine_page')
-    },
-    Inter(){
-        this.$router.push('/interview')
-    },
-    Apply(){
-        this.$router.push('/Applications')
-    },
-    
-    Collect(){
-        // 跳收藏界面
     },
     loadFile(){
       axios.get("地址",{responseType:"blob"}).then((res)=>{

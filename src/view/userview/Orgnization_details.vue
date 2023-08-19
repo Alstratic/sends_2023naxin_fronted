@@ -1,6 +1,6 @@
 <template>
   <div class="Orgnization_det">
-    <CHeader :Examine="Examine" :Apply="Apply" :Collect="Collect"></CHeader>
+    <CHeader></CHeader>
     <div class="Orgnization_Introduce">
       <div class="Intro">
           <div class="Orgnization">
@@ -16,7 +16,7 @@
             <el-button type="warning" style="background-color: #FFD74D;">联系一下</el-button>
           </div> 
       </div>
-    </div>
+    </div>  
     <div class="position-message">
         <span style="margin-left: 1vw;">组织信息</span>
         <!-- 先写死 -->
@@ -72,20 +72,6 @@ export default {
   }
 },
 methods:{
-  //这个路由回退会有点问题
-  Examine(){
-      this.$router.push('/Examine_page')
-  },
-  Inter(){
-      this.$router.push('/interview')
-  },
-  Apply(){
-      this.$router.push('/Applications')
-  },
-  
-  Collect(){
-      // 跳收藏界面
-  }
 },
 mounted(){
   let that=this;

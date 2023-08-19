@@ -1,6 +1,8 @@
 <template>
   <div class="container">
     <CHeader></CHeader>
+    <div>{{data1}}</div>
+    <div @click="gh">hhh</div>
     <div class="ApplyText"> 
         <span>申请面试</span>
         <div class="row py-4 align-items-center"  style="font-size:15px;">
@@ -108,6 +110,8 @@
   <script>
   import CHeader from '@/components/CHeader.vue';
   import VueSlickCarousel from 'vue-slick-carousel'
+  import {userupload} from '../../api/index'
+  import {view} from '../../api/index'
   import axios from 'axios';
   export default {
     
@@ -115,7 +119,7 @@
     components: { VueSlickCarousel,CHeader },
     data() {
       return {
-       
+        data1:'',
         fileList: [],
         // 不支持多选
         multiple: false,
@@ -147,6 +151,12 @@
         }
       },
     methods: {
+      gh(){
+          view(0).then(res=>{
+            console.log(res)
+            this.data1=res
+          })
+      },
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
@@ -182,6 +192,7 @@
         this.fileList = fileList;
         this.$nextTick(() => {
         let fileElementList = document.getElementsByClassName('el-upload-list__item-name');
+        console.log(fileElementList)
         if (fileElementList && fileElementList.length > 0) {
           for (let ele of fileElementList) {
             let fileName = ele.innerText;
@@ -205,9 +216,21 @@
             //   } else {
             //     iconElement.className = 'imgicon-default' //默认图标
             //   }
-
             if (['zip','ZIP'].indexOf(fileType) != -1) {
               iconElement.className = 'imgicon-zip' // 压缩包
+              let file = new FormData();
+              file.append("file", this.fileList[0].raw);//拿到存在fileList的文件存放到formData中
+              let config = {
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'token': localStorage.getItem('token')
+                    }
+                }
+              axios.put("http://124.221.99.127:10810/file/userupload", file, config).then(res => {
+                    console.log(res)
+                }).catch(res => {
+                    console.log(res)
+                })
             }
             else{
               this.delFile()
@@ -235,8 +258,8 @@
       handlePreview (file) {
         console.log("sb2");
         // console.log(file);
-      },
-      //保存按钮
+      }, 
+      //保存按钮  提交文件这里可能得改
       onSubmit () {
           let formData = new FormData();
          //自行添加数据到formData(使用键值对方式存储)
@@ -249,6 +272,20 @@
           formData.append("file", this.fileList.length===0? '':this.fileList[0].raw);//拿到存在fileList的文件存放到formData中
           console.log(formData.get("file"));
           
+        //   axios.post(post请求的具体路径, formData, {
+        //   "Content-Type": "multipart/form-data;charset=utf-8"
+        // })
+        //   .then(res => {
+        //     if (res.data === "SUCCESS") {
+        //       this.$notify({
+        //         title: '成功',
+        //         message: '提交成功',
+        //         type: 'success',
+        //         duration: 1000
+        //       });
+        //     }
+        //   })
+
           this.dialogVisible=true;
           this.times = 5;            
           let that = this            

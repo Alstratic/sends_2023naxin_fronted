@@ -2,7 +2,7 @@
   <el-container class="all-container">
     <!-- Headers区域 -->
     <el-header class="header-container">
-      <Login_nav></Login_nav>
+      <CHeader></CHeader>
     </el-header>
     <!-- Main区域 -->
     <el-main>
@@ -66,12 +66,14 @@
   import HotPositionCard from '@/components/HotPositionCard.vue';
   import axios from 'axios';
   import Login_nav from '@/components/Login_nav.vue';
+import CHeader from '@/components/CHeader.vue';
   
   export default {
     components:{
       VueSlickCarousel,
       HotPositionCard,
-      Login_nav
+
+        CHeader
     },
     data() {
       return {

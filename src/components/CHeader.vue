@@ -6,16 +6,16 @@
         </div>
         <ul>
             <li >
-              <a href="#" @click="GoExamine">考核</a>
+              <a href="#" @click="Examine">考核</a>
             </li>
             <li>
-              <a href="#" @click="GoInter">面试</a>
+              <a href="#" @click="Inter">面试</a>
             </li>
             <li>
-              <a href="#" @click="GoApply">申请</a>
+              <a href="#" @click="Apply">申请</a>
             </li>
             <li>
-              <a href="#" @click="GoCollect">收藏</a>
+              <a href="#" @click="Collect">收藏</a>
             </li>
             
             <li>
@@ -26,20 +26,25 @@
 </template>
 <script>
 export default {
-  props:['Examine','Inter','Apply','Collect'],
+  
      methods:{
-        GoExamine(){
-            this.Examine()
+         async Collect(){
+            // 跳收藏界面
         },
-        GoInter(){
-            this.Inter()
+        async Examine(){  
+          //这个路由回退会有点问题
+            this.$router.push('/Examine_page')
         },
-        GoApply(){
-            this.Apply()
+        async  Inter(){
+            this.$router.push('/interview')
         },
-        GoCollect(){
-             this.Collect()
-        }
+        async  Apply(){
+            this.$router.push('/Applications')
+        },
+    
+    Collect(){
+        // 跳收藏界面
+    }
      }
 }
 </script>

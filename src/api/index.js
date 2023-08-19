@@ -18,6 +18,29 @@ export function LoginPostData (code) {
     }
   })
 }
+// 用户上传文件 put请求
+export function userupload (file) {
+  return instance({
+    url: '/file/userupload',
+    method: 'put',
+    processData: false, // 防止数据被转成字符串
+    contentType: false,
+    formData: {
+      file
+    }
+  })
+}
+
+export function view (stage) {
+  return instance({
+    url: '/user/task/view',
+    method: 'post',
+
+    data: {
+      stage
+    }
+  })
+}
 
 // // 当后端是query的时候前端就要使用params进行传参
 // export function GetLine(department) {

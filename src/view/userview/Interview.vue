@@ -1,7 +1,7 @@
 <template>
   <!-- 面试详情 -->
   <div class="Position_det">
-    <CHeader :Examine="Examine" :Inter="Inter" :Apply="Apply" :Collect="Collect"></CHeader>
+    <CHeader></CHeader>
   <div class="Position_Introduce">
     <div class="Intro">
             <div class="position-name">
@@ -81,7 +81,7 @@ export default {
   methods:{
     //放弃面试
     abandonView(){
-      this.$confirm('您是否放弃考核?', '提示', {
+      this.$confirm('您是否放弃面试?', '提示', {
         showClose:false,
           confirmButtonText: '确定',
           cancelButtonText: '取消',
@@ -90,7 +90,7 @@ export default {
         }).then(() => {
           this.$message({
             type: 'success',
-            message: '您已放弃考核!'
+            message: '您已放弃面试!'
           });
           this.$router.replace('/Homepage')
         }).catch(() => {
@@ -106,20 +106,6 @@ export default {
         //补充：给后端发
         this.isCollect=!this.isCollect
     },
-    Examine(){  
-      //这个路由回退会有点问题
-        this.$router.push('/Examine_page')
-    },
-    Inter(){
-        this.$router.push('/interview')
-    },
-    Apply(){
-        this.$router.push('/Applications')
-    },
-    
-    Collect(){
-        // 跳收藏界面
-    }
 
   },
   created:{

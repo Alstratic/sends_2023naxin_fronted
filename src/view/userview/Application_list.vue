@@ -2,7 +2,7 @@
 <template>
     <!-- Header区域 -->
     <div class="all-container">
-        <CHeader :Examine="Examine" :Inter="Inter" :Apply="Apply" :Collect="Collect"></CHeader>
+        <CHeader></CHeader>
         <div class="application-list-top">
             <div class="application-list-font">
                 <span class="application-list-font-detail">
@@ -56,20 +56,6 @@
         }
     },
     methods:{
-        Examine(){  
-      //这个路由回退会有点问题
-        this.$router.push('/Examine_page')
-    },
-    Inter(){
-        this.$router.push('/interview')
-    },
-    Apply(){
-        this.$router.push('/Applications')
-    },
-    
-    Collect(){
-        // 跳收藏界面
-    },
         toggleTag(index) {
             // 先判断是否有标签被选中
   
@@ -107,7 +93,7 @@
     display: flex;
     width: 100%;
     background-color: #fff;
-    margin-left: 20vw;
+    margin-left: 25vw;
     height: 10%;
     flex-wrap:wrap;
     flex-direction: row;
