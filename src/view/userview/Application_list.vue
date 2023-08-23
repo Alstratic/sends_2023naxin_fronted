@@ -10,8 +10,8 @@
                 </span>
             </div>
             <div class="application-list-tags">
-                <label v-for="(tag,index) in tags" :key="tag" :class="{'active':selectedTags[index]}" class="application-list-tag">
-                    <input type="checkbox" v-model="selectedTags[index]" style="display: none" @click="toggleTag(index)">{{ tag }}
+                <label v-for="(tag,index) in tags" :key="tag" :class="{'active': selectedTags[index]}" class="application-list-tag" @click="selectTag(index)">
+                        {{ tag }}
                 </label>
             </div>
         </div>
@@ -56,16 +56,8 @@
         }
     },
     methods:{
-        toggleTag(index) {
-            // 先判断是否有标签被选中
-  
-            if (this.selectedTags.includes(true)) {
-                // 如果有标签被选中，则执行选中操作
-                this.selectedTags = this.selectedTags.map((tag, idx) => (idx === index ? !tag : false));
-            } else {
-                // 如果没有标签被选中，则直接将点击的标签设置为选中状态（true）。
-                this.selectedTags[index] = true;
-            }
+        selectTag(index) {
+            this.selectedTags = this.selectedTags.map((_, idx) => idx === index);
             console.log(this.selectedTags)
         }
     },

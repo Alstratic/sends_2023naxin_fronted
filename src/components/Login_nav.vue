@@ -2,8 +2,8 @@
     <div class="header-container" v-if="!isLoggedIn">
         <div class="header-navigator">
             <img src="../assets/sends_logo.png" alt="">
-            <!-- <span>华侨大学网络创新实验室</span> -->
-            <span>{{ data1 }}</span>
+            <span class="header-organ">华侨大学网络创新实验室</span>
+            <!-- <span>{{ data1 }}</span> -->
         </div>
         <div class="login-container2">
             <el-button type="warning" class="un-login" @click="login">登录</el-button>
@@ -12,23 +12,23 @@
     <div class="header-container" v-else>
         <div class="header-navigator">
             <img src="../assets/sends_logo.png" alt="">
-            <!-- <span>华侨大学网络创新实验室</span> -->
-            <span>{{ data1 }}</span>
+            <span>华侨大学网络创新实验室</span>
+            <!-- <span>{{ data1 }}</span> -->
         </div>
         <div class="login-container">
-            <div class="login-options">
+            <div class="login-options" @click="goToExam">
                 <span>考核</span>
             </div>
-            <div class="login-options">
+            <div class="login-options" @click="goToInterview">
                 <span>面试</span>
             </div>
-            <div class="login-options">
+            <div class="login-options" @click="goToApplication">
                 <span>申请</span>
             </div>
-            <div class="login-options">
+            <div class="login-options" @click="goToCollection">
                 <span>收藏</span>
             </div>
-            <img src="../assets/sends_logo.png" alt="">
+            <!-- <img src="../assets/sends_logo.png" alt=""> -->
         </div>
     </div>
 </template>
@@ -87,7 +87,20 @@ export default{
             catch (error) {
                 alert(error);
             }
+        },
+        goToExam(){
+            this.$router.push('/user/Examine_page')
+        },
+        goToInterview(){
+            this.$router.push('/user/interview')
+        },
+        goToApplication(){
+            this.$router.push('/user/Applications')
+        },
+        goToCollection(){
+            this.$router.push('/user/Collection_list')
         }
+
     }
 }
 </script>
@@ -173,5 +186,12 @@ export default{
         height: 58%;
         width: 14%;
     }
+}
+
+.login-options{
+    font-size: 16px;
+}
+.header-organ{
+    font-size: 20px;
 }
 </style>

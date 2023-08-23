@@ -2,7 +2,7 @@
   <el-container class="all-container">
     <!-- Headers区域 -->
     <el-header class="header-container">
-      <CHeader></CHeader>
+      <Login_nav></Login_nav>
     </el-header>
     <!-- Main区域 -->
     <el-main>
@@ -66,14 +66,12 @@
   import HotPositionCard from '@/components/HotPositionCard.vue';
   import axios from 'axios';
   import Login_nav from '@/components/Login_nav.vue';
-import CHeader from '@/components/CHeader.vue';
   
   export default {
     components:{
       VueSlickCarousel,
       HotPositionCard,
-
-        CHeader
+      Login_nav
     },
     data() {
       return {
@@ -102,29 +100,29 @@ import CHeader from '@/components/CHeader.vue';
     },
     methods:{
       goToPositionDetailsPage(){
-        this.$router.push('/user/Position_detailes');
+        this.$router.push('/user/All_positions');
       },
     },
   
   
     mounted(){
-      let that=this;
-      const urls = [
-        'http://124.221.99.127:10810/square/posts/host?number=2'
-      ];
-      for(let i =0;i<urls.length;i++)
-      {
-        axios.get(urls[i])
-          .then(response => {
-          // 将从后端获取的数据填充到 cardDataList 中
-          that.cardDataList.push(response.data.data);
-          console.log(response.data.code);
-          console.log(response.data.msg);
-        })
-          .catch(error => {
-          console.error('Failed to fetch card data:', error);
-        });
-      }
+      // let that=this;
+      // const urls = [
+      //   'http://124.221.99.127:10810/square/posts/host?number=2'
+      // ];
+      // for(let i =0;i<urls.length;i++)
+      // {
+      //   axios.get(urls[i])
+      //     .then(response => {
+      //     // 将从后端获取的数据填充到 cardDataList 中
+      //     that.cardDataList.push(response.data.data);
+      //     console.log(response.data.code);
+      //     console.log(response.data.msg);
+      //   })
+      //     .catch(error => {
+      //     console.error('Failed to fetch card data:', error);
+      //   });
+      // }
   
       window.addEventListener('resize',()=>{
         this.windowWidth=window.innerWidth

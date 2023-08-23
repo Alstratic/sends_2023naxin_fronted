@@ -17,6 +17,7 @@ specifiers:
   eslint-plugin-node: ^11.1.0
   eslint-plugin-promise: ^5.1.0
   eslint-plugin-vue: ^8.0.3
+  file-saver: ^2.0.5
   less: ^4.1.3
   less-loader: ^11.1.3
   mockjs: ^1.1.0
@@ -27,6 +28,7 @@ specifiers:
   vue-router: ^3.5.1
   vue-slick-carousel: ^1.0.6
   vue-template-compiler: ^2.6.14
+  vuex: ^4.1.0
 
 dependencies:
   axios: 1.4.0
@@ -49,6 +51,7 @@ devDependencies:
   eslint-plugin-node: 11.1.0_eslint@7.32.0
   eslint-plugin-promise: 5.2.0_eslint@7.32.0
   eslint-plugin-vue: 8.7.1_eslint@7.32.0
+  file-saver: 2.0.5
   less: 4.1.3
   less-loader: 11.1.3_less@4.1.3
   mockjs: 1.1.0
@@ -57,6 +60,7 @@ devDependencies:
   vue-cli-plugin-element: 1.0.1
   vue-slick-carousel: 1.0.6
   vue-template-compiler: 2.7.14
+  vuex: 4.1.0_vue@2.7.14
 
 packages:
 
@@ -2135,6 +2139,10 @@ packages:
       - velocityjs
       - walrus
       - whiskers
+    dev: true
+
+  /@vue/devtools-api/6.5.0:
+    resolution: {integrity: sha512-o9KfBeaBmCKl10usN4crU53fYtC1r7jJwdGKjPT24t348rHxgfpZ0xL3Xm/gLUYnc0oTp8LAmrxOeLyu6tbk2Q==}
     dev: true
 
   /@vue/eslint-config-standard/6.1.0_56d84edcc45209671e4db6d1a903f509:
@@ -4274,6 +4282,10 @@ packages:
     engines: {node: ^10.12.0 || >=12.0.0}
     dependencies:
       flat-cache: 3.0.4
+    dev: true
+
+  /file-saver/2.0.5:
+    resolution: {integrity: sha512-P9bmyZ3h/PRG+Nzga+rbdI4OEpNDzAVyy74uVO9ATgzLK6VtAsYybF/+TOCvrc0MO793d6+42lLyZTw7/ArVzA==}
     dev: true
 
   /fill-range/7.0.1:
@@ -7532,6 +7544,15 @@ packages:
     dependencies:
       '@vue/compiler-sfc': 2.7.14
       csstype: 3.1.2
+
+  /vuex/4.1.0_vue@2.7.14:
+    resolution: {integrity: sha512-hmV6UerDrPcgbSy9ORAtNXDr9M4wlNP4pEFKye4ujJF8oqgFFuxDCdOLS3eNoRTtq5O3hoBDh9Doj1bQMYHRbQ==}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      '@vue/devtools-api': 6.5.0
+      vue: 2.7.14
+    dev: true
 
   /watchpack/2.4.0:
     resolution: {integrity: sha512-Lcvm7MGST/4fup+ifyKi2hjyIAwcdI4HRgtvTpIUxBRhB+RFtUh8XtDOxUfctVCnhVi+QQj49i91OyvzkJl6cg==}

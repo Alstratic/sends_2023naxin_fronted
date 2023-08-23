@@ -9,9 +9,12 @@
                    </span>
                </div>
                <div class="application-list-tags">
-                   <label v-for="(tag,index) in tags" :key="tag" :class="{'active':selectedTags[index]}" class="application-list-tag">
+                   <!-- <label v-for="(tag,index) in tags" :key="tag" :class="selectedTags[index] ? 'active' : ''" class="application-list-tag">
                        <input type="checkbox" v-model="selectedTags[index]" style="display: none" @click="toggleTag(index)">{{ tag }}
-                   </label>
+                   </label> -->
+                   <label v-for="(tag,index) in tags" :key="tag" :class="{'active': selectedTags[index]}" class="application-list-tag" @click="selectTag(index)">
+                        {{ tag }}
+                    </label>
                </div>
            </div>
            <div class="application-card-list">
@@ -35,30 +38,21 @@
    import Login_nav from '@/components/Login_nav.vue';
    import axios from 'axios';
    import Interview_list_card from '@/components/Interview_list_card.vue';
-     import Application_list_card from '@/components/Application_list_card.vue';
-     import CHeader from '@/components/CHeader.vue';
+    import CHeader from '@/components/CHeader.vue';
    export default{
        components:{Login_nav,axios,Interview_list_card, 
        CHeader},
        data(){
            return{
                tags:['全部','待面试','面试结束'],
-               selectedTags:[true,false,false,false,false],
+               selectedTags:[true,false,false],
                cardData:{},
            }
        },
        methods:{
-           toggleTag(index) {
-               // 先判断是否有标签被选中
-               if (this.selectedTags.includes(true)) {
-                   // 如果有标签被选中，则执行选中操作
-                   this.selectedTags = this.selectedTags.map((tag, idx) => (idx === index ? !tag : false));
-               } else {
-                   // 如果没有标签被选中，则直接将点击的标签设置为选中状态（true）。
-                   this.selectedTags[index] = true;
-               }
-               console.log(this.selectedTags)
-           }
+           selectTag(index) {
+                this.selectedTags = this.selectedTags.map((_, idx) => idx === index);
+            }
        },
        mounted(){
            let that=this;

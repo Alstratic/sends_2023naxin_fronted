@@ -39,7 +39,7 @@ const routes = [
   { path: '/user/Applications_details', component: Applications_details },
   { path: '/user/Examine_page', component: Examine_page },
   { path: '/user/Orgnization_details', component: Orgnization_details },
-  { path: '/user/Position_detailes', component: Position_detailes },
+  { path: '/user/Position_detailes/:id', component: Position_detailes, name: 'Position_detailes' },
   { path: '/user/Applications', component: Applications },
   { path: '/user/All_positions', component: All_positions },
   { path: '/user/Application_list', component: Application_list },

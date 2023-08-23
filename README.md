@@ -449,3 +449,11 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 - 修改了登录方式
 - 改了考核列表，面试列表和申请列表布局，卡片等。
+
+## 	8-23 commit
+
+- 用户端登录页面做好了，在浏览器可以在`localstroage`处随便存入一个`token`
+
+- 筛选器相关在`All_positions`中，具体的组件的逻辑是在`Positiontag`组件
+
+  

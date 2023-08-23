@@ -1,21 +1,23 @@
 <template>
-  <el-card class="box-card">
+  <el-card class="box-card" >
+    <div @click="cardClick">
       <div class="hot-position-details">
-      <span class="hot-position-name">{{positionName}}</span>
-      <span class="hot-position-num">{{positionNum}}人</span>
+        <span class="hot-position-name">{{positionName}}       {{positionNum}}人</span>
+        <!-- <span class="hot-position-num">{{positionNum}}人</span> -->
       </div>
       <div class="hot-position-tags">
-      <!-- <el-tag type="info" v-for="tag in tags" :key="tag">{{tag}}</el-tag> -->
-      <span class="hot-position-tag" v-for="tag in tags" :key="tag">{{tag}}</span>
+        <!-- <el-tag type="info" v-for="tag in tags" :key="tag">{{tag}}</el-tag> -->
+        <span class="hot-position-tag" v-for="tag in tags" :key="tag">{{tag}}</span>
       </div>
       <div class="organization-details">
-      <div class="organization-details-name">
-          <img :src="logo" alt="" style="width:23px;height: 23px;border-radius: 50%;">
-          <span class="organization-name">{{organizationName}}</span>
-          <div class="null"></div>
-          <span class="organization-type">{{organizationType}}</span>
+        <div class="organization-details-name">
+            <img :src="logo" alt="" style="width:23px;height: 23px;border-radius: 50%;">
+            <span class="organization-name">{{organizationName}}</span>
+            <div class="null"></div>
+            <span class="organization-type">{{OrganizationCategory}} | {{ organizationClassify }}</span>
+        </div>
       </div>
-      </div>
+    </div>
   </el-card>
 </template>
 
@@ -23,12 +25,20 @@
 export default{
   props: {
       positionName: String,
-      positionNum: Number,
+      positionNum: String,
       tags: Array,
       logo: String,
       organizationName: String,
-      organizationType: String,
-},
+      OrganizationCategory: String,
+      organizationClassify:String,
+      id:Number
+  },
+  methods:{
+    cardClick(){
+      console.log(this.id);
+      this.$router.push({name:'Position_detailes',params:{id:this.id}});
+    }
+  },
 }
 </script>
 
