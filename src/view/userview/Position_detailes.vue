@@ -67,21 +67,18 @@
               <div class="recommend-position-cards">
                 <!-- 先定死放两个 -->
                 <positionCard
-                  :position-name="cardData.positionName"
-                  :position-num="cardData.positionNum"
-                  :tags="cardData.tags"
-                  :logo="cardData.logo"
-                  :organization-name="cardData.organizationName"
-                  :organization-type="cardData.organizationType"
+                  v-for="(cardData,cardIndex) in groupedCardData"
+                  :id="cardData.id"
+                  :key="cardIndex"
+                  :position-name="cardData.Name"
+                  :position-num="cardData.Nums"
+                  :tags="mergeTags(cardData)"
+                  :logo="cardData.OrganizationPath"
+                  :organization-name="cardData.OrganizationName"
+                  :organization-type="cardData.OrganizationCategory"
+                  :OrganizationClassify="cardData.OrganizationClassify"
                 />
-                <positionCard
-                  :position-name="cardData.positionName"
-                  :position-num="cardData.positionNum"
-                  :tags="cardData.tags"
-                  :logo="cardData.logo"
-                  :organization-name="cardData.organizationName"
-                  :organization-type="cardData.organizationType"
-                />
+                
               </div>
             </div>
           </div>
@@ -96,43 +93,108 @@ import VueSlickCarousel from 'vue-slick-carousel'
 import positionCard from '../../components/positionCard.vue'
 import Login_nav from '../../components/Login_nav.vue'
 import axios from 'axios'
-import { mapState } from 'vuex';
-import store from '@/store'; // 导入 Vuex Store
+import {getUserToken} from '../../request/wx_auth.js'
+import Qs from 'qs'
+
 export default {
   components: { VueSlickCarousel, positionCard, Login_nav },
   name: 'Position_detailes',
   data() {
     return {
-      id:null,
+      id:Number,
       isCollect: false,
-      cardData: {},
+      token:String,
+      cardData: [],
       cardData1:{},
       tagsData:{},
-      baseUrl:'http://124.221.99.127:10810/square/posts/'
+      collectData:{},
+      baseUrl:'http://124.221.99.127:10810/square/posts/',
+      baseUrl2:'http://124.221.99.127:10810/square/organizations/posts/1',
+      baseUrl3:'http://124.221.99.127:10810/square/posts/favorite/'
     }
   },
   methods: {
     GoApplications() {
-      this.$router.push('/Applications')
+      console.log(this.id);
+      this.$router.push({name:'Applications',params:{id:this.id,positionName:this.cardData1.Name}})
     },
     ChooseCollect() {
       //补充：给后端发
-      this.isCollect = !this.isCollect
+      let data={
+        'postID':this.id
+      }
+      let headers={
+        'accept':'application/json',
+        'token':this.token,
+      }
+      let that=this
+      let queryString=this.baseUrl3+this.id;
+
+      if(this.isCollect===false)
+      {
+        axios.post(queryString, data,{headers}).then((response) => {
+          // 将从后端获取的数据填充到 cardData 对象中
+          that.collectData = response.data
+          console.log(that.collectData)
+        })
+        .catch((error) => {
+          console.error('Failed to fetch card data:', error)
+        })
+        this.isCollect = !this.isCollect
+      }
+
+      else if(this.isCollect===true){
+        data=Qs.stringify(data)
+        axios.delete(queryString,{headers}).then((response) => {
+          // 将从后端获取的数据填充到 cardData 对象中
+          that.collectData = response.data
+          console.log(that.collectData)
+        })
+        .catch((error) => {
+          console.error('Failed to fetch card data:', error)
+        })
+        this.isCollect = !this.isCollect
+      }
+    },
+    mergeTags(cardData) {
+      const mergedTags = []
+      if (cardData.Classify) {
+        mergedTags.push(cardData.Classify)
+      }
+      if (cardData.Experience) {
+        mergedTags.push(cardData.Experience)
+      }
+      if (cardData.Object) {
+        mergedTags.push(cardData.Object)
+      }
+      return mergedTags
     },
   },
   created() {
-    console.log(this.$route.params.id)
+    // console.log(this.$route.params.id)
   },
   mounted() {
     let that = this
     this.id=this.$route.params.id
-    let queryString=this.baseUrl+this.id
+    this.token=getUserToken()
+    let queryString1=this.baseUrl+this.id
 
     axios
-      .get(queryString)
+      .get(queryString1)
       .then((response) => {
         // 将从后端获取的数据填充到 cardData 对象中
         that.cardData1 = response.data.data.post
+      })
+      .catch((error) => {
+        console.error('Failed to fetch card data:', error)
+      })
+
+    axios
+      .get('http://124.221.99.127:10810/square/organizations/posts/1')
+      .then((response) => {
+        // 将从后端获取的数据填充到 cardData 对象中
+        that.cardData = response.data.data
+        console.log(that.cardData)
       })
       .catch((error) => {
         console.error('Failed to fetch card data:', error)
@@ -141,6 +203,18 @@ export default {
   computed:{
     tagArray(){
       return [this.cardData1.Classify, this.cardData1.Experience, this.cardData1.Object];
+    },
+    groupedCardData(){
+      let grouped=[]
+      for (let i = 0; i < this.cardData.length; i ++) {
+        const group = this.cardData[i]
+        if(this.cardData[i].id==this.id){
+          continue;
+        }
+        grouped.push(group)
+      }
+      console.log(grouped)
+      return grouped
     }
   }
 }
@@ -240,7 +314,7 @@ export default {
   .organization-name {
     padding-left: 3px;
     text-align: left;
-    font-size: 1rem;
+    font-size: 15px;
   }
   .organization-type {
     font-size: 6px;

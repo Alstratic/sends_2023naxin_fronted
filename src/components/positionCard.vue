@@ -1,8 +1,10 @@
 <template>
+
   <el-card class="box-card">
     <div class="hot-position-details">
       <span class="hot-position-name">{{positionName}}</span>
       <span class="hot-position-num">{{positionNum}}人</span>
+      <span class="hot-position-num"></span>
     </div>
     <div class="hotonNuition-tags">
       <el-tag type="info" v-for="tag in tags" :key="tag">{{tag}}</el-tag>
@@ -12,32 +14,26 @@
         <img :src="logo" alt="" style="width:23px;height: 23px;border-radius: 50%; ">
         <span class="organization-name1">{{organizationName}}</span>
         <div class="null"></div>
-        <span class="organization-type1">{{organizationType}}</span>
+        <span class="organization-type1">{{organizationType}}|{{ OrganizationClassify }}</span>
       </div>
     </div>
+
   </el-card>
 
 </template>
 
 <script>
 export default{
-props: {
-  positionName: String,
-  positionNum: Number,
-  tags: Array,
-  logo: String,
-  organizationName: String,
-  organizationType: String,
-},
-methods:{
-// ChooseCollect(){
-//     //补充：给后端发
-//     this.isCollect=!this.isCollect
-// }
-},
-created:{
-//补充：从后端获得isCollect的状态
-}
+  props: {
+    id:Number,
+    positionName: String,
+    positionNum: String,
+    tags: Array,
+    logo: String,
+    organizationName: String,
+    organizationType: String,
+    OrganizationClassify:String
+  },
 }
 </script>
 

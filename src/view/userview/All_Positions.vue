@@ -28,7 +28,7 @@
           </div>
         </div>
         <div class="position-detail-tags">
-          <!-- 五个筛选器 -->
+          <!--  -->
           <div>
             <Positiontag
               :tags="this.organClass"

@@ -40,7 +40,7 @@ const routes = [
   { path: '/user/Examine_page', component: Examine_page },
   { path: '/user/Orgnization_details', component: Orgnization_details },
   { path: '/user/Position_detailes/:id', component: Position_detailes, name: 'Position_detailes' },
-  { path: '/user/Applications', component: Applications },
+  { path: '/user/Applications', component: Applications, name: 'Applications' },
   { path: '/user/All_positions', component: All_positions },
   { path: '/user/Application_list', component: Application_list },
   { path: '/user/Interview_list', component: Interview_list },

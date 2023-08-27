@@ -1,8 +1,11 @@
 <!-- 申请 -->
 <template>
-    <!-- Header区域 -->
+    <el-container class="all-container">
+    <el-header class="header-container">
+      <Login_nav></Login_nav>
+    </el-header>
+    <el-main>
     <div class="all-container">
-        <CHeader></CHeader>
         <div class="application-list-top">
             <div class="application-list-font">
                 <span class="application-list-font-detail">
@@ -33,6 +36,8 @@
                 </Application_list_card>
         </div>
     </div>
+    </el-main>
+    </el-container>
   
   </template>
   

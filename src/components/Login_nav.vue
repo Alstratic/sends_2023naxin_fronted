@@ -1,9 +1,10 @@
 <template>
     <div class="header-container" v-if="!isLoggedIn">
         <div class="header-navigator">
-            <img src="../assets/sends_logo.png" alt="">
+            <img src="../assets/sends_logo.png" alt="" @click="goToHomepage">
+
             <span class="header-organ">华侨大学网络创新实验室</span>
-            <!-- <span>{{ data1 }}</span> -->
+            <span>{{ data1 }}</span>
         </div>
         <div class="login-container2">
             <el-button type="warning" class="un-login" @click="login">登录</el-button>
@@ -11,7 +12,7 @@
     </div>
     <div class="header-container" v-else>
         <div class="header-navigator">
-            <img src="../assets/sends_logo.png" alt="">
+            <img src="../assets/sends_logo.png" alt="" @click="goToHomepage">
             <span>华侨大学网络创新实验室</span>
             <!-- <span>{{ data1 }}</span> -->
         </div>
@@ -62,10 +63,15 @@ export default{
                 const code=getWechatCode();
                 if (!code) { // 如果在url中没有code
                     wxRedirect();
-                    alert(code);
+                    // alert(code);
                     return;
                 }
-                this.checkCode(code);
+                await this.checkCode(code);
+                if(isUserLogin()){
+                    // alert(getUserToken());
+                    this.data1=getUserToken();
+                    this.isLoggedIn=true;
+                }
             }
             catch (error) {
                 console.error('登录失败', error);
@@ -78,7 +84,7 @@ export default{
                 const token = response.data.data;
                 // 保存 'token' 到本地存储
                 setUserToken(token);
-                alert(getUserToken());
+                // alert(getUserToken());
                 // 更新登录状态
                 this.isLoggedIn = true;
                 // 跳转到指定页面，例如 '/Homepage'
@@ -89,16 +95,44 @@ export default{
             }
         },
         goToExam(){
-            this.$router.push('/user/Examine_page')
+            const currentPath=this.$route.path;
+            const targetPath='/user/Exam_list';
+            if(currentPath !== targetPath)
+            {
+                this.$router.push(targetPath)
+            }
         },
         goToInterview(){
-            this.$router.push('/user/interview')
+            const currentPath=this.$route.path;
+            const targetPath='/user/Interview_list';
+            if(currentPath !== targetPath)
+            {
+                this.$router.push(targetPath)
+            }
         },
         goToApplication(){
-            this.$router.push('/user/Applications')
+            const currentPath=this.$route.path;
+            const targetPath='/user/Application_list';
+            if(currentPath !== targetPath)
+            {
+                this.$router.push(targetPath)
+            }
         },
         goToCollection(){
-            this.$router.push('/user/Collection_list')
+            const currentPath=this.$route.path;
+            const targetPath='/user/Collection_list';
+            if(currentPath !== targetPath)
+            {
+                this.$router.push(targetPath)
+            }
+        },
+        goToHomepage(){
+            const currentPath=this.$route.path;
+            const targetPath='/user/homepage';
+            if(currentPath !== targetPath)
+            {
+                this.$router.push(targetPath)
+            }
         }
 
     }
