@@ -36,7 +36,7 @@
                   <span>面试</span>
                 </template>
                 <el-menu-item index="viewList">面试列表</el-menu-item>
-                <el-menu-item index="viewArra">面试安排</el-menu-item>
+                <!-- <el-menu-item index="viewArra">面试安排</el-menu-item> -->
               </el-submenu>
               <el-submenu index="4">
                 <template slot="title">
@@ -44,7 +44,6 @@
                 </template>
                 <el-menu-item index="AssessView">考核批阅</el-menu-item>
                 <el-menu-item index="AssessRela">考核发布</el-menu-item>
-                <el-menu-item index="AssessDetail">考核详情</el-menu-item>
               </el-submenu>
             </el-menu>
 

@@ -1,8 +1,6 @@
 <template>
   <div class="container">
     <CHeader></CHeader>
-    <div>{{data1}}</div>
-    <div @click="gh">hhh</div>
     <div class="ApplyText"> 
         <span>申请面试</span>
         <div class="row py-4 align-items-center"  style="font-size:15px;">
@@ -10,38 +8,38 @@
         <div class="col-lg-12 col-md-12">
         <div class="py-3 text-center1">
           <p class="lead">面试职位</p>
-          <p class="tet">{{ChoosePosition}}</p>
+          <p class="tet">{{ruleForm.posts_name}}</p>
         </div>
         <el-form :model="ruleForm" ref="ruleForm" label-width="150px" class="demo-ruleForm pl-5 ml-5" label-position="top" >
           <el-form-item
           label="姓名"
-          prop="inputName"
+          prop="name"
           :rules="[
           { required: true, min: 2, max: 100, message: '请正确输入姓名', trigger: 'blur'},
           ]"
           >
-            <el-input v-model="ruleForm.inputName"></el-input>
+            <el-input v-model="ruleForm.name"></el-input>
           </el-form-item>
           <el-form-item 
           label="学号"
-          prop="stuNum"
+          prop="stu_num"
           :rules="[
             {required: true, min: 10, max: 11,message: '*学号错误，请检查输入', trigger: 'blur'},
             {pattern:/^[0-9]*$/,message: '*学号错误，请检查输入',trigger: 'blur'}
           ]"
           >
-          <el-input v-model="ruleForm.stuNum"></el-input>
+          <el-input v-model="ruleForm.stu_num"></el-input>
           </el-form-item>
   
           <el-form-item
           label="电话号码"
-          prop="phoneNumber"
+          prop="phone_num"
           :rules="[
             {required: true, min: 11, max: 11,message: '*电话号码错误，请检查输入', trigger: 'blur'},
             {pattern:/^[0-9]*$/,message: '*电话号码错误，请检查输入',trigger: 'blur'}
           ]"
           >
-          <el-input v-model="ruleForm.phoneNumber"></el-input>
+          <el-input v-model="ruleForm.phone_num"></el-input>
           </el-form-item>
   
           <el-form-item
@@ -53,14 +51,14 @@
   
           <el-form-item
           label="邮箱"
-          prop="Email"
+          prop="email"
           >
-          <el-input v-model="ruleForm.Email"></el-input>
+          <el-input v-model="ruleForm.email"></el-input>
           </el-form-item>
-          <el-form-item class="Self"  label="自我介绍" prop="desc" :rules="[
+          <el-form-item class="Self"  label="自我介绍" prop="introduction" :rules="[
             {required: true,message: '*请输入内容', trigger: 'blur'},
             ]">
-            <el-input type="textarea" resize="none" :autosize="{ minRows: 10, maxRows:40}"  v-model="ruleForm.desc" placeholder="介绍一下自己吧~">    
+            <el-input type="textarea" resize="none" :autosize="{ minRows: 10, maxRows:40}"  v-model="ruleForm.introduction" placeholder="介绍一下自己吧~">    
             </el-input>
           </el-form-item>
           <!-- action中的string之后改成上传的地址 -->
@@ -93,7 +91,7 @@
           :close-on-press-escape= true            
           width="dialogWidth"         
           center>
-          <div  class="tip" style="font-size:1rem; ">{{this.ChoosePosition}} 职位申请已提交</div>
+          <div  class="tip" style="font-size:1rem; ">{{this.ruleForm.posts_name}} 职位申请已提交</div>
         
           <div class="tip" style="font-size:0.9rem;">请等待组织负责人联系</div>    
         
@@ -110,7 +108,7 @@
   <script>
   import CHeader from '@/components/CHeader.vue';
   import VueSlickCarousel from 'vue-slick-carousel'
-  import {userupload} from '../../api/index'
+  import {ApplicationSubmit} from '../../api/index'
   import {view} from '../../api/index'
   import axios from 'axios';
   export default {
@@ -119,7 +117,6 @@
     components: { VueSlickCarousel,CHeader },
     data() {
       return {
-        data1:'',
         fileList: [],
         // 不支持多选
         multiple: false,
@@ -127,15 +124,20 @@
         times:5,
         dialogVisible:false,
         aheadReturn:false,
-        dialogWidth: "1080px",
-        ChoosePosition:'产品经理',
+        dialogWidth: "1080px",                        
         ruleForm: {
-          inputName:'',
-          stuNum:'',
-          phoneNumber:'',
-          QQNumber:'',
-          Email:'',
-          desc:''
+          email:'',
+          file:'',
+          introduction:'',
+          name:'',
+          organization:1,
+          organization_name:'桑梓实验室',
+        // 组织图标地址,组织名字和posts_name先这么写吧,等热门职位卡片写出来
+          path:'https://hqu-service-1309039959.cos.ap-shanghai.myqcloud.com/2023-08-19:06:09:58/2125103034.png',
+          phone_num:'',
+          posts:11,
+          posts_name:'测试',  
+          stu_num:'',
           },
       };
       },
@@ -151,12 +153,6 @@
         }
       },
     methods: {
-      gh(){
-          view(0).then(res=>{
-            console.log(res)
-            this.data1=res
-          })
-      },
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
@@ -227,9 +223,27 @@
                     }
                 }
               axios.put("http://124.221.99.127:10810/file/userupload", file, config).then(res => {
+                if(res.data.msg==='success'){
+                      this.$message({
+                      message: '上传成功!',
+                      type: 'success'
+                    });
+                    this.ruleForm.file=res.data.data
+                }
+                else{
+                    this.delFile()
+                    this.$message({
+                    message: '上传失败,请重新上传!',
+                    type: 'error'
+                  });
+                }
                     console.log(res)
                 }).catch(res => {
-                    console.log(res)
+                  this.delFile()
+                  this.$message({
+                  message: '上传失败,请重新上传!',
+                  type: 'error'
+                });
                 })
             }
             else{
@@ -239,10 +253,9 @@
               type: 'warning'
             });
             }
+            }
           }
-        }
       })  
-  
       },
       //自定义上传文件
       uploadFile (file) {
@@ -261,16 +274,16 @@
       }, 
       //保存按钮  提交文件这里可能得改
       onSubmit () {
-          let formData = new FormData();
-         //自行添加数据到formData(使用键值对方式存储)
-          formData.append("inputName", this.ruleForm.inputName);
-          formData.append("stuNum", this.ruleForm.stuNum);
-          formData.append("phoneNumber", this.ruleForm.phoneNumber);
-          formData.append("QQNumber", this.ruleForm.QQNumber);
-          formData.append("Email", this.ruleForm.Email);
-          formData.append("desc", this.ruleForm.desc);
-          formData.append("file", this.fileList.length===0? '':this.fileList[0].raw);//拿到存在fileList的文件存放到formData中
-          console.log(formData.get("file"));
+        //   let formData = new FormData();
+        //  //自行添加数据到formData(使用键值对方式存储)
+        //   formData.append("inputName", this.ruleForm.inputName);
+        //   formData.append("stuNum", this.ruleForm.stuNum);
+        //   formData.append("phoneNumber", this.ruleForm.phoneNumber);
+        //   formData.append("QQNumber", this.ruleForm.QQNumber);
+        //   formData.append("Email", this.ruleForm.Email);
+        //   formData.append("desc", this.ruleForm.desc);
+        //   formData.append("file", this.fileList.length===0? '':this.fileList[0].raw);//拿到存在fileList的文件存放到formData中
+        //   console.log(formData.get("file"));
           
         //   axios.post(post请求的具体路径, formData, {
         //   "Content-Type": "multipart/form-data;charset=utf-8"
@@ -285,21 +298,26 @@
         //       });
         //     }
         //   })
-
-          this.dialogVisible=true;
-          this.times = 5;            
-          let that = this            
-          let interval = window.setInterval(function () {                    
-            --that.times                    
-            if (that.times === 0) {     
-              if(that.aheadReturn===false){
-                that.$router.replace('/Homepage')                                
-                window.clearInterval(interval)                    
-                window.close();            
-                that.dialogVisible = false;  //倒计时结束时运行的业务逻辑，这里的是关闭当前页面
-              }  
-            }            
-        }, 1000) 
+        ApplicationSubmit(this.ruleForm).then(res=>{
+          if(res.data.msg==='success'){
+            this.dialogVisible=true;
+            this.times = 5;            
+            let that = this            
+            let interval = window.setInterval(function () {                    
+              --that.times                    
+              if (that.times === 0) {     
+                if(that.aheadReturn===false){
+                  that.$router.replace('/Homepage')                                
+                  window.clearInterval(interval)                    
+                  window.close();            
+                  that.dialogVisible = false;  //倒计时结束时运行的业务逻辑，这里的是关闭当前页面
+                }  
+              }            
+          }, 1000) 
+          }
+          console.log(res)
+        })
+         
         //   axios.post(post请求的具体路径, formData, {
         //   "Content-Type": "multipart/form-data;charset=utf-8"
         // })

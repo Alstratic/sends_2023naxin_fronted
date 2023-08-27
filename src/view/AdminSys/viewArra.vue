@@ -7,85 +7,56 @@
         <div class="col-lg-12 col-md-12">
         <el-form :model="ruleForm" ref="ruleForm" label-width="150px" class="demo-ruleForm pl-5 ml-5" label-position="top" >
           <el-form-item
-          label="招聘岗位"
-          prop="Position"
+          label="招聘职位"
+          prop="posts_name"
           :rules="[
           { required: true, trigger: 'blur'},
           ]"
           >
-          <el-input v-model="ruleForm.Position"></el-input>
+          <el-input v-model="ruleForm.posts_name" :disabled="true"></el-input>
           </el-form-item>
           <el-form-item
-          label="招聘人数"
-          prop="nums"
+          label="面试人"
+          prop="name"
           :rules="[
             {required: true, trigger: 'blur'},
-            {pattern:/^[0-9]*$/,message: '*请输入数字',trigger: 'blur'}
           ]"
           >
-          <el-input v-model="ruleForm.nums"></el-input>
-          </el-form-item>
-   <el-form-item 
-          label="招聘对象"
-          prop="stuNum"
-          >
-          <el-select v-model="ruleForm.object" placeholder="请选择活动区域">
-              <el-option label="不限" value="不限"></el-option>
-              <el-option label="大一" value="大一"></el-option>
-              <el-option label="大二·" value="大二"></el-option>
-              <el-option label="大三" value="大三"></el-option>
-              <el-option label="大四" value="大四"></el-option>
-          </el-select>
+          <el-input v-model="ruleForm.name" :disabled="true"></el-input>
           </el-form-item>
           <el-form-item
-          label="职位分类"
-          prop="classify">
-          <el-select v-model="ruleForm.classify">
-              <el-option label="互联网/电子技术" value="互联网/电子技术"></el-option>
-              <el-option label="策划/管理" value="策划/管理"></el-option>
-              <el-option label="新媒体/运营" value="新媒体/运营"></el-option>
-              <el-option label="设计" value="设计"></el-option>
-              <el-option label="其他" value="其他"></el-option>
-          </el-select>
-          </el-form-item>
-          <el-form-item
-          label="职位经验"
-          prop="experience">
-          <el-select v-model="ruleForm.experience">
-              <el-option label="无需经验" value="无需经验"></el-option>
-              <el-option label="仅了解" value="仅了解"></el-option>
-              <el-option label="熟悉" value="熟悉"></el-option>
-              <el-option label="精通" value="精通"></el-option>
-              <el-option label="不限" value="不限"></el-option>
-          </el-select>
-          </el-form-item>
-           
-          <el-form-item
-          label="职位任务"
-          prop="task"
+          label="学号"
+          prop="stu_num"
           :rules="[
-            {required: true,message: '*请输入内容', trigger: 'blur'},
-            ]">
-          <el-input type="textarea" resize="none" :autosize="{ minRows: 4, maxRows:40}"  v-model="ruleForm.task">  
+            {required: true, trigger: 'blur'},
+          ]"
+          >
+          <el-input v-model="ruleForm.stu_num" :disabled="true"></el-input>
+          </el-form-item>
+
+
+          <el-form-item 
+          label="面试时间"
+          prop="time"
+          >
+          <div class="block">
+            <el-date-picker
+              v-model="value1"
+              type="datetime"
+              placeholder="待定">
+            </el-date-picker>
+          </div>`
+          </el-form-item>
+          <el-form-item
+          label="面试地点"
+          prop="address">
+          <el-input v-model="ruleForm.address">
           </el-input>
-      
           </el-form-item>
-          <el-form-item  label="面试通过回复结果模板" prop="interviews_pass_info" :rules="
+          <el-form-item  style="width: 60vw;" label="特别说明" prop="instructions" :rules="
             {trigger: 'blur'}" 
             >
-            <el-input type="textarea" resize="none" :autosize="{ minRows: 4, maxRows:40}"  v-model="ruleForm.interviews_pass_info">    
-            </el-input>
-          </el-form-item>
-          <el-form-item  label="面试未通过回复模板" prop="interviews_unpass_info" :rules="
-            {trigger: 'blur'}" 
-            >
-            <el-input type="textarea" resize="none" :autosize="{ minRows: 4, maxRows:40}"  v-model="ruleForm.interviews_unpass_info">    
-            </el-input>
-          </el-form-item>
-          <el-form-item  style="width: 60vw;" label="特别说明" prop="illustrate" :rules="
-            {trigger: 'blur'}" 
-            >
-            <el-input type="textarea" resize="none" :autosize="{ minRows: 4, maxRows:40}"  v-model="ruleForm.illustrate">    
+            <el-input type="textarea" resize="none" :autosize="{ minRows: 4, maxRows:40}"  v-model="ruleForm.instructions">    
             </el-input>
           </el-form-item>
           <!-- action中的string之后改成上传的地址 -->
@@ -106,10 +77,11 @@
                      type="warning"
                      plain
                      @click="delFile">上传附件</el-button>
-          <span style="font-size:2px;margin-left: 13px;color:#7E7E7E; font-family: Source Han Sans SC VF">职位相关文件</span>
+          <span style="font-size:2px;margin-left: 13px;color:#7E7E7E; font-family: Source Han Sans SC VF">面试相关文件</span>
         </el-upload>
         <div class="butn">
-          <el-button type="warning"  @click="submitForm('ruleForm')" style="padding-left: 38px;padding-right: 38px; background-color: #FFD74D;opacity: 0.8;color: black;line-height:50% ;">提交申请</el-button>
+          <el-button type="warning" @click="Return" style="padding-left: 38px;padding-right: 38px;opacity: 0.8;color: black;line-height:50%;" plain>返回</el-button>
+          <el-button type="warning"  @click="submitForm('ruleForm')" style="padding-left: 38px;padding-right: 38px; background-color: #FFD74D;opacity: 0.8;color: black;line-height:50% ;">安排面试</el-button>
         </div>
         <el-dialog class="dialog"
           :visible.sync="dialogVisible"
@@ -118,11 +90,8 @@
           :close-on-press-escape= true            
           width="dialogWidth"         
           center>
-          <div  class="tip" style="font-size:1rem; ">{{this.ChoosePosition}} 职位申请已提交</div>
-        
-          <div class="tip" style="font-size:0.9rem;">请等待组织负责人联系</div>    
-        
-          <div class="tip" style="font-size:0.2rem; font-weight: 500;">{{times}}秒后返回首页，<a style="text-decoration:underline;" @click="returnHome">返回</a></div> 
+          <div  class="tip" style="font-size:1rem; ">已安排面试</div> 
+          <div class="tip" style="font-size:0.2rem; font-weight: 500;">{{times}}秒后返回至申请列表，<a style="text-decoration:underline;" @click="returnHome">返回</a></div> 
         </el-dialog>
     </el-form>
   </div>
@@ -133,10 +102,11 @@
   </div>
   </template>
   <script>
+  import moment from 'moment'
   import CHeader from '@/components/CHeader.vue';
   import VueSlickCarousel from 'vue-slick-carousel'
-  import {userupload} from '../../api/index'
-  import {view} from '../../api/index'
+  import {AdminCreateView} from '../../api/index'
+  import {applicatioChange} from '../../api/index'
   import axios from 'axios';
   export default {
     
@@ -144,7 +114,7 @@
     components: { VueSlickCarousel,CHeader },
     data() {
       return {
-        data1:'',
+        value1: '',
         fileList: [],
         // 不支持多选
         multiple: false,
@@ -153,25 +123,43 @@
         dialogVisible:false,
         aheadReturn:false,
         dialogWidth: "1080px",
-        ChoosePosition:'产品经理',
+        postApply:{
+          posts:0,
+          state:0,
+          stu_num:''
+        },
         ruleForm: {
-          Position:'',
-          object:'不限',
-          nums:'',
-          classify:'互联网/电子技术',
-          experience:'无需经验',
-          task:'',
-          illustrate:'',
-          interviews_pass_info:'',
-          interviews_unpass_info:'',
+          address:'',
+          instructions:'',
+          name:'',
+          organization_name:'桑梓实验室',
+          path:'https://hqu-service-1309039959.cos.ap-shanghai.myqcloud.com/2023-08-19:06:09:58/2125103034.png',
+          posts:0,
+          posts_name:'',
+          stu_num:'',
+          time:''
           },
       };
+      },
+      watch: {
+        value1(newValue) {
+          if (newValue) {
+            const formattedDate = moment(newValue).utc().format('YYYY-MM-DDTHH:mm:ss[Z]');
+            this.ruleForm.time=formattedDate
+            console.log(this.ruleForm.time);
+            // 将符合 RFC3339 标准的日期时间格式发送到后端或进行其他操作
+          }
+        }
       },
       //改变弹出框自适应
       created() { 
         this.setDialogWidth() 
       },
       mounted() {
+        this.ruleForm.posts_name=sessionStorage.getItem('postsName')
+        this.ruleForm.name=sessionStorage.getItem('Name')
+        this.ruleForm.stu_num=sessionStorage.getItem('stuNum')
+        this.ruleForm.posts=parseInt(sessionStorage.getItem('posts'))
         window.onresize = () => {
           return (() => {
             this.setDialogWidth()
@@ -179,6 +167,9 @@
         }
       },
     methods: {
+      Return(){
+          this.$router.push('/ailApproval')
+      },
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
@@ -190,7 +181,7 @@
         });
       },
       returnHome(){
-        this.$router.replace('/Homepage') 
+        this.$router.replace('/ailApproval') 
         this.aheadReturn=true
         window.clearInterval(interval)                    
         window.close();            
@@ -221,23 +212,6 @@
             //获取文件名后缀
             let fileType = fileName.substring(fileName.lastIndexOf(".") + 1);
             let iconElement = ele.getElementsByTagName('i')[0];
-            // if (['png','jpg','jpeg',".gif",'PNG','JPG','JPEG',"GIF"].indexOf(fileType) != -1) {
-            //     iconElement.className = "imgicon-img" // 图⽚，动图
-            //   } else if (['mp4','3gp','avi',"flv",'MP4','3GP','AVI',"FLV"].indexOf(fileType) != -1) {
-            //     iconElement.className = 'imgicon-video' // 视频
-            //   } else if (['doc','docx','DOC','DOCX'].indexOf(fileType) != -1) {
-            //     iconElement.className = 'imgicon-docx' // 文档
-            //   } else if (['xls','xlsx','XLS','XLSX'].indexOf(fileType) != -1) {
-            //     iconElement.className = 'imgicon-xlsx' // 表格
-            //   } else if (['ppt','pptx','PPT','PPTX'].indexOf(fileType) != -1) {
-            //     iconElement.className = 'imgicon-pptx' // PPT
-            //   } else if (['zip','ZIP'].indexOf(fileType) != -1) {
-            //     iconElement.className = 'imgicon-zip' // 压缩包
-            //   } else if (['pdf','PDF'].indexOf(fileType) != -1) {
-            //     iconElement.className = 'imgicon-pdf' // PDF
-            //   } else {
-            //     iconElement.className = 'imgicon-default' //默认图标
-            //   }
             if (['zip','ZIP'].indexOf(fileType) != -1) {
               iconElement.className = 'imgicon-zip' // 压缩包
               let file = new FormData();
@@ -248,10 +222,28 @@
                         'token': localStorage.getItem('token')
                     }
                 }
-              axios.put("http://124.221.99.127:10810/file/userupload", file, config).then(res => {
+              axios.put("http://124.221.99.127:10810/file/adminupload", file, config).then(res => {
+                if(res.data.msg==='success'){
+                      this.$message({
+                      message: '上传成功!',
+                      type: 'success'
+                    });
+                    this.ruleForm.path=res.data.data
+                   }
+                   else{
+                    this.delFile()
+                    this.$message({
+                    message: '上传失败,请重新上传!',
+                    type: 'error'
+                  });
+                   }
                     console.log(res)
                 }).catch(res => {
-                    console.log(res)
+                  this.delFile()
+                  this.$message({
+                  message: '上传失败,请重新上传!',
+                  type: 'error'
+                });
                 })
             }
             else{
@@ -283,66 +275,36 @@
       }, 
       //保存按钮  提交文件这里可能得改
       onSubmit () {
-          let formData = new FormData();
-         //自行添加数据到formData(使用键值对方式存储)
-          formData.append("inputName", this.ruleForm.inputName);
-          formData.append("stuNum", this.ruleForm.stuNum);
-          formData.append("phoneNumber", this.ruleForm.phoneNumber);
-          formData.append("QQNumber", this.ruleForm.QQNumber);
-          formData.append("Email", this.ruleForm.Email);
-          formData.append("desc", this.ruleForm.desc);
-          formData.append("file", this.fileList.length===0? '':this.fileList[0].raw);//拿到存在fileList的文件存放到formData中
-          console.log(formData.get("file"));
-          
-        //   axios.post(post请求的具体路径, formData, {
-        //   "Content-Type": "multipart/form-data;charset=utf-8"
-        // })
-        //   .then(res => {
-        //     if (res.data === "SUCCESS") {
-        //       this.$notify({
-        //         title: '成功',
-        //         message: '提交成功',
-        //         type: 'success',
-        //         duration: 1000
-        //       });
-        //     }
-        //   })
 
-          this.dialogVisible=true;
-          this.times = 5;            
-          let that = this            
-          let interval = window.setInterval(function () {                    
-            --that.times                    
-            if (that.times === 0) {     
-              if(that.aheadReturn===false){
-                that.$router.replace('/Homepage')                                
-                window.clearInterval(interval)                    
-                window.close();            
-                that.dialogVisible = false;  //倒计时结束时运行的业务逻辑，这里的是关闭当前页面
-              }  
-            }            
-        }, 1000) 
-        //   axios.post(post请求的具体路径, formData, {
-        //   "Content-Type": "multipart/form-data;charset=utf-8"
-        // })
-        //   .then(res => {
-        //     if (res.data === "SUCCESS") {
-        //       this.$notify({
-        //         title: '成功',
-        //         message: '提交成功',
-        //         type: 'success',
-        //         duration: 1000
-        //       });
-        //     }
-        //   })
+        AdminCreateView(this.ruleForm).then(res=>{
+          console.log(this.ruleForm)
+          console.log(222)
+          console.log(res)
+          if(res.data.msg==='success'){
+            this.postApply.posts=parseInt(sessionStorage.getItem('posts'))
+            this.postApply.state=3
+            this.postApply.stu_num=sessionStorage.getItem('stuNum')
+            applicatioChange(this.postApply).then(res=>{
+              console.log(res)
+            })  
+            this.dialogVisible=true;
+            this.times = 5;            
+            let that = this            
+            let interval = window.setInterval(function () {                    
+              --that.times                    
+              if (that.times === 0) {     
+                if(that.aheadReturn===false){
+                  that.$router.replace('/ailApproval')                                
+                  window.clearInterval(interval)                    
+                  window.close();            
+                  that.dialogVisible = false;  //倒计时结束时运行的业务逻辑，这里的是关闭当前页面
+                }  
+              }            
+          }, 1000) 
+          }
+          console.log(res)
+        })
       }
-      
-  // axios异步提交:
-  
-  // 注意：使用FormData提交文件只能使用post请求
-  
-  // 在post请求体中需要设置 “Content-Type”:
-  // “multipart/form-data;charset=utf-8”,提醒后台数据是FormData类型
     },
     
   }

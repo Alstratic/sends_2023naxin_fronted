@@ -1,7 +1,8 @@
 // 请求
 import axios from 'axios'
 const instance = axios.create({
-	baseURL: 'http://124.221.99.127:10810', // api 的 base_url
+	// baseURL: 'http://124.221.99.127:10810', // api 的 base_url
+  baseURL: 'http://localhost:8080/api',
 	withCredentials: false,
 	
   })

@@ -467,3 +467,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - 改了考核列表，面试列表和申请列表布局，卡片等。
 =======
 >>>>>>> f388a8f638fce61905a8d9568fe3e0a1cb0591ca
+
+## 8-27commit 
+
+组织端除了首页非必要的功能，其他已经完成。

@@ -8,12 +8,12 @@
         <el-form :model="ruleForm" ref="ruleForm" label-width="150px" class="demo-ruleForm pl-5 ml-5" label-position="top" >
           <el-form-item
           label="招聘岗位"
-          prop="Position"
+          prop="name"
           :rules="[
           { required: true, trigger: 'blur'},
           ]"
           >
-          <el-input v-model="ruleForm.Position"></el-input>
+          <el-input v-model="ruleForm.name"></el-input>
           </el-form-item>
           <el-form-item
           label="招聘人数"
@@ -27,9 +27,9 @@
           </el-form-item>
    <el-form-item 
           label="招聘对象"
-          prop="stuNum"
+          prop="object"
           >
-          <el-select v-model="ruleForm.object" placeholder="请选择活动区域">
+          <el-select v-model="ruleForm.object">
               <el-option label="不限" value="不限"></el-option>
               <el-option label="大一" value="大一"></el-option>
               <el-option label="大二·" value="大二"></el-option>
@@ -118,10 +118,7 @@
           :close-on-press-escape= true            
           width="dialogWidth"         
           center>
-          <div  class="tip" style="font-size:1rem; ">{{this.ChoosePosition}} 职位申请已提交</div>
-        
-          <div class="tip" style="font-size:0.9rem;">请等待组织负责人联系</div>    
-        
+          <div  class="tip" style="font-size:1rem; ">{{this.ruleForm.name}} 职位发布成功</div>
           <div class="tip" style="font-size:0.2rem; font-weight: 500;">{{times}}秒后返回首页，<a style="text-decoration:underline;" @click="returnHome">返回</a></div> 
         </el-dialog>
     </el-form>
@@ -135,7 +132,7 @@
   <script>
   import CHeader from '@/components/CHeader.vue';
   import VueSlickCarousel from 'vue-slick-carousel'
-  import {userupload} from '../../api/index'
+  import {AdminPost} from '../../api/index'
   import {view} from '../../api/index'
   import axios from 'axios';
   export default {
@@ -144,7 +141,6 @@
     components: { VueSlickCarousel,CHeader },
     data() {
       return {
-        data1:'',
         fileList: [],
         // 不支持多选
         multiple: false,
@@ -153,17 +149,17 @@
         dialogVisible:false,
         aheadReturn:false,
         dialogWidth: "1080px",
-        ChoosePosition:'产品经理',
         ruleForm: {
-          Position:'',
-          object:'不限',
-          nums:'',
           classify:'互联网/电子技术',
           experience:'无需经验',
-          task:'',
+          file:'',
           illustrate:'',
           interviews_pass_info:'',
           interviews_unpass_info:'',
+          name:'',
+          nums:'',
+          object:'不限',
+          task:'',
           },
       };
       },
@@ -190,7 +186,7 @@
         });
       },
       returnHome(){
-        this.$router.replace('/Homepage') 
+        this.$router.replace('/FirstPage') 
         this.aheadReturn=true
         window.clearInterval(interval)                    
         window.close();            
@@ -248,10 +244,28 @@
                         'token': localStorage.getItem('token')
                     }
                 }
-              axios.put("http://124.221.99.127:10810/file/userupload", file, config).then(res => {
+              axios.put("http://124.221.99.127:10810/file/adminupload", file, config).then(res => {
+                   if(res.data.msg==='success'){
+                      this.$message({
+                      message: '上传成功!',
+                      type: 'success'
+                    });
+                    this.ruleForm.file=res.data.data
+                   }
+                   else{
+                    this.delFile()
+                    this.$message({
+                    message: '上传失败,请重新上传!',
+                    type: 'error'
+                  });
+                   }
                     console.log(res)
                 }).catch(res => {
-                    console.log(res)
+                  this.delFile()
+                  this.$message({
+                  message: '上传失败,请重新上传!',
+                  type: 'error'
+                });
                 })
             }
             else{
@@ -283,66 +297,26 @@
       }, 
       //保存按钮  提交文件这里可能得改
       onSubmit () {
-          let formData = new FormData();
-         //自行添加数据到formData(使用键值对方式存储)
-          formData.append("inputName", this.ruleForm.inputName);
-          formData.append("stuNum", this.ruleForm.stuNum);
-          formData.append("phoneNumber", this.ruleForm.phoneNumber);
-          formData.append("QQNumber", this.ruleForm.QQNumber);
-          formData.append("Email", this.ruleForm.Email);
-          formData.append("desc", this.ruleForm.desc);
-          formData.append("file", this.fileList.length===0? '':this.fileList[0].raw);//拿到存在fileList的文件存放到formData中
-          console.log(formData.get("file"));
-          
-        //   axios.post(post请求的具体路径, formData, {
-        //   "Content-Type": "multipart/form-data;charset=utf-8"
-        // })
-        //   .then(res => {
-        //     if (res.data === "SUCCESS") {
-        //       this.$notify({
-        //         title: '成功',
-        //         message: '提交成功',
-        //         type: 'success',
-        //         duration: 1000
-        //       });
-        //     }
-        //   })
-
-          this.dialogVisible=true;
-          this.times = 5;            
-          let that = this            
-          let interval = window.setInterval(function () {                    
-            --that.times                    
-            if (that.times === 0) {     
-              if(that.aheadReturn===false){
-                that.$router.replace('/Homepage')                                
-                window.clearInterval(interval)                    
-                window.close();            
-                that.dialogVisible = false;  //倒计时结束时运行的业务逻辑，这里的是关闭当前页面
-              }  
-            }            
-        }, 1000) 
-        //   axios.post(post请求的具体路径, formData, {
-        //   "Content-Type": "multipart/form-data;charset=utf-8"
-        // })
-        //   .then(res => {
-        //     if (res.data === "SUCCESS") {
-        //       this.$notify({
-        //         title: '成功',
-        //         message: '提交成功',
-        //         type: 'success',
-        //         duration: 1000
-        //       });
-        //     }
-        //   })
+        AdminPost(this.ruleForm).then(res=>{
+          if(res.data.msg==='success'){
+            this.dialogVisible=true;
+            this.times = 5;            
+            let that = this            
+            let interval = window.setInterval(function () {                    
+              --that.times                    
+              if (that.times === 0) {     
+                if(that.aheadReturn===false){
+                  that.$router.replace('/FirstPage')                                
+                  window.clearInterval(interval)                    
+                  window.close();            
+                  that.dialogVisible = false;  //倒计时结束时运行的业务逻辑，这里的是关闭当前页面
+                }  
+              }            
+          }, 1000) 
+          }
+          console.log(res)
+        })
       }
-      
-  // axios异步提交:
-  
-  // 注意：使用FormData提交文件只能使用post请求
-  
-  // 在post请求体中需要设置 “Content-Type”:
-  // “multipart/form-data;charset=utf-8”,提醒后台数据是FormData类型
     },
     
   }
