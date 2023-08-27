@@ -26,15 +26,15 @@ props: {
       status: String,
       tags: Array,
 },
-methods:{
-// ChooseCollect(){
-//     //补充：给后端发
-//     this.isCollect=!this.isCollect
+// methods:{
+// // ChooseCollect(){
+// //     //补充：给后端发
+// //     this.isCollect=!this.isCollect
+// // }
+// },
+// created:{
+// //补充：从后端获得isCollect的状态
 // }
-},
-created:{
-//补充：从后端获得isCollect的状态
-}
 }
 </script>
 

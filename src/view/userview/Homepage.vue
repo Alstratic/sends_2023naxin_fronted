@@ -40,12 +40,14 @@
             <hot-position-card
             v-for="(data,index) in row"
             :key="index"
-            :position-name="data.positionName"
-            :position-num="data.positionNum"
-            :tags="data.tags"
-            :logo="data.logo"
-            :organization-name="data.organizationName"
-            :organization-type="data.organizationType"
+            :position-name="data.Name"
+            :position-num="data.Nums"
+            :tags="mergeTags(data)"
+            :logo="data.OrganizationPath"
+            :organization-name="data.OrganizationName"
+            :OrganizationCategory="data.OrganizationCategory"
+            :organizationClassify="data.OrganizationClassify"
+            :id="data.id"
             />
           </div>
         </div>
@@ -102,27 +104,29 @@
       goToPositionDetailsPage(){
         this.$router.push('/user/All_positions');
       },
+      mergeTags(cardData) {
+        const mergedTags = []
+        if (cardData.Classify) {
+          mergedTags.push(cardData.Classify)
+        }
+        if (cardData.Experience) {
+          mergedTags.push(cardData.Experience)
+        }
+        if (cardData.Object) {
+          mergedTags.push(cardData.Object)
+        }
+        return mergedTags
+    },
     },
   
   
     mounted(){
-      // let that=this;
-      // const urls = [
-      //   'http://124.221.99.127:10810/square/posts/host?number=2'
-      // ];
-      // for(let i =0;i<urls.length;i++)
-      // {
-      //   axios.get(urls[i])
-      //     .then(response => {
-      //     // 将从后端获取的数据填充到 cardDataList 中
-      //     that.cardDataList.push(response.data.data);
-      //     console.log(response.data.code);
-      //     console.log(response.data.msg);
-      //   })
-      //     .catch(error => {
-      //     console.error('Failed to fetch card data:', error);
-      //   });
-      // }
+      let that=this;
+      let baseUrl = 'http://124.221.99.127:10810/square/posts/host?number=9'
+      axios.get(baseUrl).then((response)=>{
+        console.log(response.data.data.posts)
+        this.cardDataList=response.data.data.posts
+      })
   
       window.addEventListener('resize',()=>{
         this.windowWidth=window.innerWidth
