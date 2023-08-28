@@ -11,7 +11,7 @@ const isLogin = () => {
 
 const wxRedirect = () => {
   location.href = `https://apps.hqu.edu.cn/wechat-hqu/wechatauth.html?proxyTo=authoauth&sendUrl=/connect/oauth2/authorize?appid=wxfe035b066fb1158b&redirect_uri=${encodeURIComponent(
-    'https://recruit-manage.sends.cc/LoginSucess'
+    'http://localhost:8080/LoginSucess'
   )}&encode_flag=Y&response_type=code&scope=snsapi_userinfo#wechat_redirect`
   
 }
