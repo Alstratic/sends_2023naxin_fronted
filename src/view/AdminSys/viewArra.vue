@@ -181,7 +181,7 @@
         });
       },
       returnHome(){
-        this.$router.replace('/ailApproval') 
+        this.$router.replace('/admin/ailApproval') 
         this.aheadReturn=true
         window.clearInterval(interval)                    
         window.close();            
