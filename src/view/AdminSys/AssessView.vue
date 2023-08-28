@@ -81,7 +81,12 @@ export default {
     },
     GoAssessDetail(id,all,fin){
       sessionStorage.setItem('PostId',id)
-      this.$router.push('/AssessDetail')
+      const currentPath=this.$route.path;
+            const targetPath='/admin/AssessDetail';
+            if(currentPath !== targetPath)
+            {
+                this.$router.push(targetPath)
+            }
     }
   
   }

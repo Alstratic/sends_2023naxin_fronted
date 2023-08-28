@@ -186,7 +186,7 @@
         });
       },
       returnHome(){
-        this.$router.replace('/FirstPage') 
+        this.$router.replace('/admin/FirstPage') 
         this.aheadReturn=true
         window.clearInterval(interval)                    
         window.close();            
@@ -306,7 +306,7 @@
               --that.times                    
               if (that.times === 0) {     
                 if(that.aheadReturn===false){
-                  that.$router.replace('/FirstPage')                                
+                  that.$router.replace('/admin/FirstPage')                                
                   window.clearInterval(interval)                    
                   window.close();            
                   that.dialogVisible = false;  //倒计时结束时运行的业务逻辑，这里的是关闭当前页面

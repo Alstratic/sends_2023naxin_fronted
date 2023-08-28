@@ -34,7 +34,12 @@
     methods:{
       CheckCard(id){
         sessionStorage.setItem('id',id)
-        this.$router.push('/jobDetails')
+        const currentPath=this.$route.path;
+            const targetPath='/admin/jobDetails';
+            if(currentPath !== targetPath)
+            {
+                this.$router.push(targetPath)
+            }
       }
     }
   };

@@ -105,7 +105,12 @@ export default {
   },
   methods: {
     Return(){
-      this.$router.push('/jobList')
+      const currentPath=this.$route.path;
+            const targetPath='/admin/jobList';
+            if(currentPath !== targetPath)
+            {
+                this.$router.push(targetPath)
+            }
     },
     EndRecruit(){
       this.$confirm('确定结束招聘?', '提示', {

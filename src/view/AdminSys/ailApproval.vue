@@ -238,7 +238,7 @@ export default{
       sessionStorage.setItem('posts',posts)
       sessionStorage.setItem('Name',Name)
       sessionStorage.setItem('stuNum',stuNum)
-      this.$router.push('/viewArra')
+      this.$router.push('/admin/viewArra')
     }
   },
   mounted(){
