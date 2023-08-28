@@ -294,7 +294,7 @@
               --that.times                    
               if (that.times === 0) {     
                 if(that.aheadReturn===false){
-                  that.$router.replace('/ailApproval')                                
+                  that.$router.replace('/admin/ailApproval')                                
                   window.clearInterval(interval)                    
                   window.close();            
                   that.dialogVisible = false;  //倒计时结束时运行的业务逻辑，这里的是关闭当前页面
