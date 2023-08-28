@@ -5,39 +5,26 @@
       <Login_nav></Login_nav>
     </el-header>
     <!-- main区域 -->
-    <el-main>
-      <div class="all-position-tags">
+    <el-main style="display: flex;flex-direction: column;">
+      <div class="all-position-tags" style="margin-bottom: 1vh;" >
         <div class="all-position-font">
           <span class="all-position-font-detail">全部职位</span>
         </div>
         <div class="all-position-tags-detail">
           <div class="position-tags-types-detail">
-            <span>组织分类</span>
+            <span style="text-align: center;line-height: 35px;margin-right: 9px;">组织分类</span>
+            <div>
+                <Positiontag
+                  :tags="this.organClass"
+                  :id="1"
+                  @tag-selected="SlctTagId"
+                >
+                </Positiontag>
+            </div>
           </div>
           <div class="position-tags-types-detail">
-            <span>组织类别</span>
-          </div>
-          <div class="position-tags-types-detail">
-            <span>职位分类</span>
-          </div>
-          <div class="position-tags-types-detail">
-            <span>招聘对象</span>
-          </div>
-          <div class="position-tags-types-detail">
-            <span>职位经验</span>
-          </div>
-        </div>
-        <div class="position-detail-tags">
-          <!--  -->
-          <div>
-            <Positiontag
-              :tags="this.organClass"
-              :id="1"
-              @tag-selected="SlctTagId"
-            >
-            </Positiontag>
-          </div>
-          <div>
+            <span style="text-align: center;line-height: 35px;margin-right: 9px;">组织类别</span>
+            <div>
             <Positiontag
               :tags="this.organType"
               :id="2"
@@ -45,7 +32,10 @@
             >
             </Positiontag>
           </div>
-          <div>
+          </div>
+          <div class="position-tags-types-detail">
+            <span style="text-align: center;line-height: 35px;margin-right: 9px;">职位分类</span>
+            <div>
             <Positiontag
               :tags="this.PosiTags"
               :id="3"
@@ -53,7 +43,10 @@
             >
             </Positiontag>
           </div>
-          <div>
+          </div>
+          <div class="position-tags-types-detail">
+            <span style="text-align: center;line-height: 35px;margin-right: 9px;">招聘对象</span>
+            <div>
             <Positiontag
               :tags="this.recruitTags"
               :id="4"
@@ -61,7 +54,10 @@
             >
             </Positiontag>
           </div>
-          <div>
+          </div>
+          <div class="position-tags-types-detail">
+            <span style="text-align: center;line-height: 35px;margin-right: 9px;">职位经验</span>
+            <div>
             <Positiontag
               :tags="this.posiExperience"
               :id="5"
@@ -69,9 +65,9 @@
             >
             </Positiontag>
           </div>
+          </div>
         </div>
       </div>
-
       <div class="position-cards">
         <div
           class="row-card"
@@ -229,7 +225,7 @@ export default {
   width: 100%;
   background-color: #fff;
   padding-left: 15%;
-  height: 40%;
+
   flex-wrap: wrap;
   flex-direction: row;
   @media (max-width: 769px) {
@@ -252,7 +248,8 @@ export default {
 }
 
 .position-tags-types-detail {
-  margin-top: 10px;
+  display: flex;
+  margin-top: 8px;
 }
 
 .position-tags-types-detail span {
@@ -280,7 +277,6 @@ export default {
   flex-wrap: wrap;
   width: 65%;
   @media (max-width: 769px) {
-    height: auto;
     flex-wrap: wrap;
     width: 96%;
   }
@@ -288,8 +284,8 @@ export default {
 
 .el-card.box-card.is-always-shadow {
   @media (max-width: 769px) {
-    width: 47%;
-    height: 32%;
+    width: 100%;
+    height: 100%;
   }
 }
 .Position-tag-list label.active {

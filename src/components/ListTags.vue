@@ -23,7 +23,6 @@ export default{
         toggleTag(index) {
             // 先判断是否有标签被选中
             this.selectedTags = this.selectedTags.map((_, idx) => idx === index);
-            console.log(this.selectedTags)
             this.$emit('tag-selected',this.tags[index]);
         }
     }

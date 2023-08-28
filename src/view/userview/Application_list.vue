@@ -11,32 +11,19 @@
             <span class="application-list-font-detail"> 申请列表 </span>
           </div>
           <div class="application-list-tags">
-            <ListTags
-             :tags="this.tags"
-             @tag-selected="SlctTagId">
-            </ListTags>
+            <ListTags :tags="this.tags" @tag-selected="SlctTagId"> </ListTags>
           </div>
         </div>
-        <div class="application-card-list">
+        <div class="application-card-list" v-if="!isEmpty">
           <Application_list_card
-            :position-name="cardData.positionName"
-            :status="cardData.Status"
-            :tags="cardData.tags"
-          >
-          </Application_list_card>
-          <Application_list_card
-            :position-name="cardData.positionName"
-            :status="cardData.Status"
-            :tags="cardData.tags"
-          >
-          </Application_list_card>
-          <Application_list_card
-            :position-name="cardData.positionName"
-            :status="cardData.Status"
-            :tags="cardData.tags"
+            v-for="(cardData, cardIndex) in cardData"
+            :key="cardIndex"
+            :position-name="cardData.postsName"
+            :status="cardData.State"
           >
           </Application_list_card>
         </div>
+        <el-empty description="描述文字" v-else></el-empty>
       </div>
     </el-main>
   </el-container>
@@ -60,22 +47,54 @@ export default {
     return {
       tags: ['全部', '查看阶段', '面试阶段', '考核阶段', '完成阶段'],
       selectedTags: [true, false, false, false, false],
-      baseUrl:'http://124.221.99.127:10810/user/applications/view',
-      cardData: {},
-      stage:-1,
+      baseUrl: 'http://124.221.99.127:10810/user/applications/view',
+      cardData: [],
+      showData1: [],
+      showData2: [],
+      showData3: [],
+      showData4: [],
+      AllcardData: [],
+      isEmpty: false,
     }
   },
   methods: {
-    SlctTagId(tag)
-    {
+    SlctTagId(tag) {
       console.log(tag)
-    }
+      if (tag === '查看阶段') {
+        this.cardData = this.showData1
+        return
+      } else if (tag === '面试阶段') {
+        this.cardData = this.showData2
+        return
+      } else if (tag === '考核阶段') {
+        this.cardData = this.showData3
+        return
+      } else if (tag === '完成阶段') {
+        this.cardData = this.showData4
+        return
+      } else {
+        this.cardData = this.AllcardData
+        return
+      }
+    },
+    mergeTags(cardData) {
+      const mergedTags = []
+      if (cardData.Classify) {
+        mergedTags.push(cardData.Classify)
+      }
+      if (cardData.Experience) {
+        mergedTags.push(cardData.Experience)
+      }
+      if (cardData.Object) {
+        mergedTags.push(cardData.Object)
+      }
+      return mergedTags
+    },
   },
   mounted() {
     let that = this
-    let stage=Number(this.stage)
-    let data={
-      'stage':stage
+    let data = {
+      stage: -1,
     }
 
     let headers = {
@@ -84,11 +103,36 @@ export default {
       token: localStorage.getItem('HQU_naxin'),
     }
 
-    axios.post(this.baseUrl,data,{headers})
+    axios
+      .post(this.baseUrl, data, { headers })
       .then((response) => {
         // 将从后端获取的数据填充到 cardData 对象中
-        // that.cardData = response.data
-        console.log(response)
+        that.cardData = response.data.data.applications
+        that.AllcardData = that.cardData
+        for (let i = 0; i < that.cardData.length; i++) {
+          if (that.cardData[i].State === undefined) {
+            that.cardData[i].State = 0
+            that.AllcardData = that.cardData
+            that.showData1.push(this.cardData[i])
+          } else if (that.cardData[i].State === 1) {
+            that.showData1.push(this.cardData[i])
+          } else if (that.cardData[i].State === 3) {
+            that.showData2.push(this.cardData[i])
+          } else if (
+            that.cardData[i].State === 4 ||
+            that.cardData[i].State === 5 ||
+            that.cardData[i].State === 6
+          ) {
+            that.showData3.push(this.cardData[i])
+          } else if (
+            that.cardData[i].State === 2 ||
+            that.cardData[i].State === 7 ||
+            that.cardData[i].State === 8
+          ) {
+            that.showData4.push(this.cardData[i])
+          }
+        }
+        console.log(that.AllcardData)
       })
       .catch((error) => {
         console.error('Failed to fetch card data:', error)
