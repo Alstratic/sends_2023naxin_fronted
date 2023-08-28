@@ -168,7 +168,7 @@
       },
     methods: {
       Return(){
-          this.$router.push('/ailApproval')
+          this.$router.push('/admin/ailApproval')
       },
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
