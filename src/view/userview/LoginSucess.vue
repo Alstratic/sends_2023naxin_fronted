@@ -33,7 +33,9 @@ export default {
   methods: {
   checkToken() {
     try {
-      const code = getWechatCode();
+     const hashParams = new URLSearchParams(window.location.hash.split('?')[1]);
+     const code=hashParams.get('code');
+      this.a=code
       console.log(code)
       if (!code) {
         this.isLoggedIn = true;
