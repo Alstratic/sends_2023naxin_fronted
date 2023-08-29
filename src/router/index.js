@@ -30,11 +30,20 @@ import LoginSucess from '../view/userview/LoginSucess.vue'
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/', component: Login },
   {
-    path: '*',
-    redirect: Login,
+    path: '/',
+    redirect: '/Login'
   },
+  {
+    name:'Login',
+    path:'/Login',
+    component: () => import('../view/userview/Login.vue')
+  },
+  // { path: '/', name:'Login',component: ()=>import('../view/userview/Login.vue') },
+  // {
+  //   path: '*',
+  //   redirect: Login,
+  // },
 {
   path: '/user/homepage', component: Homepage
   // 需要登录后才能访问的页面
@@ -52,27 +61,27 @@ const routes = [
 { path: '/user/Exam_list', component: Exam_list },
 { path: '/user/Collection_list', component: Collection_list },
   {path:'/wxLogin',component:wxLogin},
-  {path:'/LoginSucess',component:LoginSucess},
+  {path:'/LoginSucess',name:'LoginSucess',component: ()=>import('../view/userview/LoginSucess.vue') },
   {
     path: '/TabView',
     name: 'TabView',
-    component: TabView, // 这里是核心： center作为容器组件，包含左右菜单和右侧的router-view，所以下面的子组件实际是显示在router-view
+    component: ()=>import('../view/AdminSys/TabView.vue') , // 这里是核心： center作为容器组件，包含左右菜单和右侧的router-view，所以下面的子组件实际是显示在router-view
     redirect: { name: 'FirstPage' }, // 输入路由center会重定向到a页面
     children: [
       {
-        path: '/admin/FirstPage',
         name: 'FirstPage',
-        component: FirstPage
+        path: '/admin/FirstPage',
+        component:  ()=>import('../view/AdminSys/FirstPage.vue')
       },
       {
-        path: '/admin/jobList',
         name: 'jobList',
-        component: jobList
+        path: '/admin/jobList',
+        component: ()=>import('../view/AdminSys/jobList.vue')
       },
       {
-        path: '/admin/jobDetails',
         name: 'jobDetails',
-        component: jobDetails
+        path: '/admin/jobDetails',
+        component: ()=>import('../view/AdminSys/jobDetails.vue')
       },
       {
         path: '/admin/jobpost',
@@ -114,7 +123,6 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  mode:"history",
   routes
 })
 // 导航守卫 如果没登录就访问不了其他页面
