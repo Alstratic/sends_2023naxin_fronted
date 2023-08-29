@@ -10,34 +10,15 @@
           <span class="application-list-font-detail"> 面试列表 </span>
         </div>
         <div class="application-list-tags">
-          <!-- <label v-for="(tag,index) in tags" :key="tag" :class="selectedTags[index] ? 'active' : ''" class="application-list-tag">
-                       <input type="checkbox" v-model="selectedTags[index]" style="display: none" @click="toggleTag(index)">{{ tag }}
-                   </label> -->
-          <label
-            v-for="(tag, index) in tags"
-            :key="tag"
-            :class="{ active: selectedTags[index] }"
-            class="application-list-tag"
-            @click="selectTag(index)"
-          >
-            {{ tag }}
-          </label>
+            <ListTags :tags="this.tags" @tag-selected="SlctTagId"> </ListTags>
         </div>
       </div>
       <div class="application-card-list">
         <Interview_list_card
-          :position-name="cardData.positionName"
-          :status="cardData.Status"
-        >
-        </Interview_list_card>
-        <Interview_list_card
-          :position-name="cardData.positionName"
-          :status="cardData.Status"
-        >
-        </Interview_list_card>
-        <Interview_list_card
-          :position-name="cardData.positionName"
-          :status="cardData.Status"
+          v-for="(cardData,cardIndex) in cardData"
+          :key="cardIndex"
+          :position-name="cardData.name"
+          :status="formattedDateTime(cardData.time.seconds)"
         >
         </Interview_list_card>
       </div>
@@ -49,33 +30,84 @@
 import Login_nav from '@/components/Login_nav.vue'
 import axios from 'axios'
 import Interview_list_card from '@/components/Interview_list_card.vue'
-import CHeader from '@/components/CHeader.vue'
+import ListTags from '@/components/ListTags.vue'
 export default {
-  components: { Login_nav, axios, Interview_list_card, CHeader },
+  components: { Login_nav, axios, Interview_list_card, ListTags },
   data() {
     return {
       tags: ['全部', '待面试', '面试结束'],
       selectedTags: [true, false, false],
+      baseUrl: 'http://124.221.99.127:10810/user/wait/view',
       cardData: {},
+      showData1:[],
+      showData2:[],
+      AllcardData:[]
     }
   },
   methods: {
-    selectTag(index) {
-      this.selectedTags = this.selectedTags.map((_, idx) => idx === index)
+    SlctTagId(tag) {
+      console.log(tag)
+      if (tag === '待面试') {
+        this.cardData = this.showData1
+        return
+      } else if (tag === '面试结束') {
+        this.cardData = this.showData2
+        return
+      } else {
+        this.cardData = this.AllcardData
+        return
+      }
     },
+    formattedDateTime(seconds) {
+      const milliseconds = seconds * 1000; // 转换为毫秒
+      const date = new Date(milliseconds);
+      // 获取月、日、小时、分钟
+      const month = date.getMonth() + 1; // 月份从0开始，所以要加1
+      const day = date.getDate();
+      const hours = date.getHours();
+      const minutes = date.getMinutes();
+      // 格式化日期时间
+      const formattedDate = `${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+      const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+
+      return `${formattedDate} ${formattedTime}`;
+    }
   },
   mounted() {
     let that = this
+    let data = {
+      stage: 0,
+    }
+    let headers = {
+      'Content-Type': 'application/json',
+      accept: 'application/json',
+      token: localStorage.getItem('HQU_naxin'),
+    }
     axios
-      .get('/api/cardData/11')
+      .post(this.baseUrl, data, { headers })
       .then((response) => {
         // 将从后端获取的数据填充到 cardData 对象中
-        that.cardData = response.data
+        that.cardData = response.data.data.wait
+        console.log(response.data.data.wait)
+        that.AllcardData = that.cardData
+        // for (let i = 0; i < that.cardData.length; i++) {
+        //   if (that.cardData[i].State === undefined) {
+        //     that.cardData[i].State = 0
+        //     that.AllcardData = that.cardData
+        //     that.showData1.push(this.cardData[i])
+        //   } else if (that.cardData[i].State === 1) {
+        //     that.showData1.push(this.cardData[i])
+        //   } else if (that.cardData[i].State === 3) {
+        //     that.showData2.push(this.cardData[i])
+        //   }
+        // }
+        console.log(that.AllcardData)
       })
       .catch((error) => {
         console.error('Failed to fetch card data:', error)
       })
   },
+
 }
 </script>
    

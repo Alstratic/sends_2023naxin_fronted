@@ -10,35 +10,16 @@
             <span class="application-list-font-detail"> 考核列表 </span>
           </div>
           <div class="application-list-tags">
-            <label
-              v-for="(tag, index) in tags"
-              :key="tag"
-              :class="{ active: selectedTags[index] }"
-              class="application-list-tag"
-            >
-              <input
-                type="checkbox"
-                v-model="selectedTags[index]"
-                style="display: none"
-                @click="toggleTag(index)"
-              />{{ tag }}
-            </label>
+            <ListTags :tags="this.tags" @tag-selected="SlctTagId"> </ListTags>
           </div>
         </div>
         <div class="application-card-list">
           <Exam
-            :position-name="cardData.positionName"
-            :status="cardData.Status"
-          >
-          </Exam>
-          <Exam
-            :position-name="cardData.positionName"
-            :status="cardData.Status"
-          >
-          </Exam>
-          <Exam
-            :position-name="cardData.positionName"
-            :status="cardData.Status"
+            v-for="(cardData, cardIndex) in cardData"
+            :key="cardIndex"
+            :taskName="cardData.name"
+            :position-name="cardData.postsName"
+            :status="cardData.state"
           >
           </Exam>
         </div>
@@ -53,42 +34,94 @@ import axios from 'axios'
 import Interview_list_card from '@/components/Interview_list_card.vue'
 import Exam from '@/components/Exam.vue'
 import CHeader from '@/components/CHeader.vue'
+import ListTags from '@/components/ListTags.vue'
 export default {
-  components: { Login_nav, axios, Interview_list_card, Exam, CHeader },
+  components: {
+    Login_nav,
+    axios,
+    Interview_list_card,
+    Exam,
+    CHeader,
+    ListTags,
+  },
   data() {
     return {
       tags: ['全部', '待完成', '已完成', '已截止'],
       selectedTags: [true, false, false, false, false],
-      cardData: {},
+      baseUrl1: 'http://124.221.99.127:10810/user/task/view',
+      baseUrl2:'http://124.221.99.127:10810/user/access/view',
+      cardData: [],
+      showData1:[],
+      showData2:[],
+      showData3:[],
+      AllcardData:[],
+      posts:[]
     }
   },
   methods: {
-    toggleTag(index) {
-      // 先判断是否有标签被选中
-      if (this.selectedTags.includes(true)) {
-        // 如果有标签被选中，则执行选中操作
-        this.selectedTags = this.selectedTags.map((tag, idx) =>
-          idx === index ? !tag : false
-        )
+    SlctTagId(tag) {
+      console.log(tag)
+      if (tag === '待完成') {
+        this.cardData = this.showData1
+        return
+      } else if (tag === '已完成') {
+        this.cardData = this.showData2
+        return
+      } else if (tag === '已截止') {
+        this.cardData = this.showData3
+        return
       } else {
-        // 如果没有标签被选中，则直接将点击的标签设置为选中状态（true）。
-        this.selectedTags[index] = true
+        this.cardData = this.AllcardData
+        return
       }
-      console.log(this.selectedTags)
     },
   },
-  mounted() {
-    let that = this
-    axios
-      .get('/api/cardData/11')
-      .then((response) => {
-        // 将从后端获取的数据填充到 cardData 对象中
-        that.cardData = response.data
-      })
-      .catch((error) => {
-        console.error('Failed to fetch card data:', error)
-      })
-  },
+  async mounted() {
+  try {
+    let that = this;
+    let data = {
+      stage: -1,
+    };
+
+    let headers = {
+      'Content-Type': 'application/json',
+      accept: 'application/json',
+      token: localStorage.getItem('HQU_naxin'),
+    };
+
+    const response1 = await axios.post(this.baseUrl1, data, { headers });
+    console.log(response1.data.data.task);
+    that.cardData = response1.data.data.task;
+    that.AllcardData = that.cardData;
+    for (let i = 0; i < that.cardData.length; i++) {
+      if (that.cardData[i].state === undefined) {
+        that.cardData[i].state = 0;
+        that.showData1.push(this.cardData[i]);
+        that.posts.push(this.cardData[i].posts);
+      } else if (that.cardData[i].state === 1) {
+        that.showData2.push(this.cardData[i]);
+        that.posts.push(this.cardData[i].posts);
+      } else if (that.cardData[i].state === 2) {
+        that.showData3.push(this.cardData[i]);
+        that.posts.push(this.cardData[i].posts);
+      }
+    }
+    console.log(this.posts);
+
+    let posts = this.posts;
+
+    let data2 = {
+      organization: 1,
+      posts: posts.map(element => element),
+    };
+    console.log(data2.posts)
+
+    const response2 = await axios.post(this.baseUrl2, data2, { headers });
+    console.log(response2);
+  } catch (error) {
+    console.error('Failed to fetch card data:', error);
+  }
+},
 }
 </script>
    

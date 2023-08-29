@@ -3,12 +3,12 @@
       <div style="display: flex;justify-content: space-between;">
           <div style="display: flex;flex-direction: column;justify-content: space-between;">
             <div class="hot-position-details">
-              <span class="hot-position-name">{{positionName}}</span>
+              <span class="hot-position-name">{{ taskName }}</span>
             </div>
             <div style="margin-top: 5px;">
                 <!-- 产品经理这里记得改 -->
               <span style="color: #7E7E7E;font-family: Source Han Sans SC VF;
-                  font-size: 16px;font-weight: 400;">产品经理</span>
+                  font-size: 16px;font-weight: 400;">{{positionName}}</span>
             </div>
             <div class="organization-detail1">
               <div class="organization-details-name1">
@@ -21,8 +21,7 @@
           </div>
           <div style="display: flex;">
             <div style="display: flex;flex-direction: column;justify-content: space-around;">
-              <span class="hot-position-num">{{status}}</span>
-              <span style="color:#D0B65C;">time</span>
+              <span class="hot-position-num">{{statusText}}</span>
              
             </div>
           </div>
@@ -34,12 +33,20 @@
   <script>
   export default{
   props: {
+    taskName:String,
     positionName: String,
-        status: String,
-       
+    status: Number,
+  },
+  data(){
+    return{
+      statusBar:[
+        '待完成',
+        '已完成',
+        '已截止'
+      ]
+    }
   },
   methods:{
-  
      //放弃面试
     async abandonView(){
         this.$confirm('您是否放弃面试?', '提示', {
@@ -69,9 +76,14 @@
   //     this.isCollect=!this.isCollect
   // }
   },
-  created:{
-  //补充：从后端获得isCollect的状态
+  computed:{
+    statusText() {
+      return this.statusBar[this.status]
+    },
   }
+  // created:{
+  // //补充：从后端获得isCollect的状态
+  // }
   }
   </script>
   
