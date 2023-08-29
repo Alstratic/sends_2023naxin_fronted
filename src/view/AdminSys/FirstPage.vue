@@ -12,7 +12,7 @@
               <span class="organization-type" v-if="vVisible">{{TableTxt.label2}}</span>
               <input type="text" size="10" class="organization-type" v-else v-model="TableTxt.label2">
             </div>
-              <el-button size="mini" style="border-color: #FFD74D; margin-left: 6px;" v-if="vVisible" @click="edit">编辑信息</el-button>
+              <el-button size="mini" style="border-color: #FFD74D; margin-left: 6px;" v-if="vVisible" @click="edit">编辑</el-button>
               <el-button size="mini" style="border-color: #FFD74D;" v-else  @click="Finish">完成</el-button>
       </div>
     </el-card>
