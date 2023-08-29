@@ -20,7 +20,7 @@
     methods: {
       async sendCodeToBackend(code) {
         try {
-          const response = await axios.post('http://124.221.99.127:10810/user/login', { code });
+          const response = await axios.post('https://recruit.sends.cc/api/user/login', { code });
           const token = response.data.token;
   
           // Save the 'token' to local storage or state

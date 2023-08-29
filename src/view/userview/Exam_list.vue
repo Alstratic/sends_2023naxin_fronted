@@ -48,8 +48,8 @@ export default {
     return {
       tags: ['全部', '待完成', '已完成', '已截止'],
       selectedTags: [true, false, false, false, false],
-      baseUrl1: 'http://124.221.99.127:10810/user/task/view',
-      baseUrl2:'http://124.221.99.127:10810/user/access/view',
+      baseUrl1: 'https://recruit.sends.cc/api/user/task/view',
+      baseUrl2:'https://recruit.sends.cc/api/user/access/view',
       cardData: [],
       showData1:[],
       showData2:[],

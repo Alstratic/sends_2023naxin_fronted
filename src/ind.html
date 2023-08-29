@@ -23,7 +23,7 @@
         formData.append('fields',JSON.stringify(fields));//文件上传时携带的参数
         $.ajax({
             type: 'put',
-            url: 'http://124.221.99.127:10810/file/userupload',
+            url: 'https://recruit.sends.cc/api/file/userupload',
             data: formData,
             processData: false,//防止数据被转成字符串
             contentType:false,

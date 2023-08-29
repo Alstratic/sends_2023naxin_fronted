@@ -296,7 +296,7 @@ export default {
               }
               axios
                 .put(
-                  'http://124.221.99.127:10810/file/userupload',
+                  'https://recruit.sends.cc/api/file/userupload',
                   formData,
                   config
                 )
@@ -364,7 +364,7 @@ export default {
 
       axios
         .post(
-          'http://124.221.99.127:10810/user/applications/submit',
+          'https://recruit.sends.cc/api/user/applications/submit',
           formData,
           { headers }
         )

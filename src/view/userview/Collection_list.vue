@@ -60,7 +60,7 @@ export default{
       return{
           tags:['全部','进行中','已结束'],
           selectedTags:[true,false,false,false,false],
-          baseUrl:'http://124.221.99.127:10810/square/posts/',
+          baseUrl:'https://recruit.sends.cc/api/square/posts/',
           cardData:[],
           token:String
       }
@@ -95,7 +95,7 @@ export default{
         }
 
         axios
-        .get('http://124.221.99.127:10810/square/posts/favorite',{headers,params})
+        .get('https://recruit.sends.cc/api/square/posts/favorite',{headers,params})
         .then((response) => {
             // 将从后端获取的数据填充到 cardData 对象中
             that.cardData=(response.data.data.posts)

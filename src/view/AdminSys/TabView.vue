@@ -111,7 +111,7 @@ export default{
     },
     async checkCode(code) {
       try {
-        const response = await axios.post('http://124.221.99.127:10810/admin/login', { code });
+        const response = await axios.post('https://recruit.sends.cc/api/admin/login', { code });
         // alert(response.data.code,response.data.data,response.data.msg);
         const token = response.data.data;
         // 保存 'token' 到本地存储

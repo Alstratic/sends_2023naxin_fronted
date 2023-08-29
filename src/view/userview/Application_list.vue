@@ -47,7 +47,7 @@ export default {
     return {
       tags: ['全部', '查看阶段', '面试阶段', '考核阶段', '完成阶段'],
       selectedTags: [true, false, false, false, false],
-      baseUrl: 'http://124.221.99.127:10810/user/applications/view',
+      baseUrl: 'https://recruit.sends.cc/api/user/applications/view',
       cardData: [],
       showData1: [],
       showData2: [],
