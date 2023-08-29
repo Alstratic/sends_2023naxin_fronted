@@ -126,7 +126,7 @@ export default {
               'token': localStorage.getItem('token')
           }
           }
-          axios.put(`http://124.221.99.127:10810/admin/posts/${this.post.id}/state`, null,config).then(res=>{
+          axios.put(`https://recruit-manage.sends.cc/api/admin/posts/${this.post.id}/state`, null,config).then(res=>{
             this.$message({
             type: 'success',
             message: '已结束招聘!'

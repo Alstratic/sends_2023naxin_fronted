@@ -244,7 +244,7 @@
                         'token': localStorage.getItem('token')
                     }
                 }
-              axios.put("http://124.221.99.127:10810/file/adminupload", file, config).then(res => {
+              axios.put("https://recruit-manage.sends.cc/api/file/adminupload", file, config).then(res => {
                    if(res.data.msg==='success'){
                       this.$message({
                       message: '上传成功!',

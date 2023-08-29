@@ -63,7 +63,7 @@ export default{
                     return;
                 }
 
-                const response = await axios.post('http://124.221.99.127:10810/user/check-token', { code });
+                const response = await axios.post('https://recruit-manage.sends.cc/api/user/check-token', { code });
                 console.log(response)
                 if (response.data.code === 1000) {
                     this.isLoggedIn = false; // 有效 token，将登录状态设置为 false
