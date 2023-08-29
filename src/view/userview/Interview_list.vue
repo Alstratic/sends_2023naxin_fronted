@@ -17,6 +17,7 @@
         <Interview_list_card
           v-for="(cardData,cardIndex) in cardData"
           :key="cardIndex"
+          :id="cardData.posts"
           :position-name="cardData.name"
           :status="formattedDateTime(cardData.time.seconds)"
         >

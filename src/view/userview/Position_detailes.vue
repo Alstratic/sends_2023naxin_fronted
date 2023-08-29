@@ -89,7 +89,6 @@
 </template>
   
 <script>
-import VueSlickCarousel from 'vue-slick-carousel'
 import positionCard from '../../components/positionCard.vue'
 import Login_nav from '../../components/Login_nav.vue'
 import axios from 'axios'
@@ -97,7 +96,7 @@ import {getUserToken} from '../../request/wx_auth.js'
 import Qs from 'qs'
 
 export default {
-  components: { VueSlickCarousel, positionCard, Login_nav },
+  components: { positionCard, Login_nav },
   name: 'Position_detailes',
   data() {
     return {

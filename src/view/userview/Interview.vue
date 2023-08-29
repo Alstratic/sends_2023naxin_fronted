@@ -117,6 +117,7 @@ export default {
       Isdisplay: true,
       isCollect: false,
       cardData: {},
+      id:null,
     }
   },
   methods: {
@@ -148,11 +149,12 @@ export default {
       this.isCollect = !this.isCollect
     },
   },
-  created: {
-    //补充：从后端获得isCollect的状态
-  },
+  // created: {
+  //   //补充：从后端获得isCollect的状态
+  // },
   mounted() {
     let that = this
+    this.id=this.$route.params.id
     axios
       .get('/api/cardData')
       .then((response) => {

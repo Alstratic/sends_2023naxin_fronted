@@ -35,7 +35,7 @@ const routes = [
     // 需要登录后才能访问的页面
     //  meta: { requiresAuth: true }
   },
-  { path: '/user/interview', component: Interview },
+  { path: '/user/interview', component: Interview, name: 'Interview' },
   { path: '/user/Applications_details', component: Applications_details },
   { path: '/user/Examine_page', component: Examine_page },
   { path: '/user/Orgnization_details', component: Orgnization_details },

@@ -1,6 +1,6 @@
 <template>
   <el-card class="box-card">
-    <div style="display: flex; justify-content: space-between">
+    <div style="display: flex; justify-content: space-between" @click="cardClick">
       <div
         style="
           display: flex;
@@ -65,6 +65,12 @@ export default {
   props: {
     positionName: String,
     status: String,
+    id:Number
+  },
+  data(){
+    return{
+      
+    }
   },
   methods: {
     //放弃面试
@@ -91,10 +97,10 @@ export default {
       window.open('https://uutool.cn/qq-chat/')
     },
 
-    // ChooseCollect(){
-    //     //补充：给后端发
-    //     this.isCollect=!this.isCollect
-    // }
+    cardClick(){
+      console.log(this.id);
+      this.$router.push({name:'Interview',params:{id:this.id}})
+    }
   },
   // created:{
   // //补充：从后端获得isCollect的状态
