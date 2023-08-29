@@ -11,8 +11,9 @@ const isLogin = () => {
 
 const wxRedirect = () => {
   location.href = `https://apps.hqu.edu.cn/wechat-hqu/wechatauth.html?proxyTo=authoauth&sendUrl=/connect/oauth2/authorize?appid=wxfe035b066fb1158b&redirect_uri=${encodeURIComponent
-    (`${location.origin}/LoginSucess`)}&encode_flag=Y&response_type=code&scope=snsapi_userinfo#wechat_redirect`
+    ('https://www.baidu.com/')}&encode_flag=Y&response_type=code&scope=snsapi_userinfo#wechat_redirect`
 }
+// `${document.location.origin}/LoginSucess`
 // 用于执行微信授权重定向，将用户重定向到微信授权页面以获取授权的 code。
 // 它构建了一个微信授权的链接，包括应用的 appid、重定向的地址等
 
