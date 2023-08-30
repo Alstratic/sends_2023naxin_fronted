@@ -1,30 +1,12 @@
 <template>
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
->>>>>>> a6e9708fbeae18722ac933779f9f1b6809bf3605
-=======
-
->>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
   <el-card class="box-card">
     <div class="hot-position-details">
       <span class="hot-position-name">{{positionName}}</span>
       <span class="hot-position-num">{{positionNum}}人</span>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <span class="hot-position-num"></span>
     </div>
     <div class="hotonNuition-tags">
-=======
-    </div>
-    <div class="hot-position-tags">
->>>>>>> a6e9708fbeae18722ac933779f9f1b6809bf3605
-=======
-      <span class="hot-position-num"></span>
-    </div>
-    <div class="hotonNuition-tags">
->>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
       <el-tag type="info" v-for="tag in tags" :key="tag">{{tag}}</el-tag>
     </div>
     <div class="organization-detail1">
@@ -32,32 +14,16 @@
         <img :src="logo" alt="" style="width:23px;height: 23px;border-radius: 50%; ">
         <span class="organization-name1">{{organizationName}}</span>
         <div class="null"></div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
         <span class="organization-type1">{{organizationType}}|{{ OrganizationClassify }}</span>
       </div>
     </div>
 
-<<<<<<< HEAD
-=======
-        <span class="organization-type1">{{organizationType}}</span>
-      </div>
-    </div>
->>>>>>> a6e9708fbeae18722ac933779f9f1b6809bf3605
-=======
->>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
   </el-card>
 
 </template>
 
 <script>
 export default{
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
   props: {
     id:Number,
     positionName: String,
@@ -68,28 +34,6 @@ export default{
     organizationType: String,
     OrganizationClassify:String
   },
-<<<<<<< HEAD
-=======
-props: {
-  positionName: String,
-  positionNum: Number,
-  tags: Array,
-  logo: String,
-  organizationName: String,
-  organizationType: String,
-},
-methods:{
-// ChooseCollect(){
-//     //补充：给后端发
-//     this.isCollect=!this.isCollect
-// }
-},
-created:{
-//补充：从后端获得isCollect的状态
-}
->>>>>>> a6e9708fbeae18722ac933779f9f1b6809bf3605
-=======
->>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
 }
 </script>
 

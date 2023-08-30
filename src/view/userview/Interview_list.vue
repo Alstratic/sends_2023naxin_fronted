@@ -17,16 +17,11 @@
         <Interview_list_card
           v-for="(cardData,cardIndex) in cardData"
           :key="cardIndex"
-<<<<<<< HEAD
           :id="cardData.posts"
           :position-name="cardData.postsName"
           :time="formattedDateTime(cardData.time.seconds)"
           :address="cardData.address"
           :status="cardData.state"
-=======
-          :position-name="cardData.name"
-          :status="formattedDateTime(cardData.time.seconds)"
->>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
         >
         </Interview_list_card>
       </div>
@@ -45,11 +40,7 @@ export default {
     return {
       tags: ['全部', '待面试', '面试结束'],
       selectedTags: [true, false, false],
-<<<<<<< HEAD
       baseUrl: 'http://124.221.99.127:10810/user/wait/view',
-=======
-      baseUrl: 'https://recruit.sends.cc/api/user/wait/view',
->>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
       cardData: {},
       showData1:[],
       showData2:[],
@@ -88,11 +79,7 @@ export default {
   mounted() {
     let that = this
     let data = {
-<<<<<<< HEAD
       stage: -1,
-=======
-      stage: 0,
->>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
     }
     let headers = {
       'Content-Type': 'application/json',
@@ -106,7 +93,6 @@ export default {
         that.cardData = response.data.data.wait
         console.log(response.data.data.wait)
         that.AllcardData = that.cardData
-<<<<<<< HEAD
         for (let i = 0; i < that.cardData.length; i++) {
           if (that.cardData[i].state === undefined) {
             that.cardData[i].state = 0
@@ -115,19 +101,6 @@ export default {
             that.showData2.push(this.cardData[i])
           }
         }
-=======
-        // for (let i = 0; i < that.cardData.length; i++) {
-        //   if (that.cardData[i].State === undefined) {
-        //     that.cardData[i].State = 0
-        //     that.AllcardData = that.cardData
-        //     that.showData1.push(this.cardData[i])
-        //   } else if (that.cardData[i].State === 1) {
-        //     that.showData1.push(this.cardData[i])
-        //   } else if (that.cardData[i].State === 3) {
-        //     that.showData2.push(this.cardData[i])
-        //   }
-        // }
->>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
         console.log(that.AllcardData)
       })
       .catch((error) => {

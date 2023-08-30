@@ -1,8 +1,4 @@
 <template>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
   <el-card class="box-card" >
     <div @click="cardClick">
       <div class="hot-position-details">
@@ -22,28 +18,6 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
-=======
-  <el-card class="box-card">
-      <div class="hot-position-details">
-      <span class="hot-position-name">{{positionName}}</span>
-      <span class="hot-position-num">{{positionNum}}人</span>
-      </div>
-      <div class="hot-position-tags">
-      <!-- <el-tag type="info" v-for="tag in tags" :key="tag">{{tag}}</el-tag> -->
-      <span class="hot-position-tag" v-for="tag in tags" :key="tag">{{tag}}</span>
-      </div>
-      <div class="organization-details">
-      <div class="organization-details-name">
-          <img :src="logo" alt="" style="width:23px;height: 23px;border-radius: 50%;">
-          <span class="organization-name">{{organizationName}}</span>
-          <div class="null"></div>
-          <span class="organization-type">{{organizationType}}</span>
-      </div>
-      </div>
->>>>>>> a6e9708fbeae18722ac933779f9f1b6809bf3605
-=======
->>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
   </el-card>
 </template>
 
@@ -51,10 +25,6 @@
 export default{
   props: {
       positionName: String,
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
       positionNum: String,
       tags: Array,
       logo: String,
@@ -69,17 +39,6 @@ export default{
       this.$router.push({name:'Position_detailes',params:{id:this.id}});
     }
   },
-<<<<<<< HEAD
-=======
-      positionNum: Number,
-      tags: Array,
-      logo: String,
-      organizationName: String,
-      organizationType: String,
-},
->>>>>>> a6e9708fbeae18722ac933779f9f1b6809bf3605
-=======
->>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
 }
 </script>
 

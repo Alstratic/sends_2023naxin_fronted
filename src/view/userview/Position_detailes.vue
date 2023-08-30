@@ -89,10 +89,6 @@
 </template>
   
 <script>
-<<<<<<< HEAD
-=======
-import VueSlickCarousel from 'vue-slick-carousel'
->>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
 import positionCard from '../../components/positionCard.vue'
 import Login_nav from '../../components/Login_nav.vue'
 import axios from 'axios'
@@ -100,11 +96,7 @@ import {getUserToken} from '../../request/wx_auth.js'
 import Qs from 'qs'
 
 export default {
-<<<<<<< HEAD
   components: { positionCard, Login_nav },
-=======
-  components: { VueSlickCarousel, positionCard, Login_nav },
->>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
   name: 'Position_detailes',
   data() {
     return {
@@ -115,15 +107,9 @@ export default {
       cardData1:{},
       tagsData:{},
       collectData:{},
-<<<<<<< HEAD
       baseUrl:'http://124.221.99.127:10810/square/posts/',
       baseUrl2:'http://124.221.99.127:10810/square/organizations/posts/1',
       baseUrl3:'http://124.221.99.127:10810/square/posts/favorite/'
-=======
-      baseUrl:'https://recruit.sends.cc/api/square/posts/',
-      baseUrl2:'https://recruit.sends.cc/api/square/organizations/posts/1',
-      baseUrl3:'https://recruit.sends.cc/api/square/posts/favorite/'
->>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
     }
   },
   methods: {
@@ -203,11 +189,7 @@ export default {
       })
 
     axios
-<<<<<<< HEAD
       .get('http://124.221.99.127:10810/square/organizations/posts/1')
-=======
-      .get('https://recruit.sends.cc/api/square/organizations/posts/1')
->>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
       .then((response) => {
         // 将从后端获取的数据填充到 cardData 对象中
         that.cardData = response.data.data

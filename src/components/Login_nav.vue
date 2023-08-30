@@ -224,13 +224,12 @@ export default{
 
 .login-options{
     font-size: 16px;
-}
-.header-organ{
-    font-size: 20px;
-}
-.login-options{
     span:hover{
         cursor: pointer;
     }
 }
+.header-organ{
+    font-size: 20px;
+}
+
 </style>

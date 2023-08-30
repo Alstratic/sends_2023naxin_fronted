@@ -296,11 +296,7 @@ export default {
               }
               axios
                 .put(
-<<<<<<< HEAD
                   'http://124.221.99.127:10810/file/userupload',
-=======
-                  'https://recruit.sends.cc/api/file/userupload',
->>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
                   formData,
                   config
                 )
@@ -368,18 +364,13 @@ export default {
 
       axios
         .post(
-<<<<<<< HEAD
           'http://124.221.99.127:10810/user/applications/submit',
-=======
-          'https://recruit.sends.cc/api/user/applications/submit',
->>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
           formData,
           { headers }
         )
         .then((res) => {
           console.log(res)
         })
-<<<<<<< HEAD
       this.dialogVisible = true
       this.times = 5
       let that = this
@@ -395,24 +386,6 @@ export default {
         }
       }, 1000)
     },
-=======
-        this.dialogVisible=true;
-          this.times = 5;            
-          let that = this            
-          let interval = window.setInterval(function () {                    
-            --that.times                    
-            if (that.times === 0) {     
-              if(that.aheadReturn===false){
-                that.$router.replace('/')                                
-                window.clearInterval(interval)                    
-                window.close();            
-                that.dialogVisible = false;  //倒计时结束时运行的业务逻辑，这里的是关闭当前页面
-              }  
-            }            
-        }, 1000) 
-    },
-    
->>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
   },
 }
 </script>
