@@ -222,4 +222,8 @@ export function view(stage) {
 // 			stuNum
 // 		}
 // 	})
+<<<<<<< HEAD
 // }
+=======
+// }
+>>>>>>> 4e7778855066a2d3138879b91e2d013968217de6

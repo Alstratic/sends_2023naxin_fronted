@@ -1,7 +1,23 @@
 /* eslint-disable camelcase */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+<<<<<<< HEAD
 import Login from '../view/AdminSys/Login.vue'
+=======
+import Login from '../view/userview/Login.vue'
+import Homepage from '../view/userview/Homepage.vue'
+import Interview from '../view/userview/Interview.vue'
+import Applications_details from '../view/userview/Applications_details.vue'
+import Applications from '../view/userview/Applications.vue'
+import Orgnization_details from '../view/userview/Orgnization_details.vue'
+import Position_detailes from '../view/userview/Position_detailes.vue'
+import Examine_page from '../view/userview/Examine_page.vue'
+import All_positions from '../view/userview/All_Positions.vue'
+import Application_list from '../view/userview/Application_list.vue'
+import Interview_list from '@/view/userview/Interview_list.vue'
+import Exam_list from '@/view/userview/Exam_list.vue'
+import Collection_list from '@/view/userview/Collection_list.vue'
+>>>>>>> 4e7778855066a2d3138879b91e2d013968217de6
 import TabView from '../view/AdminSys/TabView.vue'
 import jobList from '../view/AdminSys/jobList.vue'
 import jobDetails from '../view/AdminSys/jobDetails.vue'
@@ -14,7 +30,11 @@ import AssessView from '../view/AdminSys/AssessView.vue'
 import AssessRela from '../view/AdminSys/AssessRela.vue'
 import AssessDetail from '../view/AdminSys/AssessDetail.vue'
 import wxLogin from '../view/AdminSys/wxLogin.vue'
+<<<<<<< HEAD
 import LoginSucess from '../view/AdminSys/LoginSucess.vue'
+=======
+import LoginSucess from '../view/userview/LoginSucess.vue'
+>>>>>>> 4e7778855066a2d3138879b91e2d013968217de6
 Vue.use(VueRouter)
 
 const routes = [
@@ -25,15 +45,40 @@ const routes = [
   {
     name:'Login',
     path:'/Login',
+<<<<<<< HEAD
     component: () => import('../view/AdminSys/Login.vue')
+=======
+    component: () => import('../view/userview/Login.vue')
+>>>>>>> 4e7778855066a2d3138879b91e2d013968217de6
   },
   // { path: '/', name:'Login',component: ()=>import('../view/userview/Login.vue') },
   // {
   //   path: '*',
   //   redirect: Login,
   // },
+<<<<<<< HEAD
   {path:'/wxLogin',component:wxLogin},
   {path:'/LoginSucess',name:'LoginSucess',component: ()=>import('../view/AdminSys/LoginSucess.vue') },
+=======
+{
+  path: '/user/homepage', component: Homepage
+  // 需要登录后才能访问的页面
+  //  meta: { requiresAuth: true }
+},
+{ path: '/user/interview', component: Interview },
+{ path: '/user/Applications_details', component: Applications_details },
+{ path: '/user/Examine_page', component: Examine_page },
+{ path: '/user/Orgnization_details', component: Orgnization_details },
+{ path: '/user/Position_detailes/:id', component: Position_detailes, name: 'Position_detailes' },
+{ path: '/user/Applications', component: Applications, name: 'Applications' },
+{ path: '/user/All_positions', component: All_positions },
+{ path: '/user/Application_list', component: Application_list },
+{ path: '/user/Interview_list', component: Interview_list },
+{ path: '/user/Exam_list', component: Exam_list },
+{ path: '/user/Collection_list', component: Collection_list },
+  {path:'/wxLogin',component:wxLogin},
+  {path:'/LoginSucess',name:'LoginSucess',component: ()=>import('../view/userview/LoginSucess.vue') },
+>>>>>>> 4e7778855066a2d3138879b91e2d013968217de6
   {
     path: '/TabView',
     name: 'TabView',
