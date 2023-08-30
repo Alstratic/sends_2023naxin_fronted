@@ -40,7 +40,7 @@
               </div>
             </div>
             <div class="position-operation">
-              <el-button type="warning" style="background-color: #ffd74d"
+              <el-button @click="Talk" type="warning" style="background-color: #ffd74d"
                 >联系一下</el-button
               >
               <el-button type="warning" plain @click="GoApplications"
@@ -113,6 +113,9 @@ export default {
     }
   },
   methods: {
+    Talk(){
+      window.open('https://uutool.cn/qq-chat/')
+    },
     GoApplications() {
       console.log(this.id);
       this.$router.push({name:'Applications',params:{id:this.id,positionName:this.cardData1.Name}})
