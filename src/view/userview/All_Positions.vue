@@ -107,9 +107,15 @@ export default {
       organClass: ['全部', '互联网', '设计', '娱乐', '党团组织'],
       organType: ['全部', '校级组织', '院级组织', '社团', '自建组织'],
       PosiTags: ['全部', '互联网/电子技术', '策划/管理', '新媒体/运营', '设计'],
+<<<<<<< HEAD
       recruitTags: ['全部', '大一', '大二', '大三', '大四', '不限年级'],
       posiExperience: ['全部', '无需经验', '仅了解', '熟悉', '精通', '不限经验'],
       baseUrl: 'http://124.221.99.127:10810/square/posts',
+=======
+      recruitTags: ['全部', '大一', '大二', '大三', '大四', '不限'],
+      posiExperience: ['全部', '无需经验', '仅了解', '熟悉', '精通', '不限'],
+      baseUrl: 'https://recruit.sends.cc/api/square/posts',
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
       queryString1: '',
       queryString2: '',
       queryString3: '',

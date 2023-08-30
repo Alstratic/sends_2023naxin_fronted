@@ -2,6 +2,9 @@
   <el-card class="box-card">
     <div class="hot-position-details">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
       <span class="hot-position-name">{{ positionName }}</span>
       <span class="hot-position-num">{{ statusText }}</span>
       <span class="hot-position-tips" v-if="this.isShow">请在{{ tipsText }}页面查看详细信息</span>
@@ -14,6 +17,7 @@
           alt=""
           style="width: 23px; height: 23px; border-radius: 50%"
         />
+<<<<<<< HEAD
 =======
       <span class="hot-position-name">{{positionName}}</span>
       <span class="hot-position-num">{{status}}</span>
@@ -25,6 +29,8 @@
       <div class="organization-details-name1">
         <img src="../assets/logo.png" alt="" style="width:23px;height: 23px;border-radius: 50%;">
 >>>>>>> a6e9708fbeae18722ac933779f9f1b6809bf3605
+=======
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
         <span class="organization-name1">桑梓实验室</span>
         <div class="null"></div>
         <span class="organization-type1">校级组织|互联网</span>
@@ -32,6 +38,9 @@
     </div>
   </el-card>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
 </template>
 
 <script>
@@ -81,6 +90,7 @@ export default {
     }
   },
 
+<<<<<<< HEAD
 =======
 
 </template>
@@ -102,12 +112,17 @@ created:{
 //补充：从后端获得isCollect的状态
 }
 >>>>>>> a6e9708fbeae18722ac933779f9f1b6809bf3605
+=======
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
 }
 </script>
 
 <style lang="less" scoped>
 .box-card {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
   margin-top: 1.5vh;
   width: 50%;
   border: #ffd74d 1.5px solid;
@@ -170,6 +185,7 @@ created:{
   padding-right: 2vw;
   display: flex;
   flex-wrap: wrap;
+<<<<<<< HEAD
 =======
 margin-top: 1.5vh;
 width: 50%;
@@ -234,5 +250,7 @@ padding-right:2vw;
 display: flex;
 flex-wrap: wrap;
 >>>>>>> a6e9708fbeae18722ac933779f9f1b6809bf3605
+=======
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
 }
 </style>

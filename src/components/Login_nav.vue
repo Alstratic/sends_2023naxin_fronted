@@ -41,6 +41,7 @@ export default{
     data(){
         return{
             data1:String,
+<<<<<<< HEAD
             isLoggedIn:false
         }
     },
@@ -94,6 +95,20 @@ export default{
                 alert(error);
             }
         },
+=======
+            isLoggedIn:true
+        }
+    },
+    // mounted(){
+    //     // localStorage.removeItem('HQU_naxin'); // token名称为HQU_naxin
+    //     if(isUserLogin()){
+    //         // alert(getUserToken());
+    //         this.data1=getUserToken();
+    //         this.isLoggedIn=true;
+    //     }
+    // },
+    methods:{
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
         goToExam(){
             const currentPath=this.$route.path;
             const targetPath='/user/Exam_list';
@@ -228,9 +243,12 @@ export default{
 .header-organ{
     font-size: 20px;
 }
+<<<<<<< HEAD
 .login-options{
     span:hover{
         cursor: pointer;
     }
 }
+=======
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
 </style>

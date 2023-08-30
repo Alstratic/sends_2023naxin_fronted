@@ -1,5 +1,6 @@
 <template>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <el-card class="box-card">
     <div
       style="display: flex; justify-content: space-between"
@@ -117,16 +118,26 @@ export default {
   <style lang="less" scoped>
 .box-card {
 =======
+=======
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
     <el-card class="box-card">
       <div style="display: flex;justify-content: space-between;">
           <div style="display: flex;flex-direction: column;justify-content: space-between;">
             <div class="hot-position-details">
+<<<<<<< HEAD
               <span class="hot-position-name">{{positionName}}</span>
+=======
+              <span class="hot-position-name">{{ taskName }}</span>
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
             </div>
             <div style="margin-top: 5px;">
                 <!-- 产品经理这里记得改 -->
               <span style="color: #7E7E7E;font-family: Source Han Sans SC VF;
+<<<<<<< HEAD
                   font-size: 16px;font-weight: 400;">产品经理</span>
+=======
+                  font-size: 16px;font-weight: 400;">{{positionName}}</span>
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
             </div>
             <div class="organization-detail1">
               <div class="organization-details-name1">
@@ -139,8 +150,12 @@ export default {
           </div>
           <div style="display: flex;">
             <div style="display: flex;flex-direction: column;justify-content: space-around;">
+<<<<<<< HEAD
               <span class="hot-position-num">{{status}}</span>
               <span style="color:#D0B65C;">time</span>
+=======
+              <span class="hot-position-num">{{statusText}}</span>
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
              
             </div>
           </div>
@@ -152,12 +167,29 @@ export default {
   <script>
   export default{
   props: {
+<<<<<<< HEAD
     positionName: String,
         status: String,
        
   },
   methods:{
   
+=======
+    taskName:String,
+    positionName: String,
+    status: Number,
+  },
+  data(){
+    return{
+      statusBar:[
+        '待完成',
+        '已完成',
+        '已截止'
+      ]
+    }
+  },
+  methods:{
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
      //放弃面试
     async abandonView(){
         this.$confirm('您是否放弃面试?', '提示', {
@@ -187,20 +219,35 @@ export default {
   //     this.isCollect=!this.isCollect
   // }
   },
+<<<<<<< HEAD
   created:{
   //补充：从后端获得isCollect的状态
   }
+=======
+  computed:{
+    statusText() {
+      return this.statusBar[this.status]
+    },
+  }
+  // created:{
+  // //补充：从后端获得isCollect的状态
+  // }
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
   }
   </script>
   
   <style lang="less" scoped>
   .box-card {
+<<<<<<< HEAD
 >>>>>>> a6e9708fbeae18722ac933779f9f1b6809bf3605
+=======
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
   margin-top: 1.5vh;
   width: 50%;
   border: #ffd74d 1.5px solid;
   border-radius: 15px;
   @media (max-width: 800px) {
+<<<<<<< HEAD
 <<<<<<< HEAD
     width: 90%;
   }
@@ -212,6 +259,8 @@ export default {
   margin-top: 3vh;
   .organization-details-name1 {
 =======
+=======
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
   width: 90%;
   }
   }
@@ -221,7 +270,10 @@ export default {
   align-items: center;
   margin-top:3vh;
   .organization-details-name1{
+<<<<<<< HEAD
 >>>>>>> a6e9708fbeae18722ac933779f9f1b6809bf3605
+=======
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
     font-size: 6px;
     font-weight: 600;
     display: flex;
@@ -229,20 +281,27 @@ export default {
     align-items: center;
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
   .null {
     padding: 0 4px;
   }
   .organization-name1 {
 =======
+=======
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
   .null{
     padding: 0 4px;
   }
   .organization-name1{
+<<<<<<< HEAD
 >>>>>>> a6e9708fbeae18722ac933779f9f1b6809bf3605
+=======
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
     padding-left: 3px;
     text-align: left;
     font-size: 0.5rem;
   }
+<<<<<<< HEAD
 <<<<<<< HEAD
   .organization-type1 {
     font-size: 6px;
@@ -271,6 +330,8 @@ export default {
   margin-top: 3px;
   color: #6e6e6e;
 =======
+=======
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
   .organization-type1{
     font-size: 6px;
     text-align: right;
@@ -297,13 +358,17 @@ export default {
   padding: auto;
   margin-top:3px;
   color:#6e6e6e;
+<<<<<<< HEAD
 >>>>>>> a6e9708fbeae18722ac933779f9f1b6809bf3605
+=======
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
   background-color: #e7e7e7;
   height: 18px;
   // width: 45px; 宽度不要指明，让文字撑开
   font-weight: 600;
   font-size: 0.5rem;
   line-height: 15px;
+<<<<<<< HEAD
 <<<<<<< HEAD
 }
 .hot-position-tags {
@@ -326,6 +391,8 @@ export default {
 }
 </style>
 =======
+=======
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
   }
   .hot-position-tags{
   padding-right:2vw;
@@ -345,5 +412,9 @@ export default {
         opacity: 0.8;
         margin-left: 7px;
       }
+<<<<<<< HEAD
   </style>
 >>>>>>> a6e9708fbeae18722ac933779f9f1b6809bf3605
+=======
+  </style>
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f

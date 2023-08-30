@@ -17,10 +17,16 @@
           <Exam
             v-for="(cardData, cardIndex) in cardData"
             :key="cardIndex"
+<<<<<<< HEAD
             :taskName="cardData.postsName"
             :position-name="cardData.postsName"
             :status="cardData.state"
             :id="cardData.posts"
+=======
+            :taskName="cardData.name"
+            :position-name="cardData.postsName"
+            :status="cardData.state"
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
           >
           </Exam>
         </div>
@@ -49,8 +55,13 @@ export default {
     return {
       tags: ['全部', '待完成', '已完成', '已截止'],
       selectedTags: [true, false, false, false, false],
+<<<<<<< HEAD
       baseUrl1: 'http://124.221.99.127:10810/user/task/view',
       baseUrl2:'http://124.221.99.127:10810/user/access/view',
+=======
+      baseUrl1: 'https://recruit.sends.cc/api/user/task/view',
+      baseUrl2:'https://recruit.sends.cc/api/user/access/view',
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
       cardData: [],
       showData1:[],
       showData2:[],

@@ -1,5 +1,11 @@
 <template>
   <div> 
+<<<<<<< HEAD
+=======
+    {{ tt}}
+    <br/>
+    {{ tok }}
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
   </div>
 </template>
 <script>
@@ -10,11 +16,19 @@ export default {
   //inject: ["reload"],
   data(){
       return{
+<<<<<<< HEAD
+=======
+        tt:'',
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
           userToken:'',
           dataParms:{
               code:''
           },
           IsShow:false,
+<<<<<<< HEAD
+=======
+          tok:'',
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
       }
   },
   // 因为是在当前页面添加code的，界面没有刷新，只是添加参数，所以就必须监测路由参数的变化
@@ -52,7 +66,11 @@ export default {
           } else{
             console.error('未绑定微信公众号');
                // 用户未绑定微信公众号，进行重定向到绑定页面
+<<<<<<< HEAD
                window.location.href = 'http://wx.sends.cc'
+=======
+              //  window.location.href = 'http://wx.sends.cc'
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
           // this.isLoggedIn = true;
           }
     })

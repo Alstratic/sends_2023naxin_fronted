@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <template>
+=======
+<!-- <template>
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
     <div>
       <h1>Login Success Page</h1>
     </div>
@@ -20,7 +24,11 @@
     methods: {
       async sendCodeToBackend(code) {
         try {
+<<<<<<< HEAD
           const response = await axios.post('http://124.221.99.127:10810/user/login', { code });
+=======
+          const response = await axios.post('https://recruit.sends.cc/api/user/login', { code });
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
           const token = response.data.token;
   
           // Save the 'token' to local storage or state
@@ -36,4 +44,8 @@
     }
   }
   </script>
+<<<<<<< HEAD
   
+=======
+   -->
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f

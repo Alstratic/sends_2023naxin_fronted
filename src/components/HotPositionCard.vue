@@ -1,5 +1,8 @@
 <template>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
   <el-card class="box-card" >
     <div @click="cardClick">
       <div class="hot-position-details">
@@ -19,6 +22,7 @@
         </div>
       </div>
     </div>
+<<<<<<< HEAD
 =======
   <el-card class="box-card">
       <div class="hot-position-details">
@@ -38,6 +42,8 @@
       </div>
       </div>
 >>>>>>> a6e9708fbeae18722ac933779f9f1b6809bf3605
+=======
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
   </el-card>
 </template>
 
@@ -46,6 +52,9 @@ export default{
   props: {
       positionName: String,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
       positionNum: String,
       tags: Array,
       logo: String,
@@ -60,6 +69,7 @@ export default{
       this.$router.push({name:'Position_detailes',params:{id:this.id}});
     }
   },
+<<<<<<< HEAD
 =======
       positionNum: Number,
       tags: Array,
@@ -68,6 +78,8 @@ export default{
       organizationType: String,
 },
 >>>>>>> a6e9708fbeae18722ac933779f9f1b6809bf3605
+=======
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
 }
 </script>
 

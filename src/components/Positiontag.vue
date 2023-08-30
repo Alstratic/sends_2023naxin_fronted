@@ -1,12 +1,17 @@
 <template>
     <div class="Position-tag-list">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <label v-for="(tag,index) in tags" :key="tag" :class="{'active': selectedTags[index]}" @click="toggleTag(index)">
             {{ tag }}
 =======
         <label v-for="(tag,index) in tags" :key="tag" :class="{'active':selectedTags[index]}">
             <input type="checkbox" v-model="selectedTags[index]" style="display: none" @click="toggleTag(index)">{{tag}}
 >>>>>>> a6e9708fbeae18722ac933779f9f1b6809bf3605
+=======
+        <label v-for="(tag,index) in tags" :key="tag" :class="{'active': selectedTags[index]}" @click="toggleTag(index)">
+            {{ tag }}
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
         </label>
     </div>
 </template>
@@ -15,14 +20,20 @@
 export default{
     props:{
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
         tags:Array,
         id:Number
     },
     created(){
         this.selectedTags = this.tags.map((tag, index) => index === 0);
+<<<<<<< HEAD
 =======
         tags:Array
 >>>>>>> a6e9708fbeae18722ac933779f9f1b6809bf3605
+=======
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
     },
     data(){
         return{
@@ -32,6 +43,7 @@ export default{
     methods:{
         toggleTag(index) {
             // 先判断是否有标签被选中
+<<<<<<< HEAD
 <<<<<<< HEAD
             this.selectedTags = this.selectedTags.map((_, idx) => idx === index);
             this.$emit('tag-selected',this.tags[index],this.id);
@@ -49,6 +61,10 @@ export default{
         tags(newTag){
             this.selectedTags = new Array(newTag.length).fill(false);
 >>>>>>> a6e9708fbeae18722ac933779f9f1b6809bf3605
+=======
+            this.selectedTags = this.selectedTags.map((_, idx) => idx === index);
+            this.$emit('tag-selected',this.tags[index],this.id);
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
         }
     }
 }
@@ -65,10 +81,14 @@ export default{
     border-color: #fff;
     height: 32px;
 <<<<<<< HEAD
+<<<<<<< HEAD
     padding: 3 4px;
 =======
     padding: 0 3px;
 >>>>>>> a6e9708fbeae18722ac933779f9f1b6809bf3605
+=======
+    padding: 3 4px;
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
     line-height: 36px;
     font-size: 16px;
     border-width: 1px;
@@ -78,12 +98,17 @@ export default{
     white-space: nowrap;
     @media (max-width: 769px) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         margin-left: 0vw;
         font-size: 12px;
 =======
         margin-left: 3vw;
         font-size: 14px;
 >>>>>>> a6e9708fbeae18722ac933779f9f1b6809bf3605
+=======
+        margin-left: 0vw;
+        font-size: 12px;
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
         line-height: 32px;
     } 
 }

@@ -14,6 +14,21 @@ import Interview_list from '@/view/userview/Interview_list.vue'
 import Exam_list from '@/view/userview/Exam_list.vue'
 import Collection_list from '@/view/userview/Collection_list.vue'
 
+<<<<<<< HEAD
+=======
+import TabView from '../view/AdminSys/TabView.vue'
+import jobList from '../view/AdminSys/jobList.vue'
+import jobDetails from '../view/AdminSys/jobDetails.vue'
+import ailApproval from '../view/AdminSys/ailApproval.vue'
+import jobpost from '../view/AdminSys/jobpost.vue'
+import FirstPage from '../view/AdminSys/FirstPage.vue'
+import viewArra from '../view/AdminSys/viewArra.vue'
+import viewList from '../view/AdminSys/viewList.vue'
+import AssessView from '../view/AdminSys/AssessView.vue'
+import AssessRela from '../view/AdminSys/AssessRela.vue'
+import AssessDetail from '../view/AdminSys/AssessDetail.vue'
+
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
 Vue.use(VueRouter)
 
 const routes = [
@@ -43,7 +58,12 @@ const routes = [
   { path: '/user/Exam_list', component: Exam_list },
   { path: '/user/Collection_list', component: Collection_list },
   {path:'/LoginSucess',name:'LoginSucess',component: ()=>import('../view/userview/LoginSucess.vue') },
+<<<<<<< HEAD
 ] 
+=======
+
+]
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
 
 const router = new VueRouter({
   routes

@@ -1,7 +1,11 @@
 <template>
   <el-card class="box-card">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <div style="display: flex; justify-content: space-between" @click="cardClick">
+=======
+    <div style="display: flex; justify-content: space-between">
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
       <div
         style="
           display: flex;
@@ -33,11 +37,19 @@
             justify-content: space-around;
           "
         >
+<<<<<<< HEAD
           <span style="color: #929292">{{ time }}</span>
 
           <span class="hot-position-num">{{ address }}</span>
 
           <span style="color: #d0b65c; font-size: 3px">{{ statusText }}</span>
+=======
+          <span style="color: #929292">time</span>
+
+          <span class="hot-position-num">{{ status }}</span>
+
+          <span style="color: #d0b65c; font-size: 3px">面试结束</span>
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
         </div>
         <div
           style="
@@ -65,6 +77,7 @@
 export default {
   props: {
     positionName: String,
+<<<<<<< HEAD
     time: String,
     id:Number,
     address:String,
@@ -77,10 +90,14 @@ export default {
         '面试结束'
       ]
     }
+=======
+    status: String,
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
   },
   methods: {
     //放弃面试
     async abandonView() {
+<<<<<<< HEAD
       let posts = Number(this.id)
       let data = {
         posts: posts,
@@ -91,6 +108,8 @@ export default {
         accept: 'application/json',
         token: localStorage.getItem('HQU_naxin'),
       }
+=======
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
       this.$confirm('您是否放弃面试?', '提示', {
         showClose: false,
         confirmButtonText: '确定',
@@ -103,6 +122,7 @@ export default {
             type: 'success',
             message: '您已放弃面试!',
           })
+<<<<<<< HEAD
           this.$router.replace('/')
 
           axios
@@ -114,6 +134,10 @@ export default {
             .catch((error) => {
               console.error('Failed to fetch card data:', error)
             })
+=======
+
+          //这里之后还得再改一下。跟后端发请求，再重新更改页面
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
         })
         .catch(() => {})
     },
@@ -122,6 +146,7 @@ export default {
       window.open('https://uutool.cn/qq-chat/')
     },
 
+<<<<<<< HEAD
     cardClick(){
       console.log(this.id);
       this.$router.push({name:'Interview',params:{id:this.id,positionName:this.positionName,status:this.statusText,time:this.time,address:this.address}})
@@ -207,12 +232,25 @@ created:{
 //补充：从后端获得isCollect的状态
 }
 >>>>>>> a6e9708fbeae18722ac933779f9f1b6809bf3605
+=======
+    // ChooseCollect(){
+    //     //补充：给后端发
+    //     this.isCollect=!this.isCollect
+    // }
+  },
+  // created:{
+  // //补充：从后端获得isCollect的状态
+  // }
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
 }
 </script>
 
 <style lang="less" scoped>
 .box-card {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
   margin-top: 1.5vh;
   width: 50%;
   border: #ffd74d 1.5px solid;
@@ -292,6 +330,7 @@ created:{
   opacity: 0.8;
   margin-left: 7px;
 }
+<<<<<<< HEAD
 =======
 margin-top: 1.5vh;
 width: 50%;
@@ -373,4 +412,6 @@ flex-wrap: wrap;
       margin-left: 7px;
     }
 >>>>>>> a6e9708fbeae18722ac933779f9f1b6809bf3605
+=======
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
 </style>

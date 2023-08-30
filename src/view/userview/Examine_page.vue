@@ -9,12 +9,21 @@
           <div class="Intro">
             <div class="position-name">
               <!-- 先写死 -->
+<<<<<<< HEAD
               <span id="Title">{{ testName }}</span>
               <div class="hot-position-tags">
                 <div class="deadline">{{ ddl }}</div>
               </div>
             </div>
             <div class="statu">{{ status }}</div>
+=======
+              <span id="Title">招聘网站PRD编写</span>
+              <div class="hot-position-tags">
+                <div class="deadline">截止时间</div>
+              </div>
+            </div>
+            <div class="statu">待完成</div>
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
           </div>
           <div class="operation">
             <div class="organization-details">
@@ -42,13 +51,31 @@
             <span style="margin-left: 1vw">考核目的</span>
             <!-- 先写死 -->
             <el-card class="message">
+<<<<<<< HEAD
               {{ testObject }}
+=======
+              招聘对象：大一全体同学
+              <br />
+              职位任务:PRD文档编写，项目推进
+              <br />
+              特殊说明
+              <br />
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
             </el-card>
             <br />
             <span style="margin-left: 1vw">考核内容</span>
             <!-- 先写死 -->
             <el-card class="message">
+<<<<<<< HEAD
               {{ testContent }}
+=======
+              招聘对象：大一全体同学
+              <br />
+              职位任务:PRD文档编写，项目推进
+              <br />
+              特殊说明
+              <br />
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
             </el-card>
             <br />
             <span style="margin-left: 1vw">相关文件</span>
@@ -63,7 +90,13 @@
             >
               <i class="zip"></i>
               <!-- 这里应该是一个下载链接 之后具体看后端咋传，目前先写好下载方式-->
+<<<<<<< HEAD
               <a :href="accessPath">{{ accessPath }}</a>
+=======
+
+              个人作品集.zip
+              <i class="download" @click="loadFile"></i>
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
             </el-card>
             <br />
             <!-- action中的string之后改成上传的地址 -->
@@ -79,6 +112,10 @@
               :on-preview="handlePreview"
               :on-remove="handleRemove"
               :multiple="multiple"
+<<<<<<< HEAD
+=======
+              :before-upload="beforeUpload"
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
               style="height: 10vh"
             >
               <el-button
@@ -102,6 +139,22 @@
             <div class="butn">
               <el-button
                 type="warning"
+<<<<<<< HEAD
+=======
+                @click="abandonUpload"
+                style="
+                  padding-left: 38px;
+                  padding-right: 38px;
+                  opacity: 0.8;
+                  color: black;
+                  line-height: 50%;
+                "
+                plain
+                >放弃考核</el-button
+              >
+              <el-button
+                type="warning"
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
                 @click="submitUpload"
                 style="
                   padding-left: 38px;
@@ -162,6 +215,7 @@ export default {
       dialogVisible: false,
       aheadReturn: false,
       dialogWidth: '1080px',
+<<<<<<< HEAD
       baseUrl: 'http://124.221.99.127:10810/user/access/view',
       id: null,
       testName: null,
@@ -173,22 +227,28 @@ export default {
       testContent: null,
       accessPath: null,
       fileUrl: '',
+=======
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
     }
   },
   created() {
     this.setDialogWidth()
   },
   mounted() {
+<<<<<<< HEAD
     this.id = this.$route.params.id
     this.status = this.$route.params.status
     console.log(this.id)
     let posts = Number(this.id)
     let organization = 1
+=======
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
     window.onresize = () => {
       return (() => {
         this.setDialogWidth()
       })()
     }
+<<<<<<< HEAD
 
     let data = {
       posts: posts,
@@ -236,6 +296,11 @@ export default {
 
       return `${formattedDate} ${formattedTime}`
     },
+=======
+  },
+  methods: {
+    //限制只能提交zip格式
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
 
     talkTime() {
       window.open('https://uutool.cn/qq-chat/')
@@ -251,7 +316,11 @@ export default {
     },
     //点击上传文件触发的额外事件,清空fileList
     returnHome() {
+<<<<<<< HEAD
       this.$router.replace('/')
+=======
+      this.$router.replace('/Homepage')
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
       this.aheadReturn = true
       window.clearInterval(interval)
       window.close()
@@ -283,6 +352,7 @@ export default {
             //获取文件名后缀
             let fileType = fileName.substring(fileName.lastIndexOf('.') + 1)
             let iconElement = ele.getElementsByTagName('i')[0]
+<<<<<<< HEAD
             if (['zip', 'ZIP'].indexOf(fileType) != -1) {
               iconElement.className = 'imgicon-zip' // 压缩包
               let formData = new FormData()
@@ -307,6 +377,27 @@ export default {
                 .catch((res) => {
                   console.log(res)
                 })
+=======
+            // if (['png','jpg','jpeg',".gif",'PNG','JPG','JPEG',"GIF"].indexOf(fileType) != -1) {
+            //     iconElement.className = "imgicon-img" // 图⽚，动图
+            //   } else if (['mp4','3gp','avi',"flv",'MP4','3GP','AVI',"FLV"].indexOf(fileType) != -1) {
+            //     iconElement.className = 'imgicon-video' // 视频
+            //   } else if (['doc','docx','DOC','DOCX'].indexOf(fileType) != -1) {
+            //     iconElement.className = 'imgicon-docx' // 文档
+            //   } else if (['xls','xlsx','XLS','XLSX'].indexOf(fileType) != -1) {
+            //     iconElement.className = 'imgicon-xlsx' // 表格
+            //   } else if (['ppt','pptx','PPT','PPTX'].indexOf(fileType) != -1) {
+            //     iconElement.className = 'imgicon-pptx' // PPT
+            //   } else if (['zip','ZIP'].indexOf(fileType) != -1) {
+            //     iconElement.className = 'imgicon-zip' // 压缩包
+            //   } else if (['pdf','PDF'].indexOf(fileType) != -1) {
+            //     iconElement.className = 'imgicon-pdf' // PDF
+            //   } else {
+            //     iconElement.className = 'imgicon-default' //默认图标
+            //   }
+            if (['zip', 'ZIP'].indexOf(fileType) != -1) {
+              iconElement.className = 'imgicon-zip' // 压缩包
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
             } else {
               this.delFile()
               this.$message({
@@ -333,10 +424,32 @@ export default {
       console.log('sb2')
       // console.log(file);
     },
+<<<<<<< HEAD
+=======
+    //放弃按钮
+    abandonUpload() {
+      this.$confirm('您是否放弃考核?', '提示', {
+        showClose: false,
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+        center: true,
+      })
+        .then(() => {
+          this.$message({
+            type: 'success',
+            message: '您已放弃考核!',
+          })
+          this.$router.replace('/Homepage')
+        })
+        .catch(() => {})
+    },
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
 
     //保存按钮
     submitUpload() {
       if (this.fileList.length != 0) {
+<<<<<<< HEAD
         //自行添加数据到formData(使用键值对方式存储)
         let fileUrl = this.fileUrl
         let posts = Number(this.id)
@@ -360,6 +473,12 @@ export default {
             console.log(res)
           })
 
+=======
+        let formData = new FormData()
+        //自行添加数据到formData(使用键值对方式存储)
+        formData.append('file', this.fileList[0].raw) //拿到存在fileList的文件存放到formData中
+        console.log(formData.get('file'))
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
         this.dialogVisible = true
         this.times = 5
         let that = this
@@ -374,12 +493,36 @@ export default {
             }
           }
         }, 1000)
+<<<<<<< HEAD
+=======
+        //   axios.post(post请求的具体路径, formData, {
+        //   "Content-Type": "multipart/form-data;charset=utf-8"
+        // })
+        //   .then(res => {
+        //     if (res.data === "SUCCESS") {
+        //       this.$notify({
+        //         title: '成功',
+        //         message: '提交成功',
+        //         type: 'success',
+        //         duration: 1000
+        //       });
+        //     }
+        //   })
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
       }
     },
     ChooseCollect() {
       //补充：给后端发
       this.isCollect = !this.isCollect
     },
+<<<<<<< HEAD
+=======
+    loadFile() {
+      axios.get('地址', { responseType: 'blob' }).then((res) => {
+        saveAs(res.data, '下载的文件名')
+      })
+    },
+>>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
   },
 }
 </script>
