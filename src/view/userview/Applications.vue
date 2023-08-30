@@ -371,22 +371,21 @@ export default {
         .then((res) => {
           console.log(res)
         })
-        this.dialogVisible=true;
-          this.times = 5;            
-          let that = this            
-          let interval = window.setInterval(function () {                    
-            --that.times                    
-            if (that.times === 0) {     
-              if(that.aheadReturn===false){
-                that.$router.replace('/')                                
-                window.clearInterval(interval)                    
-                window.close();            
-                that.dialogVisible = false;  //倒计时结束时运行的业务逻辑，这里的是关闭当前页面
-              }  
-            }            
-        }, 1000) 
+      this.dialogVisible = true
+      this.times = 5
+      let that = this
+      let interval = window.setInterval(function () {
+        --that.times
+        if (that.times === 0) {
+          if (that.aheadReturn === false) {
+            that.$router.replace('/')
+            window.clearInterval(interval)
+            window.close()
+            that.dialogVisible = false //倒计时结束时运行的业务逻辑，这里的是关闭当前页面
+          }
+        }
+      }, 1000)
     },
-    
   },
 }
 </script>

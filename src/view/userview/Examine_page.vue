@@ -9,12 +9,12 @@
           <div class="Intro">
             <div class="position-name">
               <!-- 先写死 -->
-              <span id="Title">招聘网站PRD编写</span>
+              <span id="Title">{{ testName }}</span>
               <div class="hot-position-tags">
-                <div class="deadline">截止时间</div>
+                <div class="deadline">{{ ddl }}</div>
               </div>
             </div>
-            <div class="statu">待完成</div>
+            <div class="statu">{{ status }}</div>
           </div>
           <div class="operation">
             <div class="organization-details">
@@ -42,23 +42,13 @@
             <span style="margin-left: 1vw">考核目的</span>
             <!-- 先写死 -->
             <el-card class="message">
-              招聘对象：大一全体同学
-              <br />
-              职位任务:PRD文档编写，项目推进
-              <br />
-              特殊说明
-              <br />
+              {{ testObject }}
             </el-card>
             <br />
             <span style="margin-left: 1vw">考核内容</span>
             <!-- 先写死 -->
             <el-card class="message">
-              招聘对象：大一全体同学
-              <br />
-              职位任务:PRD文档编写，项目推进
-              <br />
-              特殊说明
-              <br />
+              {{ testContent }}
             </el-card>
             <br />
             <span style="margin-left: 1vw">相关文件</span>
@@ -73,9 +63,7 @@
             >
               <i class="zip"></i>
               <!-- 这里应该是一个下载链接 之后具体看后端咋传，目前先写好下载方式-->
-
-              个人作品集.zip
-              <i class="download" @click="loadFile"></i>
+              <a :href="accessPath">{{ accessPath }}</a>
             </el-card>
             <br />
             <!-- action中的string之后改成上传的地址 -->
@@ -91,7 +79,6 @@
               :on-preview="handlePreview"
               :on-remove="handleRemove"
               :multiple="multiple"
-              :before-upload="beforeUpload"
               style="height: 10vh"
             >
               <el-button
@@ -113,19 +100,6 @@
               >
             </el-upload>
             <div class="butn">
-              <el-button
-                type="warning"
-                @click="abandonUpload"
-                style="
-                  padding-left: 38px;
-                  padding-right: 38px;
-                  opacity: 0.8;
-                  color: black;
-                  line-height: 50%;
-                "
-                plain
-                >放弃考核</el-button
-              >
               <el-button
                 type="warning"
                 @click="submitUpload"
@@ -188,20 +162,80 @@ export default {
       dialogVisible: false,
       aheadReturn: false,
       dialogWidth: '1080px',
+      baseUrl: 'http://124.221.99.127:10810/user/access/view',
+      id: null,
+      testName: null,
+      status: null,
+      ddl: null,
+      address: null,
+      cardData: [],
+      testObject: null,
+      testContent: null,
+      accessPath: null,
+      fileUrl: '',
     }
   },
   created() {
     this.setDialogWidth()
   },
   mounted() {
+    this.id = this.$route.params.id
+    this.status = this.$route.params.status
+    console.log(this.id)
+    let posts = Number(this.id)
+    let organization = 1
     window.onresize = () => {
       return (() => {
         this.setDialogWidth()
       })()
     }
+
+    let data = {
+      posts: posts,
+      organization: organization,
+    }
+
+    let headers = {
+      'Content-Type': 'application/json',
+      accept: 'application/json',
+      token: localStorage.getItem('HQU_naxin'),
+    }
+
+    axios
+      .post(this.baseUrl, data, { headers })
+      .then((response) => {
+        // 将从后端获取的数据填充到 cardData 对象中
+        console.log(response.data.data.name)
+        this.testName = response.data.data.name
+        this.ddl = this.formattedDateTime(response.data.data.ddl.seconds)
+        this.testContent = response.data.data.content
+        this.testObject = response.data.data.object
+        this.accessPath = response.data.data.accessPath
+      })
+      .catch((error) => {
+        console.error('Failed to fetch card data:', error)
+      })
   },
   methods: {
     //限制只能提交zip格式
+    formattedDateTime(seconds) {
+      const milliseconds = seconds * 1000 // 转换为毫秒
+      const date = new Date(milliseconds)
+      // 获取月、日、小时、分钟
+      const month = date.getMonth() + 1 // 月份从0开始，所以要加1
+      const day = date.getDate()
+      const hours = date.getHours()
+      const minutes = date.getMinutes()
+      // 格式化日期时间
+      const formattedDate = `${month.toString().padStart(2, '0')}-${day
+        .toString()
+        .padStart(2, '0')}`
+      const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes
+        .toString()
+        .padStart(2, '0')}`
+
+      return `${formattedDate} ${formattedTime}`
+    },
 
     talkTime() {
       window.open('https://uutool.cn/qq-chat/')
@@ -217,7 +251,7 @@ export default {
     },
     //点击上传文件触发的额外事件,清空fileList
     returnHome() {
-      this.$router.replace('/Homepage')
+      this.$router.replace('/')
       this.aheadReturn = true
       window.clearInterval(interval)
       window.close()
@@ -249,25 +283,30 @@ export default {
             //获取文件名后缀
             let fileType = fileName.substring(fileName.lastIndexOf('.') + 1)
             let iconElement = ele.getElementsByTagName('i')[0]
-            // if (['png','jpg','jpeg',".gif",'PNG','JPG','JPEG',"GIF"].indexOf(fileType) != -1) {
-            //     iconElement.className = "imgicon-img" // 图⽚，动图
-            //   } else if (['mp4','3gp','avi',"flv",'MP4','3GP','AVI',"FLV"].indexOf(fileType) != -1) {
-            //     iconElement.className = 'imgicon-video' // 视频
-            //   } else if (['doc','docx','DOC','DOCX'].indexOf(fileType) != -1) {
-            //     iconElement.className = 'imgicon-docx' // 文档
-            //   } else if (['xls','xlsx','XLS','XLSX'].indexOf(fileType) != -1) {
-            //     iconElement.className = 'imgicon-xlsx' // 表格
-            //   } else if (['ppt','pptx','PPT','PPTX'].indexOf(fileType) != -1) {
-            //     iconElement.className = 'imgicon-pptx' // PPT
-            //   } else if (['zip','ZIP'].indexOf(fileType) != -1) {
-            //     iconElement.className = 'imgicon-zip' // 压缩包
-            //   } else if (['pdf','PDF'].indexOf(fileType) != -1) {
-            //     iconElement.className = 'imgicon-pdf' // PDF
-            //   } else {
-            //     iconElement.className = 'imgicon-default' //默认图标
-            //   }
             if (['zip', 'ZIP'].indexOf(fileType) != -1) {
               iconElement.className = 'imgicon-zip' // 压缩包
+              let formData = new FormData()
+              formData.append('file', this.fileList[0].raw) //拿到存在fileList的文件存放到formData中
+              let config = {
+                headers: {
+                  'Content-Type': 'multipart/form-data',
+                  token: localStorage.getItem('HQU_naxin'),
+                },
+              }
+              axios
+                .put(
+                  'http://124.221.99.127:10810/file/userupload',
+                  formData,
+                  config
+                )
+                .then((res) => {
+                  console.log(res)
+                  console.log(res.data.data)
+                  this.fileUrl = res.data.data
+                })
+                .catch((res) => {
+                  console.log(res)
+                })
             } else {
               this.delFile()
               this.$message({
@@ -294,32 +333,33 @@ export default {
       console.log('sb2')
       // console.log(file);
     },
-    //放弃按钮
-    abandonUpload() {
-      this.$confirm('您是否放弃考核?', '提示', {
-        showClose: false,
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning',
-        center: true,
-      })
-        .then(() => {
-          this.$message({
-            type: 'success',
-            message: '您已放弃考核!',
-          })
-          this.$router.replace('/Homepage')
-        })
-        .catch(() => {})
-    },
 
     //保存按钮
     submitUpload() {
       if (this.fileList.length != 0) {
-        let formData = new FormData()
         //自行添加数据到formData(使用键值对方式存储)
-        formData.append('file', this.fileList[0].raw) //拿到存在fileList的文件存放到formData中
-        console.log(formData.get('file'))
+        let fileUrl = this.fileUrl
+        let posts = Number(this.id)
+        let formData = {
+          organization: 1,
+          path: fileUrl,
+          posts: posts,
+        }
+        console.log(formData.posts)
+        let headers = {
+          'Content-Type': 'application/json',
+          accept: 'application/json',
+          token: localStorage.getItem('HQU_naxin'),
+        }
+
+        axios
+          .post('http://124.221.99.127:10810/user/access/submit', formData, {
+            headers,
+          })
+          .then((res) => {
+            console.log(res)
+          })
+
         this.dialogVisible = true
         this.times = 5
         let that = this
@@ -334,29 +374,11 @@ export default {
             }
           }
         }, 1000)
-        //   axios.post(post请求的具体路径, formData, {
-        //   "Content-Type": "multipart/form-data;charset=utf-8"
-        // })
-        //   .then(res => {
-        //     if (res.data === "SUCCESS") {
-        //       this.$notify({
-        //         title: '成功',
-        //         message: '提交成功',
-        //         type: 'success',
-        //         duration: 1000
-        //       });
-        //     }
-        //   })
       }
     },
     ChooseCollect() {
       //补充：给后端发
       this.isCollect = !this.isCollect
-    },
-    loadFile() {
-      axios.get('地址', { responseType: 'blob' }).then((res) => {
-        saveAs(res.data, '下载的文件名')
-      })
     },
   },
 }

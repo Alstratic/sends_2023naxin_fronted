@@ -32,11 +32,11 @@
             justify-content: space-around;
           "
         >
-          <span style="color: #929292">time</span>
+          <span style="color: #929292">{{ time }}</span>
 
-          <span class="hot-position-num">{{ status }}</span>
+          <span class="hot-position-num">{{ address }}</span>
 
-          <span style="color: #d0b65c; font-size: 3px">面试结束</span>
+          <span style="color: #d0b65c; font-size: 3px">{{ statusText }}</span>
         </div>
         <div
           style="
@@ -64,17 +64,32 @@
 export default {
   props: {
     positionName: String,
-    status: String,
-    id:Number
+    time: String,
+    id:Number,
+    address:String,
+    status:Number
   },
   data(){
     return{
-      
+      statusBar:[
+        '待面试',
+        '面试结束'
+      ]
     }
   },
   methods: {
     //放弃面试
     async abandonView() {
+      let posts = Number(this.id)
+      let data = {
+        posts: posts,
+        organization: 1,
+      }
+      let headers = {
+        'Content-Type': 'application/json',
+        accept: 'application/json',
+        token: localStorage.getItem('HQU_naxin'),
+      }
       this.$confirm('您是否放弃面试?', '提示', {
         showClose: false,
         confirmButtonText: '确定',
@@ -87,8 +102,17 @@ export default {
             type: 'success',
             message: '您已放弃面试!',
           })
+          this.$router.replace('/')
 
-          //这里之后还得再改一下。跟后端发请求，再重新更改页面
+          axios
+            .post(this.baseUrl, data, { headers })
+            .then((response) => {
+              // 将从后端获取的数据填充到 cardData 对象中
+              console.log(response)
+            })
+            .catch((error) => {
+              console.error('Failed to fetch card data:', error)
+            })
         })
         .catch(() => {})
     },
@@ -99,12 +123,14 @@ export default {
 
     cardClick(){
       console.log(this.id);
-      this.$router.push({name:'Interview',params:{id:this.id}})
+      this.$router.push({name:'Interview',params:{id:this.id,positionName:this.positionName,status:this.statusText,time:this.time,address:this.address}})
     }
   },
-  // created:{
-  // //补充：从后端获得isCollect的状态
-  // }
+  computed:{
+    statusText(){
+      return this.statusBar[this.status]
+    }
+  }
 }
 </script>
 

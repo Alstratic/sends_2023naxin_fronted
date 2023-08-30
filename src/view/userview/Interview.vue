@@ -11,15 +11,9 @@
           <div class="Intro">
             <div class="position-name">
               <!-- 先写死 -->
-              <span id="Title">产品经理</span>
-              <div class="hot-position-tags">
-                <el-tag type="info">大一</el-tag>
-                <el-tag type="info">播音</el-tag>
-                <el-tag type="info">口才</el-tag>
-                <el-tag type="info">无需经验</el-tag>
-              </div>
+              <span id="Title">{{ positionName }}</span>
             </div>
-            <div class="statu">面试结束</div>
+            <div class="statu">{{ status }}</div>
           </div>
           <div class="operation">
             <div class="organization-details">
@@ -47,25 +41,14 @@
             <span style="margin-left: 1vw">面试信息</span>
             <!-- 先写死 -->
             <el-card class="message">
-              招聘对象：大一全体同学
+              面试时间：{{ time }}
               <br />
-              职位任务:PRD文档编写，项目推进
+              面试地点:{{ address }}
               <br />
-              特殊说明
+              特殊说明:
               <br />
             </el-card>
             <br />
-            <!-- 具体根据返回情况决定是否显示 -->
-            <span style="margin-left: 1vw" v-show="Isdisplay">面试结果</span>
-            <!-- 先写死 -->
-            <el-card class="message" v-show="Isdisplay">
-              招聘对象：大一全体同学
-              <br />
-              职位任务:PRD文档编写，项目推进
-              <br />
-              特殊说明
-              <br />
-            </el-card>
             <div class="butn">
               <el-button
                 type="warning"
@@ -117,12 +100,28 @@ export default {
       Isdisplay: true,
       isCollect: false,
       cardData: {},
-      id:null,
+      id: null,
+      positionName: null,
+      status: null,
+      time: null,
+      address: null,
+      baseUrl: 'http://124.221.99.127:10810/user/wait/abandon',
     }
   },
   methods: {
     //放弃面试
     abandonView() {
+      let posts = Number(this.id)
+      let data = {
+        posts: posts,
+        organization: 1,
+      }
+      let headers = {
+        'Content-Type': 'application/json',
+        accept: 'application/json',
+        token: localStorage.getItem('HQU_naxin'),
+      }
+
       this.$confirm('您是否放弃面试?', '提示', {
         showClose: false,
         confirmButtonText: '确定',
@@ -135,7 +134,17 @@ export default {
             type: 'success',
             message: '您已放弃面试!',
           })
-          this.$router.replace('/Homepage')
+          this.$router.replace('/')
+
+          axios
+            .post(this.baseUrl, data, { headers })
+            .then((response) => {
+              // 将从后端获取的数据填充到 cardData 对象中
+              console.log(response)
+            })
+            .catch((error) => {
+              console.error('Failed to fetch card data:', error)
+            })
         })
         .catch(() => {})
     },
@@ -149,23 +158,14 @@ export default {
       this.isCollect = !this.isCollect
     },
   },
-  // created: {
-  //   //补充：从后端获得isCollect的状态
-  // },
+
   mounted() {
     let that = this
-    this.id=this.$route.params.id
-    axios
-      .get('/api/cardData')
-      .then((response) => {
-        // 将从后端获取的数据填充到 cardData 对象中
-        console.log(response.data)
-        that.cardData = response.data
-        console.log(response.data)
-      })
-      .catch((error) => {
-        console.error('Failed to fetch card data:', error)
-      })
+    this.id = this.$route.params.id
+    this.positionName = this.$route.params.positionName
+    this.status = this.$route.params.status
+    this.time = this.$route.params.time
+    this.address = this.$route.params.address
   },
 }
 </script>

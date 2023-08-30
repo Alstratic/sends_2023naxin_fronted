@@ -17,9 +17,10 @@
           <Exam
             v-for="(cardData, cardIndex) in cardData"
             :key="cardIndex"
-            :taskName="cardData.name"
+            :taskName="cardData.postsName"
             :position-name="cardData.postsName"
             :status="cardData.state"
+            :id="cardData.posts"
           >
           </Exam>
         </div>

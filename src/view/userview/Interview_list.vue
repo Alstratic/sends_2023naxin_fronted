@@ -18,8 +18,10 @@
           v-for="(cardData,cardIndex) in cardData"
           :key="cardIndex"
           :id="cardData.posts"
-          :position-name="cardData.name"
-          :status="formattedDateTime(cardData.time.seconds)"
+          :position-name="cardData.postsName"
+          :time="formattedDateTime(cardData.time.seconds)"
+          :address="cardData.address"
+          :status="cardData.state"
         >
         </Interview_list_card>
       </div>
@@ -77,7 +79,7 @@ export default {
   mounted() {
     let that = this
     let data = {
-      stage: 0,
+      stage: -1,
     }
     let headers = {
       'Content-Type': 'application/json',
@@ -91,17 +93,14 @@ export default {
         that.cardData = response.data.data.wait
         console.log(response.data.data.wait)
         that.AllcardData = that.cardData
-        // for (let i = 0; i < that.cardData.length; i++) {
-        //   if (that.cardData[i].State === undefined) {
-        //     that.cardData[i].State = 0
-        //     that.AllcardData = that.cardData
-        //     that.showData1.push(this.cardData[i])
-        //   } else if (that.cardData[i].State === 1) {
-        //     that.showData1.push(this.cardData[i])
-        //   } else if (that.cardData[i].State === 3) {
-        //     that.showData2.push(this.cardData[i])
-        //   }
-        // }
+        for (let i = 0; i < that.cardData.length; i++) {
+          if (that.cardData[i].state === undefined) {
+            that.cardData[i].state = 0
+            that.showData1.push(this.cardData[i])
+          } else if (that.cardData[i].state === 1) {
+            that.showData2.push(this.cardData[i])
+          }
+        }
         console.log(that.AllcardData)
       })
       .catch((error) => {
