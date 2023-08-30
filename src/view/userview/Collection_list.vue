@@ -178,7 +178,6 @@ export default {
 
 .all-container {
   height: 100%;
-  background-color: #909090;
 }
 .application-list-top {
   margin-top: 15px;
