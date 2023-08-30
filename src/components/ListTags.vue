@@ -48,10 +48,11 @@ export default{
     padding-right: 5px;
     padding-bottom: 3px;
     padding-top: 3px;
-    font-size: 2px;
+    font-size: 1rem;
     @media (max-width: 769px) {
         margin-left:8px;
         padding: 0 2px;
+        font-size: 0.5rem;
     } 
   }
 
