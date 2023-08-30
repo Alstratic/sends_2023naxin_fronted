@@ -35,10 +35,13 @@
       <el-card class="message2">
         <p style="font-family: Source Han Sans SC VF;font-size:1.2vw;font-weight: 700;margin-top: 1px;color: #7E7E7E;">具体数据 </p>
         <div class="contain">
+
           <div v-for="(value,key,index) in area" :key="index" style="width:30%;margin-right: 0.5vw;">
             <p style="margin-bottom:0px ;color: #7E7E7E;">{{key}}</p>
             <p style="font-size:1.2vw;font-weight: 540;">{{value}}</p>
           </div>
+
+
         </div>
       </el-card>
       <el-card class="message3">
@@ -59,6 +62,7 @@
 </template>
  
 <script>
+import {AdminSqure} from '../../api/index'
 export default {
   name: "FirstPage",
   data(){
@@ -73,14 +77,21 @@ export default {
           },
           vVisible: true,
           area:{
-              "发布职位":5,
-              "职位申请待审批":5,
-              "招聘人数":5,
-              "面试人数":5,
-              "考核人数":5,
-              "考核待批阅":12,
+              "发布职位":0,
+              "职位申请待审批":"——",
+              "招聘人数":"——",
+              "面试人数":"——",
+              "考核人数":"——",
+              "考核待批阅":"——",
           }
       }
+  },
+  mounted() {
+    AdminSqure().then(res=>{
+        this.area.发布职位=res.data.data.length
+      })
+
+    
   },
   methods: {
       // 点击编辑按钮
