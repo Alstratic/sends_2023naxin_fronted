@@ -95,6 +95,14 @@ export function applicatioChange(postApply) {
 
 	})
 }
+// 修改面试状态
+export function WaitChange(postApply) {
+	return instance({
+		url:'/admin/wait/change',
+		method: 'post',
+		data:postApply
+	})
+}
 
 // 显示组织所有职位所有等待面试人员
 export function AdminWaitView(posts) {
