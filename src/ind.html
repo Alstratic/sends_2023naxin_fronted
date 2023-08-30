@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>转FormData传递数据</title>
+</head>
+<body>
+<input type="file" id="file" multiple>
+</body>
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script>
+    let $file = document.getElementById('file');
+    $file.addEventListener('change', function (e) {
+        let files = e.target.files;
+        let formData=new FormData();
+        let fields={
+            id:'007',
+            username:'张三',
+        }
+        for (const file of files) {
+            formData.append('file',file,file.name);//三个参数分别对应key value和文件名
+        }
+        formData.append('fields',JSON.stringify(fields));//文件上传时携带的参数
+        $.ajax({
+            type: 'put',
+            url: 'https://recruit-manage.sends.cc/api/file/userupload',
+            data: formData,
+            processData: false,//防止数据被转成字符串
+            contentType:false,
+            success: function (res) {
+                console.log(res.data.data);
+                // console.log(formData);
+            },
+            error: function (err) {
+                console.log(1);
+                console.log(formData);
+            }
+        })
+    })
+</script>
+</html>
