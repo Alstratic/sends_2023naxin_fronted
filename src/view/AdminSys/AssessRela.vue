@@ -72,9 +72,22 @@
                      @click="delFile">上传附件</el-button>
           <span style="font-size:2px;margin-left: 13px;color:#7E7E7E; font-family: Source Han Sans SC VF">考核相关文件</span>
         </el-upload>
+        
         <div class="butn">
+           
+          <el-button type="warning"  @click="Retrun" style="padding-left: 38px;padding-right: 38px; opacity: 0.8;color: black;line-height:50% ;" >返回首页</el-button>
           <el-button type="warning"  @click="submitForm('ruleForm')" style="padding-left: 38px;padding-right: 38px; background-color: #FFD74D;opacity: 0.8;color: black;line-height:50% ;">发布考核</el-button>
         </div>
+        <el-dialog class="dialog"
+          :visible.sync="dialogVisible"
+          :show-close= false            
+          :close-on-click-modal= false            
+          :close-on-press-escape= true            
+          width="dialogWidth"         
+          center>
+          <div  class="tip" style="font-size:1rem; ">{{this.ruleForm.name}} 考核发布成功</div>
+          <div class="tip" style="font-size:0.2rem; font-weight: 500;">{{times}}秒后返回首页，<a style="text-decoration:underline;" @click="returnHome">返回</a></div> 
+        </el-dialog>
     </el-form>
   </div>
   </div>
@@ -145,6 +158,16 @@
         }
       },
     methods: {
+      returnHome(){
+        this.$router.replace('/admin/FirstPage') 
+        this.aheadReturn=true
+        window.clearInterval(interval)                    
+        window.close();            
+        this.dialogVisible = false;  //倒计时结束时运行的业务逻辑，这里的是关闭当前页面
+      },
+      Retrun(){
+        this.$router.replace('/admin/FirstPage') 
+      },
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
@@ -240,15 +263,32 @@
                   this.ruleF.name=item.name
                   this.ruleF.stu_num=item.stuNum
                    TaskCreate(this.ruleF).then(res=>{
-                    console.log(res)} ) 
+                   if(res.data.msg==='success'){
+                    this.dialogVisible=true;
+                    this.times = 5;            
+                    let that = this            
+                    let interval = window.setInterval(function () {                    
+                      --that.times                    
+                      if (that.times === 0) {     
+                        if(that.aheadReturn===false){
+                          that.$router.replace('/admin/FirstPage')                                
+                          window.clearInterval(interval)                    
+                          window.close();            
+                          that.dialogVisible = false;  //倒计时结束时运行的业务逻辑，这里的是关闭当前页面
+                        }  
+                      }            
+                  }, 1000) 
+                   }else{
+                    this.$message({
+                      message: '考核发布失败!',
+                      type: 'error'
+                      
+                    });
+                   }
+                  
+                  } ) 
                 }     
-                })
-            this.$message({
-              message: '考核发布成功!',
-              type: 'success'
-            });
-            location.reload()
-            this.$router.go(0)
+                })    
           }
           else{
              console.log(this.ruleForm)
