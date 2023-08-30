@@ -40,7 +40,7 @@ export default {
     return {
       tags: ['全部', '待面试', '面试结束'],
       selectedTags: [true, false, false],
-      baseUrl: 'http://124.221.99.127:10810/user/wait/view',
+      baseUrl: 'https://recruit.sends.cc/api/user/wait/view',
       cardData: {},
       showData1:[],
       showData2:[],
