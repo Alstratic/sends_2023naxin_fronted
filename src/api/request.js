@@ -1,7 +1,7 @@
 // 请求
 import axios from 'axios'
 const instance = axios.create({
-  baseURL: 'http://124.221.99.127:10810', // api 的 base_url
+  baseURL: 'https://recruit.sends.cc/api/', // api 的 base_url
   withCredentials: false
 })
 // 添加请求拦截器
