@@ -109,7 +109,7 @@ export default {
       PosiTags: ['全部', '互联网/电子技术', '策划/管理', '新媒体/运营', '设计'],
       recruitTags: ['全部', '大一', '大二', '大三', '大四', '不限年级'],
       posiExperience: ['全部', '无需经验', '仅了解', '熟悉', '精通', '不限经验'],
-      baseUrl: 'http://124.221.99.127:10810/square/posts',
+      baseUrl: 'https://recruit.sends.cc/api/square/posts',
       queryString1: '',
       queryString2: '',
       queryString3: '',
