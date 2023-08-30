@@ -149,6 +149,7 @@ export default {
   flex-basis: 100%; /* 将宽度设置为100%，使其占据整行 */
   font-size: 25px;
   font-weight: 500;
+  margin-bottom: 4vh;
 }
 
 .application-list-tags {
@@ -178,11 +179,14 @@ export default {
 }
 
 .application-card-list {
-  margin-top: 30px;
+  margin-top: 8vh;
   background-color: #fff;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  @media (max-width: 769px) {
+    margin-top: 3vh;
+    } 
 }
 
 .el-card_body {
