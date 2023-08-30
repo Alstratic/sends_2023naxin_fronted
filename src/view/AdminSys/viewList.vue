@@ -157,8 +157,4 @@ flex-wrap: nowrap;
     width: 100%; 
   }
 }
-<<<<<<< HEAD
 </style>
-=======
-</style>
->>>>>>> 4e7778855066a2d3138879b91e2d013968217de6
