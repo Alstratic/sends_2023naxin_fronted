@@ -45,7 +45,7 @@ export default{
 <style scoped lang="less">
 .box-card {
   width: 26vw;
-  height: 22vh;
+ 
   border: #ffd74d 1.5px solid !important;
   border-radius: 15px !important;
   margin-left: 1.5vw;
