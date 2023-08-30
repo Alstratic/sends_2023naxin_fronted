@@ -30,7 +30,7 @@
           prop="object"
           >
           <el-select v-model="ruleForm.object">
-              <el-option label="不限" value="不限"></el-option>
+              <el-option label="不限年级" value="不限年级"></el-option>
               <el-option label="大一" value="大一"></el-option>
               <el-option label="大二·" value="大二"></el-option>
               <el-option label="大三" value="大三"></el-option>
@@ -56,7 +56,7 @@
               <el-option label="仅了解" value="仅了解"></el-option>
               <el-option label="熟悉" value="熟悉"></el-option>
               <el-option label="精通" value="精通"></el-option>
-              <el-option label="不限" value="不限"></el-option>
+              <el-option label="不限经验" value="不限经验"></el-option>
           </el-select>
           </el-form-item>
            
