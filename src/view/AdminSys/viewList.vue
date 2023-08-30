@@ -95,8 +95,8 @@ export default {
     margin-right: 8vw;
     padding-top: 2vh;
     @media (max-width: 920px) {
-      margin-left: 6vw;
-      margin-right: 3vw;
+      margin-left: 0vw;
+      margin-right: 0vw;
     }
     span{
       font-family: Source Han Serif CN VF;
