@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const setToken = (token) => {
   localStorage.setItem('HQU_SOG', token)
 }
@@ -17,31 +16,16 @@ const isLogin = () => {
   const token = getToken()
   if (!token || token === '') return false
   console.log('token: ', token)
-=======
-// 用于从 localStorage 中获取存储的 token
-  
-const isLogin = () => {
-  const token = getToken()
-  if (!token || token === '') return false
-  console.log('HQU_naxin: ', token)
->>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
   return true
 }
 // 用于检查用户是否已登录，通过检查 localStorage 中的 token 是否存在来判断。
 // 如果 token 存在且不为空，说明用户已登录，返回 true，否则返回 false。
 
 const wxRedirect = () => {
-<<<<<<< HEAD
   location.href = `https://apps.hqu.edu.cn/wechat-hqu/wechatauth.html?proxyTo=authoauth&sendUrl=/connect/oauth2/authorize?appid=wxfe035b066fb1158b&redirect_uri=${encodeURIComponent(
     'http://localhost:8080/LoginSucess'
   )}&encode_flag=Y&response_type=code&scope=snsapi_userinfo#wechat_redirect`
 }
-=======
-  location.href = `https://apps.hqu.edu.cn/wechat-hqu/wechatauth.html?proxyTo=authoauth&sendUrl=/connect/oauth2/authorize?appid=wxfe035b066fb1158b&redirect_uri=${encodeURIComponent
-    (`${document.location.origin}/#/LoginSucess`)}&encode_flag=Y&response_type=code&scope=snsapi_userinfo#wechat_redirect`
-}
-// `${document.location.origin}/LoginSucess`
->>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
 // 用于执行微信授权重定向，将用户重定向到微信授权页面以获取授权的 code。
 // 它构建了一个微信授权的链接，包括应用的 appid、重定向的地址等
 
@@ -53,19 +37,10 @@ const isInWechat = () => {
 
 const getWechatCode = () => {
   const searchParams = new URLSearchParams(location.search)
-<<<<<<< HEAD
 
   return searchParams.get('code')
-=======
-  return searchParams.get('code')
-
->>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
 }
 // 用于从当前页面的 URL 参数中获取微信授权的 code。
 // 在微信授权后，微信会将授权的 code 附加到重定向的 URL 中，通过这个函数可以获取该 code。
 
-<<<<<<< HEAD
 export { setToken, getToken, isLogin, wxRedirect, isInWechat, getWechatCode }
-=======
-export {  isLogin, wxRedirect, isInWechat, getWechatCode }
->>>>>>> ed30bfd7f8be69c679eb382f43c9d976c35d124f
