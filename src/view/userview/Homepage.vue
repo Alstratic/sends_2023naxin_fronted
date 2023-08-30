@@ -211,9 +211,11 @@
   .transforming-pics{
     width: 100%;
     height: 50%;
-  
+    margin-bottom: 2.5rem;
     background-color: #fff;
-  
+    @media (max-width: 769px) {
+      margin-bottom: 0px;
+    }
     .transforming-container{
       width: 80%;
       display: flex;
