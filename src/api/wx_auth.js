@@ -23,7 +23,7 @@ const isLogin = () => {
 
 const wxRedirect = () => {
   location.href = `https://apps.hqu.edu.cn/wechat-hqu/wechatauth.html?proxyTo=authoauth&sendUrl=/connect/oauth2/authorize?appid=wxfe035b066fb1158b&redirect_uri=${encodeURIComponent(
-    'http://localhost:8080/LoginSucess'
+    `${location.origin}/user/homepage`
   )}&encode_flag=Y&response_type=code&scope=snsapi_userinfo#wechat_redirect`
 }
 // 用于执行微信授权重定向，将用户重定向到微信授权页面以获取授权的 code。
