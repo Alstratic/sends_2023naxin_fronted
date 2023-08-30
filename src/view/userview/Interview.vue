@@ -105,7 +105,7 @@ export default {
       status: null,
       time: null,
       address: null,
-      baseUrl: 'http://124.221.99.127:10810/user/wait/abandon',
+      baseUrl: 'https://recruit.sends.cc/api/user/wait/abandon',
     }
   },
   methods: {
