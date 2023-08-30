@@ -69,7 +69,7 @@ export default {
             label2:"互联网",
             Mainjor:"张志飞",
             Workplace:"信息处",
-            Contact:"1234567890",
+            Contact:"",
           },
           vVisible: true,
           area:{
