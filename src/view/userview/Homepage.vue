@@ -122,7 +122,7 @@
   
     mounted(){
       let that=this;
-      let baseUrl = 'http://124.221.99.127:10810/square/posts/host?number=9'
+      let baseUrl = 'https://recruit.sends.cc/api/square/posts/host?number=9'
       axios.get(baseUrl).then((response)=>{
         console.log(response.data.data.posts)
         this.cardDataList=response.data.data.posts
