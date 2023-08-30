@@ -20,7 +20,7 @@
         </div>
       </div>
       <!-- 轮播图 -->
-      <div class="transforming-pics">
+     <div class="transforming-pics" style="margin-bottom: 10vh;">
         <div class="tramsforming-container">
           <el-carousel trigger="click" height="20rem">
           <el-carousel-item v-for="item in 4" :key="item">
