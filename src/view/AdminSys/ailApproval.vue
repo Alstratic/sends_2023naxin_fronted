@@ -230,7 +230,12 @@ export default{
               console.log(res)
               console.log(1)
               this.storeList=res.data.data.allApplications  
-              this.filteredStoreList =(sessionStorage.getItem('index')===0? this.filteredStoreList = this.storeList.filter(item => item.hasOwnProperty('state')):this.storeList.filter(item => item.state === this.indexValue[sessionStorage.getItem('index')])) ;
+              this.filteredStoreList = (
+                sessionStorage.getItem('index') === '0' 
+                  ? this.storeList.filter(item => item.hasOwnProperty('state'))
+                  : this.storeList.filter(item => item.state === this.indexValue[sessionStorage.getItem('index')])
+              )
+              // this.filteredStoreList =(sessionStorage.getItem('index')===0? this.filteredStoreList = this.storeList.filter(item => item.hasOwnProperty('state')):this.storeList.filter(item => item.state === this.indexValue[sessionStorage.getItem('index')])) ;
           }),    
       )
       if(state===4||state===1){
