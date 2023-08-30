@@ -22,9 +22,8 @@ const isLogin = () => {
 // 如果 token 存在且不为空，说明用户已登录，返回 true，否则返回 false。
 
 const wxRedirect = () => {
-  location.href = `https://apps.hqu.edu.cn/wechat-hqu/wechatauth.html?proxyTo=authoauth&sendUrl=/connect/oauth2/authorize?appid=wxfe035b066fb1158b&redirect_uri=${encodeURIComponent(
-    `${location.origin}/user/homepage`
-  )}&encode_flag=Y&response_type=code&scope=snsapi_userinfo#wechat_redirect`
+  location.href = `https://apps.hqu.edu.cn/wechat-hqu/wechatauth.html?proxyTo=authoauth&sendUrl=/connect/oauth2/authorize?appid=wxfe035b066fb1158b&redirect_uri=${encodeURIComponent
+    (`${document.location.origin}/#/LoginSucess`)}&encode_flag=Y&response_type=code&scope=snsapi_userinfo#wechat_redirect`
 }
 // 用于执行微信授权重定向，将用户重定向到微信授权页面以获取授权的 code。
 // 它构建了一个微信授权的链接，包括应用的 appid、重定向的地址等
