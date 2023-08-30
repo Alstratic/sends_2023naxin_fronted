@@ -8,10 +8,10 @@
       <div class="all-container">
         <div class="application-list-top">
           <div class="application-list-font">
-            <span class="application-list-font-detail"> 申请列表 </span>
+            <span class="application-list-font-detail" > 申请列表 </span>
           </div>
-          <div class="application-list-tags">
-            <ListTags :tags="this.tags" @tag-selected="SlctTagId"> </ListTags>
+          <div class="application-list-tags" >
+            <ListTags :tags="this.tags" @tag-selected="SlctTagId" > </ListTags>
           </div>
         </div>
         <div class="application-card-list" v-if="!isEmpty">
@@ -164,14 +164,18 @@ export default {
   flex-basis: 100%; /* 将宽度设置为100%，使其占据整行 */
   font-size: 25px;
   font-weight: 500;
+  margin-bottom: 4vh;
 }
 
 .application-card-list {
-  margin-top: 30px;
+  margin-top: 8vh;
   background-color: #fff;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  @media (max-width: 769px) {
+    margin-top: 3vh;
+    } 
 }
 
 .el-card_body {
