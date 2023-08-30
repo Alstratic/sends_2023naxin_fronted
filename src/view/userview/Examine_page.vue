@@ -162,7 +162,7 @@ export default {
       dialogVisible: false,
       aheadReturn: false,
       dialogWidth: '1080px',
-      baseUrl: 'http://124.221.99.127:10810/user/access/view',
+      baseUrl: 'https://recruit.sends.cc/api/user/access/view',
       id: null,
       testName: null,
       status: null,
@@ -295,7 +295,7 @@ export default {
               }
               axios
                 .put(
-                  'http://124.221.99.127:10810/file/userupload',
+                  'https://recruit.sends.cc/api/file/userupload',
                   formData,
                   config
                 )
@@ -353,7 +353,7 @@ export default {
         }
 
         axios
-          .post('http://124.221.99.127:10810/user/access/submit', formData, {
+          .post('https://recruit.sends.cc/api/user/access/submit', formData, {
             headers,
           })
           .then((res) => {
