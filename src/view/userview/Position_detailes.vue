@@ -107,9 +107,9 @@ export default {
       cardData1:{},
       tagsData:{},
       collectData:{},
-      baseUrl:'http://124.221.99.127:10810/square/posts/',
-      baseUrl2:'http://124.221.99.127:10810/square/organizations/posts/1',
-      baseUrl3:'http://124.221.99.127:10810/square/posts/favorite/'
+      baseUrl:'https://recruit.sends.cc/api/square/posts/',
+      baseUrl2:'https://recruit.sends.cc/api/square/organizations/posts/1',
+      baseUrl3:'https://recruit.sends.cc/api/square/posts/favorite/'
     }
   },
   methods: {
@@ -189,7 +189,7 @@ export default {
       })
 
     axios
-      .get('http://124.221.99.127:10810/square/organizations/posts/1')
+      .get('https://recruit.sends.cc/api/square/organizations/posts/1')
       .then((response) => {
         // 将从后端获取的数据填充到 cardData 对象中
         that.cardData = response.data.data
