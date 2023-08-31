@@ -40,11 +40,11 @@
               </div>
             </div>
             <div class="position-operation">
-              <el-button @click="Talk" type="warning" style="background-color: #ffd74d"
-                >联系一下</el-button
+              <el-button @click="Talk" type="warning" 
+                ><span class="custom-button">联系一下</span></el-button
               >
               <el-button type="warning" plain @click="GoApplications"
-                >申请面试</el-button
+                ><span>申请面试</span></el-button
               >
             </div>
           </div>
@@ -297,6 +297,10 @@ export default {
     color: #ffd74d;
     opacity: 70%;
   }
+}
+
+.custom-button{
+  color: black;
 }
 .organization-details {
   display: flex;

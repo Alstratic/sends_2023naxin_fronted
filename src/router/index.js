@@ -18,7 +18,8 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/user/homepage', component: Homepage
+    path: '/user/homepage',
+    component: Homepage
     // 需要登录后才能访问的页面
     //  meta: { requiresAuth: true }
   },
@@ -27,23 +28,31 @@ const routes = [
     redirect: '/Login'
   },
   {
-    name:'Login',
-    path:'/Login',
+    name: 'Login',
+    path: '/Login',
     component: () => import('../view/userview/Login.vue')
   },
-  { path: '/user/interview', component: Interview },
+  { path: '/user/interview', component: Interview, name: 'Interview' },
   { path: '/user/Applications_details', component: Applications_details },
-  { path: '/user/Examine_page', component: Examine_page },
+  { path: '/user/Examine_page', component: Examine_page, name: 'Examine_page' },
   { path: '/user/Orgnization_details', component: Orgnization_details },
-  { path: '/user/Position_detailes/:id', component: Position_detailes, name: 'Position_detailes' },
+  {
+    path: '/user/Position_detailes/:id',
+    component: Position_detailes,
+    name: 'Position_detailes'
+  },
   { path: '/user/Applications', component: Applications, name: 'Applications' },
   { path: '/user/All_positions', component: All_positions },
   { path: '/user/Application_list', component: Application_list },
   { path: '/user/Interview_list', component: Interview_list },
   { path: '/user/Exam_list', component: Exam_list },
   { path: '/user/Collection_list', component: Collection_list },
-  {path:'/LoginSucess',name:'LoginSucess',component: ()=>import('../view/userview/LoginSucess.vue') },
-] 
+  {
+    path: '/LoginSucess',
+    name: 'LoginSucess',
+    component: () => import('../view/userview/LoginSucess.vue')
+  }
+]
 
 const router = new VueRouter({
   routes
@@ -54,10 +63,9 @@ router.beforeEach((to, from, next) => {
   // 如果去往登录页则放行
   if (to.path === '/login') {
     next()
-  }  else if(to.path === '/LoginSucess'){
-    next();
-  }
-  else {
+  } else if (to.path === '/LoginSucess') {
+    next()
+  } else {
     // 从本地存储里获取token
     const token = localStorage.getItem('HQU_naxin')
     // 判断token是否为空如果为空则跳转到登录页 如果有则放行

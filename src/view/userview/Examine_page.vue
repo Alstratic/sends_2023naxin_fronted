@@ -32,7 +32,7 @@
             <div class="position-operation">
               <el-button
                 type="warning"
-                style="background-color: #ffd74d"
+                style="background-color: #ffd74d;color: black"
                 @click="talkTime"
                 >联系一下</el-button
               >

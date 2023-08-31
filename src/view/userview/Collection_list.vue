@@ -11,15 +11,7 @@
             <span class="application-list-font-detail"> 收藏列表 </span>
           </div>
           <div class="application-list-tags">
-            <label
-              v-for="(tag, index) in tags"
-              :key="tag"
-              :class="{ active: selectedTags[index] }"
-              class="application-list-tag"
-              @click="selectTag(index)"
-            >
-              {{ tag }}
-            </label>
+            <ListTags :tags="this.tags" @tag-selected="selectTag(index)"> </ListTags>
           </div>
         </div>
 
@@ -50,9 +42,10 @@ import axios from 'axios'
 import positionCard from '../../components/positionCard.vue'
 import collectionCard from '@/components/collectionCard.vue'
 import { getUserToken } from '../../request/wx_auth.js'
+import ListTags from '@/components/ListTags.vue'
 
 export default {
-  components: { Login_nav, axios, positionCard, collectionCard },
+  components: { Login_nav, axios, positionCard, collectionCard,ListTags},
   data() {
     return {
       tags: ['全部', '进行中', '已结束'],
@@ -197,10 +190,9 @@ export default {
   flex-basis: 100%; /* 将宽度设置为100%，使其占据整行 */
   font-size: 25px;
   font-weight: 500;
+  padding-bottom: 30px;
 }
 .application-list-tags {
-  width: 10rem;
-  height: 2rem;
   display: flex;
   justify-content: space-between;
 }
