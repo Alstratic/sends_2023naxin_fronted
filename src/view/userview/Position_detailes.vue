@@ -24,7 +24,7 @@
               :class="isCollect ? 'el-icon-star-on' : 'el-icon-star-off'"
               @click="ChooseCollect"
             ></i>
-            <span>收藏职位</span>
+            <span style="font-size: 1rem;">收藏职位</span>
           </div>
           <div class="operation">
             <div class="organization-details">
