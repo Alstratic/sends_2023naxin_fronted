@@ -150,7 +150,7 @@ export default {
     },
     //协调时间
     talkTime() {
-      window.open('https://uutool.cn/qq-chat/')
+      window.open('http://wpa.qq.com/msgrd?v=3&uin=384637134&site=qq&menu=yes')
     },
 
     ChooseCollect() {
