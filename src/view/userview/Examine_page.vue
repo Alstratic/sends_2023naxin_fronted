@@ -483,6 +483,19 @@ export default {
     }
   }
 }
+.position-operation{
+  .el-button {
+    
+    font-size: 1rem;
+    line-height: 2px;
+    height: 1.5rem;
+    margin-top: 3vh;
+    font-weight: 600;
+    color: black;
+    border-radius: 10px;
+    opacity: 0.8;
+  }
+}
 .operation {
   display: flex;
   margin-top: 2vh;
@@ -493,19 +506,7 @@ export default {
     padding-left: 1vw;
     padding-right: 1vw;
   }
-  .el-button {
-    text-align: right;
-    font-size: 1px;
-    line-height: 2px;
-    height: 1rem;
-    width: 88px;
-    margin-top: 3vh;
-    font-family: Source Han Sans SC VF;
-    font-weight: 600;
-    color: black;
-    border-radius: 10px;
-    opacity: 0.8;
-  }
+  
 }
 .Examine-message {
   padding-top: 5vh;
