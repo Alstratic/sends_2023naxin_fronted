@@ -54,11 +54,6 @@
                 type="warning"
                 @click="abandonView"
                 style="
-                  padding-left: 38px;
-                  padding-right: 38px;
-                  opacity: 0.8;
-                  color: black;
-                  line-height: 50%;
                 "
                 plain
                 >放弃面试</el-button
@@ -67,12 +62,8 @@
                 type="warning"
                 @click="talkTime"
                 style="
-                  padding-left: 38px;
-                  padding-right: 38px;
                   background-color: #ffd74d;
                   opacity: 0.8;
-                  color: black;
-                  line-height: 50%;
                 "
                 >协调时间</el-button
               >
@@ -286,20 +277,17 @@ export default {
   display: flex;
   margin-top: 4vh;
   justify-content: space-around;
-  .el-button {
-    text-align: right;
-    font-size: 1px;
+}
+.el-button {
+    font-size: 1rem;
     line-height: 2px;
-    height: 1rem;
-    width: 88px;
+    height: 1.5rem;
     margin-top: 3vh;
-    font-family: Source Han Sans SC VF;
     font-weight: 600;
     color: black;
     border-radius: 10px;
     opacity: 0.8;
   }
-}
 .position-message {
   padding-top: 5vh;
   padding-left: 10vw;
