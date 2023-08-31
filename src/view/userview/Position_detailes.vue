@@ -41,10 +41,9 @@
             </div>
             <div class="position-operation">
               <el-button @click="Talk" type="warning" 
-                ><span class="custom-button">联系一下</span></el-button
-              >
+                >联系一下</el-button>
               <el-button type="warning" plain @click="GoApplications"
-                ><span>申请面试</span></el-button
+                >申请面试</el-button
               >
             </div>
           </div>
@@ -336,20 +335,18 @@ export default {
   display: flex;
   margin-left: 3vw;
   justify-content: space-around;
-  .el-button {
-    text-align: right;
-    font-size: 1px;
+}
+.el-button {
+    
+    font-size: 1rem;
     line-height: 2px;
-    height: 1rem;
-    width: 88px;
+    height: 1.5rem;
     margin-top: 3vh;
-    font-family: Source Han Sans SC VF;
     font-weight: 600;
     color: black;
     border-radius: 10px;
     opacity: 0.8;
   }
-}
 .position-message {
   padding-top: 5vh;
   padding-left: 10vw;
