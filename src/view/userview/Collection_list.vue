@@ -11,7 +11,7 @@
             <span class="application-list-font-detail"> 收藏列表 </span>
           </div>
           <div class="application-list-tags">
-            <ListTags :tags="this.tags" @tag-selected="selectTag(index)"> </ListTags>
+            <ListTags :tags="this.tags" @tag-selected="SlctTagId"> </ListTags>
           </div>
         </div>
 
@@ -59,19 +59,17 @@ export default {
     }
   },
   methods: {
-    selectTag(index) {
-      this.selectedTags = this.selectedTags.map((_, idx) => idx === index)
-      console.log(index)
-      if (index === 1) {
+    SlctTagId(tag) {
+      if (tag === '进行中') {
         this.cardData = this.showData1
         return
-      } else if (index === 2) {
+      } else if (tag === '已结束') {
         this.cardData = this.showData2
         return
       } else {
         this.cardData = this.AllcardData
+        return
       }
-      console.log(this.cardData)
     },
     mergeTags(cardData) {
       const mergedTags = []
@@ -154,7 +152,6 @@ export default {
         // }
         grouped.push(group)
       }
-      console.log(grouped)
       return grouped
     },
   },
