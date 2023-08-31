@@ -3,7 +3,6 @@
       <div class="hot-position-details">
         <span class="hot-position-name">{{positionName}}</span>
         <span class="hot-position-num">{{positionNum}}人</span>
-        <span class="hot-position-num"></span>
       </div>
       <div class="hotonNuition-tags">
         <el-tag type="info" v-for="tag in tags" :key="tag">{{tag}}</el-tag>
