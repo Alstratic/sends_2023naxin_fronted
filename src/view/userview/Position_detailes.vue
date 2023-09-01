@@ -172,7 +172,28 @@ export default {
     },
   },
   created() {
-    // console.log(this.$route.params.id)
+    let that = this
+    this.token = getUserToken()
+    let headers = {
+      token: this.token,
+    }
+    let params = {
+      state: null,
+    }
+    console.log(this.$route.params.id)
+    axios
+      .get('https://recruit.sends.cc/api/square/posts/favorite', {
+        headers,
+        params,
+      })
+      .then((response) => {
+        if(response.data.msg==='success'){
+          const res=response.data.data.posts
+          const IsT = res.some(obj => obj.id === this.$route.params.id);
+          this.isCollect=IsT
+        }
+        // 将从后端获取的数据填充到 cardData 对象中
+      })
   },
   mounted() {
     let that = this
