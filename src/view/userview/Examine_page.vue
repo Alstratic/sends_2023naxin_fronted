@@ -11,7 +11,7 @@
               <!-- 先写死 -->
               <span id="Title">{{ testName }}</span>
               <div class="hot-position-tags">
-                <div class="deadline">{{ ddl }}</div>
+                <div class="deadline">截止时间：{{ ddl }}</div>
               </div>
             </div>
             <div class="statu">{{ status }}</div>
@@ -422,7 +422,7 @@ export default {
   margin-top: 1.5vh;
   padding: auto;
   color: #d0b65c;
-  font-size: 0.5rem;
+  font-size: 25px;
 }
 .statu {
   font-family: Source Han Sans SC VF;
@@ -474,7 +474,7 @@ export default {
     font-size: 1rem;
   }
   .organization-type {
-    font-size: 6px;
+    font-size: 12px;
     text-align: right;
     color: #bbbbbb;
     @media (max-width: 769px) {

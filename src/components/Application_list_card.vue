@@ -99,10 +99,10 @@ export default {
   .organization-name1 {
     padding-left: 3px;
     text-align: left;
-    font-size: 0.5rem;
+    font-size: 1rem;
   }
   .organization-type1 {
-    font-size: 6px;
+    font-size: 14px;
     text-align: right;
     color: #bbbbbb;
   }

@@ -162,10 +162,10 @@ export default {
   .organization-name1 {
     padding-left: 3px;
     text-align: left;
-    font-size: 0.5rem;
+    font-size: 15px;
   }
   .organization-type1 {
-    font-size: 6px;
+    font-size: 14px;
     text-align: right;
     color: #bbbbbb;
     @media (max-width: 920px) {
@@ -203,16 +203,14 @@ export default {
   flex-wrap: wrap;
 }
 .el-button {
-  text-align: right;
-  font-size: 1px;
-  line-height: 2px;
-  height: 1rem;
-  width: 88px;
-  font-family: Source Han Sans SC VF;
-  font-weight: 600;
-  color: black;
-  border-radius: 10px;
-  opacity: 0.8;
-  margin-left: 7px;
+  font-size: 1rem;
+    line-height: 2px;
+    height: 1.5rem;
+    margin-top: 3vh;
+    font-weight: 600;
+    color: black;
+    border-radius: 10px;
+    opacity: 0.8;
 }
+
 </style>

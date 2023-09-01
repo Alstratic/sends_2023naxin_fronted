@@ -63,10 +63,10 @@
   .organization-name1{
     padding-left: 3px;
     text-align: left;
-    font-size: 0.5rem;
+    font-size: 15px;
   }
   .organization-type1{
-    font-size: 6px;
+    font-size: 15px;
     text-align: right;
     color: #BBBBBB;
   }

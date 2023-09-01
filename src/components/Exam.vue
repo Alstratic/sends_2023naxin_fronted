@@ -60,7 +60,7 @@ export default {
     taskName: String,
     positionName: String,
     status: Number,
-    id:Number,
+    id: Number,
   },
   data() {
     return {
@@ -92,10 +92,19 @@ export default {
       window.open('https://uutool.cn/qq-chat/')
     },
 
-    cardClick(){
-      console.log(this.id);
-      this.$router.push({name:'Examine_page',params:{id:this.id,positionName:this.positionName,status:this.statusText,time:this.time,address:this.address}})
-    }
+    cardClick() {
+      console.log(this.id)
+      this.$router.push({
+        name: 'Examine_page',
+        params: {
+          id: this.id,
+          positionName: this.positionName,
+          status: this.statusText,
+          time: this.time,
+          address: this.address,
+        },
+      })
+    },
 
     // ChooseCollect(){
     //     //补充：给后端发
@@ -107,13 +116,13 @@ export default {
       return this.statusBar[this.status]
     },
   },
-  mounted(){
+  mounted() {
     console.log(this.id)
-  }
+  },
 }
 </script>
   
-  <style lang="less" scoped>
+<style lang="less" scoped>
 .box-card {
   margin-top: 1.5vh;
   width: 50%;
@@ -128,28 +137,31 @@ export default {
   justify-content: space-between;
   align-items: center;
   margin-top: 3vh;
-  .organization-details-name1 {
-    font-size: 6px;
-    font-weight: 600;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .null {
-    padding: 0 4px;
-  }
-  .organization-name1 {
-    padding-left: 3px;
-    text-align: left;
-    font-size: 0.5rem;
-  }
-  .organization-type1 {
-    font-size: 6px;
-    text-align: right;
-    color: #bbbbbb;
-    @media (max-width: 920px) {
-      display: none;
-    }
+  font-size: 15px;
+}
+.organization-name1 {
+  padding-left: 3px;
+  text-align: left;
+  font-size: 15px;
+}
+
+.organization-details-name1 {
+  font-size: 6px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.null {
+  padding: 0 4px;
+}
+
+.organization-type1 {
+  font-size: 14px;
+  text-align: right;
+  color: #bbbbbb;
+  @media (max-width: 920px) {
+    display: none;
   }
 }
 .hot-position-details {

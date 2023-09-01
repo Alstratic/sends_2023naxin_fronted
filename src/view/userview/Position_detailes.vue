@@ -24,7 +24,7 @@
               :class="isCollect ? 'el-icon-star-on' : 'el-icon-star-off'"
               @click="ChooseCollect"
             ></i>
-            <span style="font-size: 1rem;">收藏职位</span>
+            <span style="font-size: 14px;">收藏职位</span>
           </div>
           <div class="operation">
             <div class="organization-details">
@@ -270,7 +270,8 @@ export default {
 }
 .position-num {
   font-family: Source Han Sans SC VF;
-  font-size: 2rem;
+  font-size: 25px;
+  width: 15%;
   font-weight: 545;
 }
 .organization-details-name {
@@ -325,7 +326,7 @@ export default {
     font-size: 15px;
   }
   .organization-type {
-    font-size: 6px;
+    font-size: 12px;
     text-align: right;
     color: #bbbbbb;
     @media (max-width: 769px) {
@@ -341,7 +342,7 @@ export default {
 }
 .el-button {
     
-    font-size: 1rem;
+    font-size: 12px;
     line-height: 2px;
     height: 1.5rem;
     margin-top: 3vh;

@@ -264,7 +264,7 @@ export default {
     font-size: 1rem;
   }
   .organization-type {
-    font-size: 6px;
+    font-size: 12px;
     text-align: right;
     color: #bbbbbb;
     @media (max-width: 769px) {
