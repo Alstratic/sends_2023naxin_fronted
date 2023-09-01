@@ -225,7 +225,6 @@ export default {
     let that = this
     this.id = this.$route.params.id
     this.ChoosePosition = this.$route.params.positionName
-    console.log(this.$route.params.id)
     window.onresize = () => {
       return (() => {
         this.setDialogWidth()
@@ -235,7 +234,6 @@ export default {
   methods: {
     gh() {
       view(0).then((res) => {
-        console.log(res)
         this.data1 = res
       })
     },
@@ -276,7 +274,6 @@ export default {
         let fileElementList = document.getElementsByClassName(
           'el-upload-list__item-name'
         )
-        console.log(fileElementList)
         if (fileElementList && fileElementList.length > 0) {
           for (let ele of fileElementList) {
             let fileName = ele.innerText
@@ -301,12 +298,10 @@ export default {
                   config
                 )
                 .then((res) => {
-                  console.log(res)
-                  console.log(res.data.data)
+
                   this.fileUrl = res.data.data
                 })
                 .catch((res) => {
-                  console.log(res)
                 })
             } else {
               this.delFile()
@@ -322,7 +317,6 @@ export default {
     //自定义上传文件
     uploadFile(file) {
       this.formData.append('file', file.file)
-      console.log('sb1')
       // console.log(file.file, "sb2");
     },
     //删除文件
@@ -331,7 +325,6 @@ export default {
     },
     // 点击文件
     handlePreview(file) {
-      console.log('sb2')
       // console.log(file);
     },
     //保存按钮  提交申请
@@ -353,8 +346,6 @@ export default {
         organization_name: '桑梓实验室',
         file: fileUrl,
       }
-      console.log(formData)
-      console.log(localStorage.getItem('HQU_naxin'))
 
       let headers = {
         'Content-Type': 'application/json',

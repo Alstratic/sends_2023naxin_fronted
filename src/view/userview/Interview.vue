@@ -131,7 +131,7 @@ export default {
             .post(this.baseUrl, data, { headers })
             .then((response) => {
               // 将从后端获取的数据填充到 cardData 对象中
-              console.log(response)
+              // console.log(response)
             })
             .catch((error) => {
               console.error('Failed to fetch card data:', error)

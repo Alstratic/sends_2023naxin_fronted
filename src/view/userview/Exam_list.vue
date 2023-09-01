@@ -61,7 +61,6 @@ export default {
   },
   methods: {
     SlctTagId(tag) {
-      console.log(tag)
       if (tag === '待完成') {
         this.cardData = this.showData1
         return
@@ -91,7 +90,6 @@ export default {
     };
 
     const response1 = await axios.post(this.baseUrl1, data, { headers });
-    console.log(response1.data.data.task);
     that.cardData = response1.data.data.task;
     that.AllcardData = that.cardData;
     for (let i = 0; i < that.cardData.length; i++) {
@@ -107,18 +105,6 @@ export default {
         that.posts.push(this.cardData[i].posts);
       }
     }
-    console.log(this.posts);
-
-    let posts = this.posts;
-
-    let data2 = {
-      organization: 1,
-      posts: posts.map(element => element),
-    };
-    console.log(data2.posts)
-
-    const response2 = await axios.post(this.baseUrl2, data2, { headers });
-    console.log(response2);
   } catch (error) {
     console.error('Failed to fetch card data:', error);
   }

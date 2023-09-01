@@ -145,7 +145,6 @@ export default {
           tag === '全部'
             ? ''
             : `?organizationClassify=${encodeURIComponent(tag)}`
-        // console.log(this.queryString)
       } else if (id === 2) {
         this.queryString2 =
           tag === '全部'
@@ -175,8 +174,6 @@ export default {
         (queryStringParts.length > 1
           ? '?' + queryStringParts.slice(1).join('&')
           : '')
-      // console.log(queryString);
-
       let that = this
       axios.get(queryString).then((response) => {
         that.cardData = response.data.data.posts

@@ -78,9 +78,9 @@ mounted(){
   axios.get('/api/cardData')
     .then(response => {
       // 将从后端获取的数据填充到 cardData 对象中
-      console.log(response.data);
+      // console.log(response.data);
       that.cardData = response.data;
-      console.log(response.data);
+      // console.log(response.data);
     })
     .catch(error => {
       console.error('Failed to fetch card data:', error);

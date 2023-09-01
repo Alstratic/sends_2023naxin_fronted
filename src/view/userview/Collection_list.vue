@@ -104,7 +104,6 @@ export default {
         // 将从后端获取的数据填充到 cardData 对象中
         that.cardData = response.data.data.posts
         that.AllcardData = that.cardData
-        console.log(that.cardData)
       })
       .catch((error) => {
         console.error('Failed to fetch card data:', error)
@@ -118,7 +117,6 @@ export default {
       .then((response) => {
         // 将从后端获取的数据填充到 cardData 对象中
         that.showData1 = response.data.data.posts
-        console.log(that.showData1)
       })
       .catch((error) => {
         console.error('Failed to fetch card data:', error)
@@ -132,7 +130,6 @@ export default {
       .then((response) => {
         // 将从后端获取的数据填充到 cardData 对象中
         that.showData2 = response.data.data.posts
-        console.log(that.showData2)
       })
       .catch((error) => {
         console.error('Failed to fetch card data:', error)

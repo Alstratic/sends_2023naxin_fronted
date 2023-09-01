@@ -36,7 +36,7 @@ export default {
      const hashParams = new URLSearchParams(window.location.hash.split('?')[1]);
      const code=hashParams.get('code');
      this.tt=code
-      console.log(code)
+      // console.log(code)
       if (!code) {
         this.isLoggedIn = true;
         return;
@@ -44,7 +44,7 @@ export default {
       LoginPostData(code).then(res=>{
         this.tok=res
           if(res.data.code===1000){
-              console.log(res)
+              // console.log(res)
               this.userToken = res.data.data
               // 将token本地存储到回话中
               localStorage.setItem('HQU_naxin', this.userToken);

@@ -6,7 +6,6 @@
         <!-- <span class="hot-position-num">{{positionNum}}人</span> -->
       </div>
       <div class="hot-position-tags">
-        <!-- <el-tag type="info" v-for="tag in tags" :key="tag">{{tag}}</el-tag> -->
         <span class="hot-position-tag" v-for="tag in tags" :key="tag">{{tag}}</span>
       </div>
       <div class="organization-details">
@@ -123,13 +122,12 @@ border-color: #d9ecff;
 height: 32px;
 padding: 0 3px;
 line-height: 30px;
-font-size: 12px;
 border-width: 1px;
 border-style: solid;
 border-radius: 4px;
 box-sizing: border-box;
 white-space: nowrap;
-font-size: 10px;
+font-size: 14px;
 @media (max-width: 769px) {
   font-size: 6px;
   } 

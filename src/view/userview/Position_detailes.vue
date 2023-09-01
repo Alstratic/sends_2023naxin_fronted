@@ -40,7 +40,7 @@
               </div>
             </div>
             <div class="position-operation">
-              <el-button @click="Talk" type="warning" 
+              <el-button @click="Talk" type="warning" style="background-color: #ffd74d;"
                 >联系一下</el-button>
               <el-button type="warning" plain @click="GoApplications"
                 >申请面试</el-button
@@ -51,11 +51,11 @@
             <span style="margin-left: 1vw">职位信息</span>
             <!-- 先写死 -->
             <el-card class="message">
-              招聘对象：大一全体同学
+              招聘对象：{{this.cardData1.Object}}
               <br />
-              职位任务:PRD文档编写，项目推进
+              职位任务：{{ this.cardData1.Task }}
               <br />
-              特殊说明
+              特别说明：{{ this.cardData1.Illustrate }}
               <br />
             </el-card>
             <!-- 推荐职位 -->
@@ -116,7 +116,7 @@ export default {
       window.open('http://wpa.qq.com/msgrd?v=3&uin=384637134&site=qq&menu=yes')
     },
     GoApplications() {
-      console.log(this.id);
+      // console.log(this.id);
       this.$router.push({name:'Applications',params:{id:this.id,positionName:this.cardData1.Name}})
     },
     ChooseCollect() {
@@ -136,7 +136,7 @@ export default {
         axios.post(queryString, data,{headers}).then((response) => {
           // 将从后端获取的数据填充到 cardData 对象中
           that.collectData = response.data
-          console.log(that.collectData)
+          // console.log(that.collectData)
         })
         .catch((error) => {
           console.error('Failed to fetch card data:', error)
@@ -149,7 +149,7 @@ export default {
         axios.delete(queryString,{headers}).then((response) => {
           // 将从后端获取的数据填充到 cardData 对象中
           that.collectData = response.data
-          console.log(that.collectData)
+          // console.log(that.collectData)
         })
         .catch((error) => {
           console.error('Failed to fetch card data:', error)
@@ -185,6 +185,7 @@ export default {
       .then((response) => {
         // 将从后端获取的数据填充到 cardData 对象中
         that.cardData1 = response.data.data.post
+        // console.log(that.cardData1)
       })
       .catch((error) => {
         console.error('Failed to fetch card data:', error)
@@ -195,11 +196,13 @@ export default {
       .then((response) => {
         // 将从后端获取的数据填充到 cardData 对象中
         that.cardData = response.data.data
-        console.log(that.cardData)
+        // console.log(that.cardData)
       })
       .catch((error) => {
         console.error('Failed to fetch card data:', error)
       })
+
+    
   },
   computed:{
     tagArray(){
@@ -214,7 +217,7 @@ export default {
         }
         grouped.push(group)
       }
-      console.log(grouped)
+      // console.log(grouped)
       return grouped
     }
   }
@@ -262,7 +265,7 @@ export default {
   height: 18px;
   // width: 45px; 宽度不要指明，让文字撑开
   font-weight: 600;
-  font-size: 0.5rem;
+  font-size: 1rem;
   line-height: 15px;
 }
 .position-num {

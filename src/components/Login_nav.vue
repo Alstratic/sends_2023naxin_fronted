@@ -2,8 +2,9 @@
     <div class="header-container" v-if="!isLoggedIn">
         <div class="header-navigator">
             <img src="../assets/sends_logo.png" alt="" @click="goToHomepage">
-
-            <span class="header-organ">华侨大学网络创新实验室</span>
+            <div @click="goToHomepage">
+                <span class="header-organ">华侨大学网络创新实验室</span>
+            </div>
             <span>{{ data1 }}</span>
         </div>
         <div class="login-container2">
@@ -13,8 +14,9 @@
     <div class="header-container" v-else>
         <div class="header-navigator">
             <img src="../assets/sends_logo.png" alt="" @click="goToHomepage">
-            <span>华侨大学网络创新实验室</span>
-            <!-- <span>{{ data1 }}</span> -->
+            <div @click="goToHomepage">
+                <span class="header-organ">华侨大学网络创新实验室</span>
+            </div>
         </div>
         <div class="login-container">
             <div class="login-options" @click="goToExam">

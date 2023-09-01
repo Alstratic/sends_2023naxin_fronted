@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     SlctTagId(tag) {
-      console.log(tag)
+      // console.log(tag)
       if (tag === '待面试') {
         this.cardData = this.showData1
         return
@@ -91,7 +91,7 @@ export default {
       .then((response) => {
         // 将从后端获取的数据填充到 cardData 对象中
         that.cardData = response.data.data.wait
-        console.log(response.data.data.wait)
+        // console.log(response.data.data.wait)
         that.AllcardData = that.cardData
         for (let i = 0; i < that.cardData.length; i++) {
           if (that.cardData[i].state === undefined) {
@@ -101,7 +101,7 @@ export default {
             that.showData2.push(this.cardData[i])
           }
         }
-        console.log(that.AllcardData)
+        // console.log(that.AllcardData)
       })
       .catch((error) => {
         console.error('Failed to fetch card data:', error)

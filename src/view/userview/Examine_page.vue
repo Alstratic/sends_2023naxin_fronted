@@ -181,7 +181,7 @@ export default {
   mounted() {
     this.id = this.$route.params.id
     this.status = this.$route.params.status
-    console.log(this.id)
+    // console.log(this.id)
     let posts = Number(this.id)
     let organization = 1
     window.onresize = () => {
@@ -205,7 +205,7 @@ export default {
       .post(this.baseUrl, data, { headers })
       .then((response) => {
         // 将从后端获取的数据填充到 cardData 对象中
-        console.log(response.data.data.name)
+        // console.log(response.data.data.name)
         this.testName = response.data.data.name
         this.ddl = this.formattedDateTime(response.data.data.ddl.seconds)
         this.testContent = response.data.data.content
@@ -300,12 +300,12 @@ export default {
                   config
                 )
                 .then((res) => {
-                  console.log(res)
-                  console.log(res.data.data)
+                  // console.log(res)
+                  // console.log(res.data.data)
                   this.fileUrl = res.data.data
                 })
                 .catch((res) => {
-                  console.log(res)
+                  // console.log(res)
                 })
             } else {
               this.delFile()
@@ -321,7 +321,7 @@ export default {
     //自定义上传文件
     uploadFile(file) {
       this.formData.append('file', file.file)
-      console.log('sb1')
+      // console.log('sb1')
       // console.log(file.file, "sb2");
     },
     //删除文件
@@ -330,7 +330,7 @@ export default {
     },
     // 点击文件
     handlePreview(file) {
-      console.log('sb2')
+      // console.log('sb2')
       // console.log(file);
     },
 
@@ -345,7 +345,7 @@ export default {
           path: fileUrl,
           posts: posts,
         }
-        console.log(formData.posts)
+        // console.log(formData.posts)
         let headers = {
           'Content-Type': 'application/json',
           accept: 'application/json',
@@ -357,7 +357,7 @@ export default {
             headers,
           })
           .then((res) => {
-            console.log(res)
+            // console.log(res)
           })
 
         this.dialogVisible = true

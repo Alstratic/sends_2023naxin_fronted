@@ -92,7 +92,7 @@
   height: 18px;
   // width: 45px; 宽度不要指明，让文字撑开
   font-weight: 600;
-  font-size: 0.5rem;
+  font-size: 14px;
   line-height: 15px;
   }
   .hot-position-tags{

@@ -59,7 +59,6 @@ export default {
   },
   methods: {
     SlctTagId(tag) {
-      console.log(tag)
       if (tag === '查看阶段') {
         this.cardData = this.showData1
         return
@@ -132,7 +131,6 @@ export default {
             that.showData4.push(this.cardData[i])
           }
         }
-        console.log(that.AllcardData)
       })
       .catch((error) => {
         console.error('Failed to fetch card data:', error)
