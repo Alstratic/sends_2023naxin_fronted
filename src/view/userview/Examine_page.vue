@@ -63,7 +63,7 @@
             >
               <i class="zip"></i>
               <!-- 这里应该是一个下载链接 之后具体看后端咋传，目前先写好下载方式-->
-              <a :href="accessPath">{{ accessPath }}</a>
+              <a :href="accessPath" style="text-decoration: none; color: black;">{{getFileName(accessPath)}}</a>
             </el-card>
             <br />
             <!-- action中的string之后改成上传的地址 -->
@@ -217,6 +217,11 @@ export default {
       })
   },
   methods: {
+       getFileName(url) {
+    const startIndex = url.lastIndexOf('/') + 1;
+    const fileName = url.substring(startIndex);
+    return fileName;
+  },
     //限制只能提交zip格式
     formattedDateTime(seconds) {
       const milliseconds = seconds * 1000 // 转换为毫秒
