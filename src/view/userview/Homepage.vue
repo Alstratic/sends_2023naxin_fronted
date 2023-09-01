@@ -10,7 +10,7 @@
       <!-- 轮播图 -->
       <div class="transforming-pics">
         <div class="tramsforming-container">
-          <el-carousel trigger="click" height="20rem">
+          <el-carousel trigger="click" class="carousel">
             <el-carousel-item v-for="item in 4" :key="item">
               <h3 class="small"></h3>
             </el-carousel-item>
@@ -80,7 +80,7 @@ export default {
     },
     groupedCards() {
       const isMobile = this.isMobile // 使用组件内部的 isMobile 属性
-      const rowsToShow = 3 // 最多显示的行数
+      const rowsToShow =isMobile ? 2 : 3// 最多显示的行数
       const totalCards = this.cardDataList.length
       const cardsPerRow = isMobile ? 1 : 3 // 根据设备决定每行显示的卡片数 PC端最多同时展示9个卡片 移动端最多同时展示3个卡片 因此每行展示的不一样
 
@@ -131,11 +131,18 @@ export default {
   background-color: #fff;
 }
 
+.carousel{
+  height:20rem;
+  @media (max-width: 769px) {
+    height: 12rem;
+  }
+}
+
 .un-login {
   color: black;
   background-color: #ffd74d;
   font-family: 'Source Han Sans SC VF', sans-serif;
-  font-size: 14px;
+  font-size: 22px;
   padding: 8px 14px;
   font-weight: 800;
   border: 0;
@@ -197,7 +204,7 @@ export default {
 
 .transforming-pics {
   width: 100%;
-  height: 50%;
+  height: 25%;
   margin-bottom: 2.5rem;
   background-color: #fff;
   @media (max-width: 769px) {
@@ -230,22 +237,26 @@ export default {
 }
 
 .hot-position-font {
-  font-size: 48px;
+  font-size: 42px;
   font-weight: 600;
   font-family: 'Source Han Serif CN VF';
   margin-bottom: 1rem;
+  @media (max-width: 769px) {
+    font-size: 35px;
+  }
 }
 .hot-positions {
   width: 100%;
-  height: 120%;
+  height: 80%;
+  padding-top: 10vh;
   background-color: #fff;
   justify-content: space-around;
   display: flex;
   flex-direction: column;
   align-items: center;
   @media (max-width: 769px) {
-    padding-top: 2vh;
-    height: 120%;
+    padding-top: 12vh;
+    height: 80%;
   }
 
   .text {

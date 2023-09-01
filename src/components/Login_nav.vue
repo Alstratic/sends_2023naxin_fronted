@@ -168,7 +168,7 @@ export default{
     border-radius: 50%;
     @media (max-width: 769px) {
         height: 48%;
-        width: 20%;;
+        width: 15%;;
     }
 }
 
@@ -178,6 +178,9 @@ export default{
     display: inline-block;
     line-height: 100%;
     font-size: 1.3rem;
+    @media (max-width: 769px) {
+        font-size: 18px;
+    }
 }
 
 .login-container{
@@ -231,7 +234,10 @@ export default{
     }
 }
 .header-organ{
-    font-size: 20px;
+    font-size: 15px;
+    @media (max-width: 769px) {
+        font-size: 15px;
+    }
 }
 
 </style>
