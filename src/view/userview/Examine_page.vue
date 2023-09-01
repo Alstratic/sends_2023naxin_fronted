@@ -91,7 +91,7 @@
               >
               <span
                 style="
-                  font-size: 2px;
+                  font-size: 0.5rem;
                   margin-left: 13px;
                   color: #7e7e7e;
                   font-family: Source Han Sans SC VF;
