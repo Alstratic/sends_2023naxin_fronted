@@ -247,7 +247,7 @@ export default {
 }
 .hot-positions {
   width: 100%;
-  height: 80%;
+  height: 85%;
   padding-top: 10vh;
   background-color: #fff;
   justify-content: space-around;
