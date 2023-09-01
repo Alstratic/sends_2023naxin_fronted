@@ -45,13 +45,13 @@
             justify-content: space-between;
           "
         >
-          <el-button type="warning" plain @click="abandonView"
-            >放弃面试</el-button
+        <el-button type="warning" plain @click="abandonView"
+           >放弃面试</el-button
           >
           <el-button
             type="warning"
             @click="talkTime"
-            style="background-color: #ffd74d"
+            style="background-color: #ffd74d;margin-left: 0px;"
             >协调时间</el-button
           >
         </div>
