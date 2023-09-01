@@ -125,7 +125,7 @@ export default {
 }
 </script>
   
-  <style lang="less" scoped>
+ <style lang="less" scoped>
 .all-container {
   height: 100%;
   background-color: #fff;
@@ -135,7 +135,7 @@ export default {
   color: black;
   background-color: #ffd74d;
   font-family: 'Source Han Sans SC VF', sans-serif;
-  font-size: 14px;
+  font-size: 1rem;
   padding: 8px 14px;
   font-weight: 800;
   border: 0;
@@ -230,7 +230,7 @@ export default {
 }
 
 .hot-position-font {
-  font-size: 48px;
+  font-size: 2rem;
   font-weight: 600;
   font-family: 'Source Han Serif CN VF';
   margin-bottom: 1rem;
