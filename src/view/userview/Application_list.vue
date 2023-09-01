@@ -160,7 +160,7 @@ export default {
 
 .application-list-font {
   flex-basis: 100%; /* 将宽度设置为100%，使其占据整行 */
-  font-size: 25px;
+  font-size: 1.3rem;
   font-weight: 500;
   margin-bottom: 4vh;
 }

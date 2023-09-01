@@ -395,7 +395,7 @@ export default {
   }
   span {
     font-family: Source Han Serif CN VF;
-    font-size: 1.5rem;
+  font-size: 1.3rem;
     font-weight: 545;
     line-height: 0.5rem;
     letter-spacing: 0em;

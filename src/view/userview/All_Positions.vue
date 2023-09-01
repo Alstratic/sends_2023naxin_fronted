@@ -232,7 +232,7 @@ export default {
 
 .all-position-font {
   flex-basis: 100%; /* 将宽度设置为100%，使其占据整行 */
-  font-size: 32px;
+  font-size: 1.5rem;
   font-weight: 500;
 }
 
