@@ -247,7 +247,7 @@ export default {
 }
 .hot-positions {
   width: 100%;
-  height: 80%;
+  height: 85%;
   padding-top: 10vh;
   background-color: #fff;
   justify-content: space-around;
@@ -256,7 +256,7 @@ export default {
   align-items: center;
   @media (max-width: 769px) {
     padding-top: 15vh;
-    height: 80%;
+    height: 85%;
   }
 
   .text {
