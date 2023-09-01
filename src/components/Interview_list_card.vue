@@ -36,7 +36,7 @@
 
           <span class="hot-position-num">{{ address }}</span>
 
-          <span style="color: #d0b65c; font-size: 3px">{{ statusText }}</span>
+          <span style="color: #d0b65c;  font-size: 0.5rem">{{ statusText }}</span>
         </div>
         <div
           style="
@@ -118,7 +118,7 @@ export default {
     },
     //协调时间
     async talkTime() {
-      window.open('https://uutool.cn/qq-chat/')
+      window.open('http://wpa.qq.com/msgrd?v=3&uin=384637134&site=qq&menu=yes')
     },
 
     cardClick(){
