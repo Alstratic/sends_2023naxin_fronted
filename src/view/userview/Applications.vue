@@ -298,10 +298,17 @@ export default {
                   config
                 )
                 .then((res) => {
-
                   this.fileUrl = res.data.data
+                  this.$message({
+                    message: '文件上传成功！',
+                    type: 'warning',
+                  })
                 })
                 .catch((res) => {
+                  this.$message({
+                    message: '文件上传失败，请检查网络后重新上传！',
+                    type: 'warning',
+                  })
                 })
             } else {
               this.delFile()

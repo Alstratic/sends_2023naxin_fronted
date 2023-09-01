@@ -32,7 +32,7 @@
             <div class="position-operation">
               <el-button
                 type="warning"
-                style="background-color: #ffd74d;color: black"
+                style="background-color: #ffd74d; color: black"
                 @click="talkTime"
                 >联系一下</el-button
               >
@@ -303,9 +303,16 @@ export default {
                   // console.log(res)
                   // console.log(res.data.data)
                   this.fileUrl = res.data.data
+                  this.$message({
+                    message: '文件上传成功！',
+                    type: 'warning',
+                  })
                 })
                 .catch((res) => {
-                  // console.log(res)
+                  this.$message({
+                    message: '文件上传失败，请检查网络后重新上传！',
+                    type: 'warning',
+                  })
                 })
             } else {
               this.delFile()
@@ -422,7 +429,7 @@ export default {
   margin-top: 1.5vh;
   padding: auto;
   color: #d0b65c;
-  font-size: 25px;
+  font-size: 15px;
 }
 .statu {
   font-family: Source Han Sans SC VF;
@@ -430,7 +437,7 @@ export default {
   font-weight: 545;
   color: #d0b65c;
   @media (max-width: 920px) {
-    font-size: 1.4rem;
+    font-size: 15px;
   }
 }
 .organization-details-name {
@@ -483,9 +490,8 @@ export default {
     }
   }
 }
-.position-operation{
+.position-operation {
   .el-button {
-    
     font-size: 1rem;
     line-height: 2px;
     height: 1.5rem;
@@ -506,7 +512,6 @@ export default {
     padding-left: 1vw;
     padding-right: 1vw;
   }
-  
 }
 .Examine-message {
   padding-top: 5vh;

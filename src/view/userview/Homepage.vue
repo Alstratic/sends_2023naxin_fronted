@@ -255,7 +255,7 @@ export default {
   flex-direction: column;
   align-items: center;
   @media (max-width: 769px) {
-    padding-top: 12vh;
+    padding-top: 15vh;
     height: 80%;
   }
 

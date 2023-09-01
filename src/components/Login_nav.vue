@@ -228,7 +228,7 @@ export default{
 }
 
 .login-options{
-    font-size: 16px;
+    font-size: 15px;
     span:hover{
         cursor: pointer;
     }
