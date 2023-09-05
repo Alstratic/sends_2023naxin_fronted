@@ -8,7 +8,7 @@
 
 **注意：提交时不要提交到master分支，提交到什么分支详见当天的commit日志，见下**
 
-**8月11日已提交**
+**7月29日已提交**
 
 ## Project setup
 
@@ -178,7 +178,52 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 '/Examine_check' 考核批阅
 '/Examine_post' 考核发布
 ```
+## 8-2commit(sh)
 
+- 申请详情和、面试详情和考核详情写好了。有些地方还是先写死
+- 修改了上传文件的格式限制（zip）,以formDate传
+- 代码有很多冗余，内容卡片的组件还没有封装。
+
+记录相关进度如下：
+
+```
+用户端
+'/homepage'  主页面 √
+
+'/interview' 面试报名-面试报名上传-面试报名提交  √
+'/interview_lists' 面试列表 ×
+'/interview_details' 面试详情 √
+
+'/Applications' 申请列表页面 ×
+'/Applications_details' 申请详情页面 √
+
+'/Examine_page'	考核页面 ×
+'/Examinepage_details' 考核详情页面 √
+
+'/All_Positions' 全部职位页面 开发中ing
+'/Position_detailes' 职位详情页面 √
+'/Position_collection' 职位收藏 ×
+
+'All_Oragnizations' 全部组织页面 ×
+'/Orgnization_details' 组织详情页面 √
+
+'/login' 登录页面 （不用额外做页面，直接微信统一认证）×
+
+管理端（还没开始）
+'/homepage' 首页仪表盘
+
+'/Position_list' 职位列表
+'/Position_information' 职位信息
+'/Position_post' 职位发布
+
+'/Application_approval' 申请审批
+
+'/Interview_list' 面试列表
+'/Interview_assignment' 面试安排
+
+'/Examine_check' 考核批阅
+'/Examine_post' 考核发布
+```
 ## 	8.2 commit
 
 - `All_Positions`全部职位筛选器应该没什么问题了，这个页面接近尾声了，不过临时传来需求要把多选改成单选，明天再看着改改
@@ -228,6 +273,14 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
   ```
 
 
+## 8-4
+
+- 用file-saver库先写好文件下载功能。
+- 修改了文档修改的部分
+
+## 8-5
+
+搭好了组织端框架
 
 
 ## 8.7 commit
@@ -250,7 +303,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 '/interview_details' 面试详情 ×
 面试报名提交？
 
-'/Application-list' 申请列表页面 80%
+'/Application_list' 申请列表页面 80%
 
 '/Collection_list'	收藏列表页面 搭框架ing
 
@@ -262,7 +315,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 '/Position_detailes' 职位详情页面 √
 '/Position_collection' 职位收藏 搭框架ing
 
-'All_Oragnizations' 全部组织页面 暂时不用
+'/All_Oragnizations' 全部组织页面 暂时不用
 '/Orgnization_details' 组织详情页面 √
 
 '/login' 登录页面 （微信统一认证）×
@@ -283,3 +336,135 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 '/Examine_post' 考核发布
 ```
 
+
+## 	8.14commit
+
+- 登录在做，遇到了点问题，查了查好像要进行网页授权，个人的公众号权限不够，明天试试桑梓的公众号能不能授权成功
+
+- ```
+  用户端
+  '/homepage'  主页面 √
+  
+  '/interview' 面试报名-面试报名上传-面试报名提交  √
+  '/interview_lists' 搭框架ing
+  '/interview_details' 面试详情 ×
+  面试报名提交？
+  
+  '/Application_list' 申请列表页面 80%
+  
+  '/Collection_list'	收藏列表页面 搭框架ing
+  
+  '/Examine_list'	搭框架ing
+  '/Examinepage_details' 考核详情页面 ×
+  考核提交页面？
+  
+  '/All_Positions' 全部职位页面 80%
+  '/Position_detailes' 职位详情页面 √
+  '/Position_collection' 职位收藏 搭框架ing
+  
+  '/All_Oragnizations' 全部组织页面 暂时不用
+  '/Orgnization_details' 组织详情页面 √
+  
+  '/login' 登录页面 （微信统一认证）ing
+  
+  管理端（框架搭好了？）
+  '/homepage' 首页仪表盘
+  
+  '/Position_list' 职位列表
+  '/Position_information' 职位信息
+  '/Position_post' 职位发布
+  
+  '/Application_approval' 申请审批
+  
+  '/Interview_list' 面试列表
+  '/Interview_assignment' 面试安排
+  
+  '/Examine_check' 考核批阅
+  '/Examine_post' 考核发布
+  ```
+
+
+## 8-15 commit
+
+- 改好了申请列表Application_list和面试列表Interview_list布局。全部组织和首页还没改。
+
+- 申请列表和面试列有个bug是点击两次tag，就不选中了。
+
+  ```
+  用户端
+  '/homepage'  主页面 √
+  
+  '/interview' 面试报名-面试报名上传-面试报名提交  √
+  '/interview_lists' 搭框架ing
+  '/interview_details' 面试详情 √
+  面试报名提交？√
+  
+  '/Application_list' 申请列表页面 80%
+  
+  '/Collection_list'	收藏列表页面 搭框架ing
+  
+  '/Examine_list'	搭框架ing
+  '/Examinepage_details' 考核详情页面   √
+  考核提交页面？  √
+  
+  '/All_Positions' 全部职位页面 80%
+  '/Position_detailes' 职位详情页面 √
+  '/Position_collection' 职位收藏 搭框架ing
+  
+  '/All_Oragnizations' 全部组织页面 暂时不用
+  '/Orgnization_details' 组织详情页面 √
+  
+  '/login' 登录页面 （微信统一认证）ing
+  
+  管理端（框架搭好了？）
+  '/homepage' 首页仪表盘 80% 动态部分还没做。不过我这部分代码还没push上
+  
+  '/Position_list' 职位列表
+  '/Position_information' 职位信息
+  '/Position_post' 职位发布
+  
+  '/Application_approval' 申请审批
+  
+  '/Interview_list' 面试列表
+  '/Interview_assignment' 面试安排
+  
+  '/Examine_check' 考核批阅
+  '/Examine_post' 考核发布
+  ```
+
+
+## 8-16 commit
+
+- （忽略布局）微信登录功能实现了。之后这里的url记得改：
+
+- ```
+  location.href = `https://apps.hqu.edu.cn/wechat-hqu/wechatauth.html?proxyTo=authoauth&sendUrl=/connect/oauth2/authorize?appid=wxfe035b066fb1158b&redirect_uri=${encodeURIComponent(
+        'http://localhost:8080/LoginSucess'
+      )}&encode_flag=Y&response_type=code&scope=snsapi_userinfo#wechat_redirect`
+  ```
+
+- 但是目前有个bug（应该算bug）就是回退后，就变空白页了。 
+
+- 另外封装了axios。
+
+- 加了导航守卫，没有登录拿到token的话，就不能访问其他页面，只能跳到login页面
+
+
+## 8-18commit
+
+- 修改了登录方式
+- 改了考核列表，面试列表和申请列表布局，卡片等。
+
+
+## 	8-23 commit
+
+- 用户端登录页面做好了，在浏览器可以在`localstroage`处随便存入一个`token`
+
+- 筛选器相关在`All_positions`中，具体的组件的逻辑是在`Positiontag`组件
+
+  
+
+
+## 8-27commit 
+
+组织端除了首页非必要的功能，其他已经完成。
