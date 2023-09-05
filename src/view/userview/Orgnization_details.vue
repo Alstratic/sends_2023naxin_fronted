@@ -1,6 +1,5 @@
 <template>
   <div class="Orgnization_det">
-    <CHeader></CHeader>
     <div class="Orgnization_Introduce">
       <div class="Intro">
           <div class="Orgnization">
@@ -60,10 +59,9 @@
 <script>
 import VueSlickCarousel from 'vue-slick-carousel'
 import positionCard from '../../components/positionCard.vue'
-import CHeader from '../../components/CHeader.vue';
 import axios from 'axios';
 export default {
-  components: { VueSlickCarousel,positionCard,CHeader },
+  components: { VueSlickCarousel,positionCard },
   name:"Orgnization_details",
   data(){
   return{ 

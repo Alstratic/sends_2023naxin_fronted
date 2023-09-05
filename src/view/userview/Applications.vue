@@ -183,15 +183,13 @@
   </el-container>
 </template>
   <script>
-import CHeader from '@/components/CHeader.vue'
 import VueSlickCarousel from 'vue-slick-carousel'
-import { userupload } from '../../api/index'
 import { view } from '../../api/index'
 import axios from 'axios'
 import Login_nav from '@/components/Login_nav.vue'
 export default {
   name: 'Applications',
-  components: { VueSlickCarousel, CHeader, Login_nav },
+  components: { VueSlickCarousel, Login_nav },
   data() {
     return {
       id: String,
@@ -510,34 +508,6 @@ export default {
   margin-right: 10px;
   background-image: url('../../assets/zip.png') !important;
 }
-// .upload-demo /deep/.imgicon-pptx {
-//   display: inline-block;
-//   width: 20px;
-//   margin-bottom: -3px;
-//   height: 20px;
-//   background-size: 100% 100%;
-//   margin-right: 10px;
-//   background-image: url(" ") !important;
-// }
-// .upload-demo /deep/ .imgicon-xlsx {
-//   display: inline-block;
-//   width: 20px;
-//   margin-bottom: -3px;
-//   height: 20px;
-//   background-size: 100% 100%;
-//   margin-right: 10px;
-//   background-image: url(" ") !important;
-// }
-// .upload-demo /deep/ .imgicon-default {
-//   display: inline-block;
-//   width: 20px;
-//   margin-bottom: -3px;
-//   height: 20px;
-//   background-size: 100% 100%;
-//   margin-right: 10px;
-//   background-image: url(" ") !important;
-// }
-
 .dialog {
   // border: #ffd74d 1.5px solid;
 

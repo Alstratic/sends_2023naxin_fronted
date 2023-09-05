@@ -140,15 +140,13 @@
 </template>
   
 <script>
-import { saveAs } from 'file-saver'
 import VueSlickCarousel from 'vue-slick-carousel'
 import positionCard from '../../components/positionCard.vue'
-import CHeader from '../../components/CHeader.vue'
 import axios from 'axios'
 import Login_nav from '../../components/Login_nav.vue'
 
 export default {
-  components: { VueSlickCarousel, positionCard, CHeader, Login_nav },
+  components: { VueSlickCarousel, positionCard, Login_nav },
   name: 'Examine_page',
   data() {
     return {

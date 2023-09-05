@@ -34,7 +34,6 @@ import Login_nav from '@/components/Login_nav.vue'
 import axios from 'axios'
 import Interview_list_card from '@/components/Interview_list_card.vue'
 import Exam from '@/components/Exam.vue'
-import CHeader from '@/components/CHeader.vue'
 import ListTags from '@/components/ListTags.vue'
 export default {
   components: {
@@ -42,7 +41,6 @@ export default {
     axios,
     Interview_list_card,
     Exam,
-    CHeader,
     ListTags,
   },
   data() {

@@ -12,10 +12,15 @@
               <!-- 先写死 -->
               <span id="Title">{{ this.cardData1.Name }}</span>
               <div class="hot-position-tags">
-                <el-tag type="info" v-for="(tag, index) in tagArray" :key="index">{{ tag }}</el-tag>
+                <el-tag
+                  type="info"
+                  v-for="(tag, index) in tagArray"
+                  :key="index"
+                  >{{ tag }}</el-tag
+                >
               </div>
             </div>
-            <div class="position-num">{{this.cardData1.Nums}}人</div>
+            <div class="position-num">{{ this.cardData1.Nums }}人</div>
           </div>
           <div class="collect-position">
             <!-- <i class="el-icon-star-off"></i> -->
@@ -24,7 +29,7 @@
               :class="isCollect ? 'el-icon-star-on' : 'el-icon-star-off'"
               @click="ChooseCollect"
             ></i>
-            <span style="font-size: 14px;">收藏职位</span>
+            <span style="font-size: 14px">收藏职位</span>
           </div>
           <div class="operation">
             <div class="organization-details">
@@ -34,14 +39,24 @@
                   alt=""
                   style="width: 26px; height: 26px; border-radius: 50%"
                 />
-                <span class="organization-name">{{this.cardData1.OrganizationName}}</span>
+                <span class="organization-name">{{
+                  this.cardData1.OrganizationName
+                }}</span>
                 <div class="null"></div>
-                <span class="organization-type">{{this.cardData1.OrganizationCategory}}|{{this.cardData1.OrganizationClassify}}</span>
+                <span class="organization-type"
+                  >{{ this.cardData1.OrganizationCategory }}|{{
+                    this.cardData1.OrganizationClassify
+                  }}</span
+                >
               </div>
             </div>
             <div class="position-operation">
-              <el-button @click="Talk" type="warning" style="background-color: #ffd74d;"
-                >联系一下</el-button>
+              <el-button
+                @click="Talk"
+                type="warning"
+                style="background-color: #ffd74d"
+                >联系一下</el-button
+              >
               <el-button type="warning" plain @click="GoApplications"
                 >申请面试</el-button
               >
@@ -51,7 +66,7 @@
             <span style="margin-left: 1vw">职位信息</span>
             <!-- 先写死 -->
             <el-card class="message">
-              招聘对象：{{this.cardData1.Object}}
+              招聘对象：{{ this.cardData1.Object }}
               <br />
               职位任务：{{ this.cardData1.Task }}
               <br />
@@ -66,7 +81,7 @@
               <div class="recommend-position-cards">
                 <!-- 先定死放两个 -->
                 <positionCard
-                  v-for="(cardData,cardIndex) in groupedCardData"
+                  v-for="(cardData, cardIndex) in groupedCardData"
                   :id="cardData.id"
                   :key="cardIndex"
                   :position-name="cardData.Name"
@@ -77,7 +92,6 @@
                   :organization-type="cardData.OrganizationCategory"
                   :OrganizationClassify="cardData.OrganizationClassify"
                 />
-                
               </div>
             </div>
           </div>
@@ -91,7 +105,7 @@
 import positionCard from '../../components/positionCard.vue'
 import Login_nav from '../../components/Login_nav.vue'
 import axios from 'axios'
-import {getUserToken} from '../../request/wx_auth.js'
+import { getUserToken } from '../../request/wx_auth.js'
 import Qs from 'qs'
 
 export default {
@@ -99,61 +113,65 @@ export default {
   name: 'Position_detailes',
   data() {
     return {
-      id:Number,
+      id: Number,
       isCollect: false,
-      token:String,
+      token: String,
       cardData: [],
-      cardData1:{},
-      tagsData:{},
-      collectData:{},
-      baseUrl:'https://recruit.sends.cc/api/square/posts/',
-      baseUrl2:'https://recruit.sends.cc/api/square/organizations/posts/1',
-      baseUrl3:'https://recruit.sends.cc/api/square/posts/favorite/'
+      cardData1: {},
+      tagsData: {},
+      collectData: {},
+      baseUrl: 'https://recruit.sends.cc/api/square/posts/',
+      baseUrl2: 'https://recruit.sends.cc/api/square/organizations/posts/1',
+      baseUrl3: 'https://recruit.sends.cc/api/square/posts/favorite/',
     }
   },
   methods: {
-    Talk(){
+    Talk() {
       window.open('http://wpa.qq.com/msgrd?v=3&uin=384637134&site=qq&menu=yes')
     },
     GoApplications() {
       // console.log(this.id);
-      this.$router.push({name:'Applications',params:{id:this.id,positionName:this.cardData1.Name}})
+      this.$router.push({
+        name: 'Applications',
+        params: { id: this.id, positionName: this.cardData1.Name },
+      })
     },
     ChooseCollect() {
       //补充：给后端发
-      let data={
-        'postID':this.id
+      let data = {
+        postID: this.id,
       }
-      let headers={
-        'accept':'application/json',
-        'token':this.token,
+      let headers = {
+        accept: 'application/json',
+        token: this.token,
       }
-      let that=this
-      let queryString=this.baseUrl3+this.id;
+      let that = this
+      let queryString = this.baseUrl3 + this.id
 
-      if(this.isCollect===false)
-      {
-        axios.post(queryString, data,{headers}).then((response) => {
-          // 将从后端获取的数据填充到 cardData 对象中
-          that.collectData = response.data
-          // console.log(that.collectData)
-        })
-        .catch((error) => {
-          console.error('Failed to fetch card data:', error)
-        })
+      if (this.isCollect === false) {
+        axios
+          .post(queryString, data, { headers })
+          .then((response) => {
+            // 将从后端获取的数据填充到 cardData 对象中
+            that.collectData = response.data
+            // console.log(that.collectData)
+          })
+          .catch((error) => {
+            console.error('Failed to fetch card data:', error)
+          })
         this.isCollect = !this.isCollect
-      }
-
-      else if(this.isCollect===true){
-        data=Qs.stringify(data)
-        axios.delete(queryString,{headers}).then((response) => {
-          // 将从后端获取的数据填充到 cardData 对象中
-          that.collectData = response.data
-          // console.log(that.collectData)
-        })
-        .catch((error) => {
-          console.error('Failed to fetch card data:', error)
-        })
+      } else if (this.isCollect === true) {
+        data = Qs.stringify(data)
+        axios
+          .delete(queryString, { headers })
+          .then((response) => {
+            // 将从后端获取的数据填充到 cardData 对象中
+            that.collectData = response.data
+            // console.log(that.collectData)
+          })
+          .catch((error) => {
+            console.error('Failed to fetch card data:', error)
+          })
         this.isCollect = !this.isCollect
       }
     },
@@ -172,34 +190,13 @@ export default {
     },
   },
   created() {
-    let that = this
     this.token = getUserToken()
-    let headers = {
-      token: this.token,
-    }
-    let params = {
-      state: null,
-    }
-    console.log(this.$route.params.id)
-    axios
-      .get('https://recruit.sends.cc/api/square/posts/favorite', {
-        headers,
-        params,
-      })
-      .then((response) => {
-        if(response.data.msg==='success'){
-          const res=response.data.data.posts
-          const IsT = res.some(obj => obj.id === this.$route.params.id);
-          this.isCollect=IsT
-        }
-        // 将从后端获取的数据填充到 cardData 对象中
-      })
   },
   mounted() {
     let that = this
-    this.id=this.$route.params.id
-    this.token=getUserToken()
-    let queryString1=this.baseUrl+this.id
+    this.id = this.$route.params.id
+    this.token = getUserToken()
+    let queryString1 = this.baseUrl + this.id
 
     axios
       .get(queryString1)
@@ -223,25 +220,29 @@ export default {
         console.error('Failed to fetch card data:', error)
       })
 
-    
+    console.log(this.$route.params.id)
   },
-  computed:{
-    tagArray(){
-      return [this.cardData1.Classify, this.cardData1.Experience, this.cardData1.Object];
+  computed: {
+    tagArray() {
+      return [
+        this.cardData1.Classify,
+        this.cardData1.Experience,
+        this.cardData1.Object,
+      ]
     },
-    groupedCardData(){
-      let grouped=[]
-      for (let i = 0; i < this.cardData.length; i ++) {
+    groupedCardData() {
+      let grouped = []
+      for (let i = 0; i < this.cardData.length; i++) {
         const group = this.cardData[i]
-        if(this.cardData[i].id==this.id){
-          continue;
+        if (this.cardData[i].id == this.id) {
+          continue
         }
         grouped.push(group)
       }
       // console.log(grouped)
       return grouped
-    }
-  }
+    },
+  },
 }
 </script>
   
@@ -323,7 +324,7 @@ export default {
   }
 }
 
-.custom-button{
+.custom-button {
   color: black;
 }
 .organization-details {
@@ -362,16 +363,15 @@ export default {
   justify-content: space-around;
 }
 .el-button {
-    
-    font-size: 12px;
-    line-height: 2px;
-    height: 1.5rem;
-    margin-top: 3vh;
-    font-weight: 600;
-    color: black;
-    border-radius: 10px;
-    opacity: 0.8;
-  }
+  font-size: 12px;
+  line-height: 2px;
+  height: 1.5rem;
+  margin-top: 3vh;
+  font-weight: 600;
+  color: black;
+  border-radius: 10px;
+  opacity: 0.8;
+}
 .position-message {
   padding-top: 5vh;
   padding-left: 10vw;

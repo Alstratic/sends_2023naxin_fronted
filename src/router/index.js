@@ -3,7 +3,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Homepage from '../view/userview/Homepage.vue'
 import Interview from '../view/userview/Interview.vue'
-import Applications_details from '../view/userview/Applications_details.vue'
 import Applications from '../view/userview/Applications.vue'
 import Orgnization_details from '../view/userview/Orgnization_details.vue'
 import Position_detailes from '../view/userview/Position_detailes.vue'
@@ -33,7 +32,6 @@ const routes = [
     component: () => import('../view/userview/Login.vue')
   },
   { path: '/user/interview', component: Interview, name: 'Interview' },
-  { path: '/user/Applications_details', component: Applications_details },
   { path: '/user/Examine_page', component: Examine_page, name: 'Examine_page' },
   { path: '/user/Orgnization_details', component: Orgnization_details },
   {

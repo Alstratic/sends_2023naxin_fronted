@@ -33,14 +33,12 @@
 import Login_nav from '@/components/Login_nav.vue'
 import axios from 'axios'
 import Application_list_card from '@/components/Application_list_card.vue'
-import CHeader from '@/components/CHeader.vue'
 import ListTags from '@/components/ListTags.vue'
 export default {
   components: {
     Login_nav,
     axios,
     Application_list_card,
-    CHeader,
     ListTags,
   },
   data() {

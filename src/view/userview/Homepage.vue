@@ -8,7 +8,7 @@
     <el-main>
       <!-- 搜索框 -->
       <!-- 轮播图 -->
-      <div class="transforming-pics">
+      <!-- <div class="transforming-pics">
         <div class="tramsforming-container">
           <el-carousel trigger="click" class="carousel">
             <el-carousel-item v-for="item in 4" :key="item">
@@ -16,7 +16,7 @@
             </el-carousel-item>
           </el-carousel>
         </div>
-      </div>
+      </div> -->
       <!-- 热门职位 -->
       <div class="hot-positions">
         <div class="hot-position-font">

@@ -3,8 +3,6 @@
   </div>
 </template>
 <script>
-import {setToken, getToken, isLogin, wxRedirect, isInWechat, getWechatCode} from '../../api/wx_auth'
-import axios from 'axios';
 import {LoginPostData} from '../../api/index'  
 export default {
   //inject: ["reload"],
